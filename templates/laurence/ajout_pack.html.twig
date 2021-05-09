@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container">
+
+
+    <h1>Ajout Pack</h1>
+
+
+        {% for message in app.flashes('success') %}
+            <div class="col-md-6 bg-secondary p-4 rounded mx-auto text-center text-white mb-3">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+
+    {{ form_start(formPack) }}
+
+    {{ form_row(formPack.nom) }}
+    {{ form_row(formPack.description1) }}
+    {{ form_row(formPack.description2) }}
+    {{ form_row(formPack.prix) }}
+    {{ form_row(formPack.image1) }}
+    {{ form_row(formPack.image2) }}
+    {{ form_row(formPack.image3) }}
+
+
+    <button class="btn btn-outline-primary mb-5" type="submit">Ajouter</button>
+
+
+
+    {{ form_end(formPack) }}
+    </div>
+{% endblock %}
+
+{% block title %}
+Lo | Ajout_pack
+{% endblock %}
+

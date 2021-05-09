@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+
+
+
+{% block body %}
+
+    <h1 class="m-5 text-info">Mon profil</h1>
+    <div class="card w-25 ml-4">
+        <div class="card-header font-weight-bold bg-info text-center">
+            Mes informations
+        </div>
+        <div class="card-body">
+            <p class="card-text">Votre pseudo : {{ app.user.username}} </p>
+            <p class="card-text">Votre nom : {{ app.user.nom}} </p>
+            <p class="card-text">Votre prénom : {{ app.user.prenom}} </p>
+            <p class="card-text">Votre date de naissance : {{ app.user.birthday | date('d/m/Y')}} </p>
+            <p class="card-text">Votre email {{ app.user.email}} </p>
+            <a href=" {{ path('modifprofil', {'id':app.user.id} )}} " class="btn btn-info mx-auto">Modifier</a>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

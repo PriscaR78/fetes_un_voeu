@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {% for message in app.flashes('success') %}
+        <div class="col-md-6 bg-info p-4 rounded mx-auto text-center text-white my-3">
+            {{ message }}
+        </div>
+    {% endfor %}
+<div class="container m-5">
+<h1>Connexion</h1>
+
+    <form action="{{ path('login') }}" method="post" class="col-md-10 mt-4   w-25">
+        <div class="form-group ">
+            <label for="_username">E-mail</label>
+            <input class="form-control" type="text" id="_username" name="_username" value="{{ lastuser }}">
+        </div>
+
+        <div class="form-group">
+            <label for="_password">Mot de passe</label>
+            <input class="form-control" type="password" id="_password" name="_password" >
+        </div>
+        <button class="btn btn-primary" type="submit">Se connecter</button>
+    </form>
+    </div>
+
+
+{% endblock %}
