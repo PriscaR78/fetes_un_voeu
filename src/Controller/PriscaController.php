@@ -13,8 +13,6 @@ class PriscaController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('prisca/index.html.twig', [
-            'controller_name' => 'PriscaController',
-        ]);
+        return $this->render('prisca/index.html.twig');
     }
 }
