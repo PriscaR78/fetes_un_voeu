@@ -3,7 +3,14 @@
 namespace App\Controller;
 
 use App\Entity\Pack;
+use App\Entity\Reservation;
+use App\Entity\User;
 use App\Form\PackType;
+use App\Form\RegistrationType;
+use App\Form\ReservationType;
+use App\Repository\CommandeRepository;
+use App\Repository\PackRepository;
+use App\Repository\ReservationRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
@@ -23,6 +30,43 @@ class LaurenceController extends AbstractController
 //        ]);
 //    }
 
+    // -------------------------------------- BACK-OFFICE -------------------------------------- //
+
+    /**
+     * @Route("/backoffice", name="backoffice")
+     */
+    public function backoffice()
+    {
+        return $this->render("/laurence/backoffice.html.twig");
+    }
+
+    /**
+     * @Route("/gestion_reservations", name="gestion_reservations")
+     */
+    public function gestion_reservations(ReservationRepository $repository)
+    {
+
+        $reservations=$repository->findAll();
+        return $this->render('laurence/gestion_reservations.html.twig',[
+            'reservations'=>$reservations
+        ]);
+    }
+
+    /**
+     * @Route("/gestion_packs", name="gestion_packs")
+     */
+    public function gestion_packs(PackRepository $repository)
+    {
+
+        $packs=$repository->findAll();
+        return $this->render('laurence/gestion_packs.html.twig',[
+            'packs'=>$packs
+        ]);
+    }
+
+
+
+    // -------------------------------------- PACK -------------------------------------- //
     /**
      * @Route("/ajout_pack", name="ajout_pack")
      */
@@ -32,7 +76,7 @@ class LaurenceController extends AbstractController
 
         $form=$this->createForm(PackType::class, $pack);
         $form->handleRequest($request);
-                                                    // VOIR AVEC CESAIRE SI REPETITION DU CODE POUR 3 IMAGES
+
         if ($form->isSubmitted() && $form->isValid()):
 
             $image1File=$form->get('image1')->getData();
@@ -69,9 +113,9 @@ class LaurenceController extends AbstractController
                             'erreur'=>$e
                         ]);
                     }
-                endif;
-                    $pack->setImage2($nomImage2);
 
+                    $pack->setImage2($nomImage2);
+                     endif;
 
                     if ($image3File):
                         $nomImage3=date("YmdHis").uniqid()."-".$image3File->getClientOriginalName();
@@ -90,20 +134,18 @@ class LaurenceController extends AbstractController
 
                         $pack->setImage3($nomImage3);
 
-
-
         endif;
 
         $manager->persist($pack);
         $manager->flush();
-
+        $this->addFlash("success", "Le pack a bien été ajouté.");
 
 
 //        A DECOMMENTER QUAND ROUTE EXISTERA
 //        return $this->redirectToRoute("gestion_pack");
     endif;
 
-        $this->addFlash("success", "Le pack a bien été ajouté.");
+
 //    VERSION PROVISOIRE
         return $this->render('laurence/ajout_pack.html.twig', [
             'formPack'=>$form->createView()
@@ -115,6 +157,65 @@ class LaurenceController extends AbstractController
 //    ]);
 
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // -------------------- RESERVATION --------------------//
+
+    /**
+     * @Route("ajout_resa", name="ajout_resa")
+     */
+    public function ajout_resa(Request $request, EntityManagerInterface $manager)
+    {
+        $reservation = new Reservation();
+        $form = $this->createForm(ReservationType::class, $reservation);
+        $form->handleRequest($request);
+        $reservation->setUser($this->getUser());
+
+
+        if ($form->isSubmitted() && $form->isValid()):
+
+            $manager->persist($reservation);
+            $manager->flush();
+
+            $this->addFlash("success", "La réservation a bien été enregistrée");
+
+            // provisoire à modifier avec vraie route
+            return $this->redirectToRoute("home");
+
+        endif;
+
+        return $this->render('laurence/ajout_reservation.html.twig',[
+            'formResa'=>$form->createView(),
+                    ]);
+
+
+
+
+    }
+
+
+
+    public function verif_dispo(Pack $pack, Request $request, ReservationRepository $reservationRepository)
+    {
+//         Dans le repository ? reservation where date_bdd = date_formulaire_utilisateur
+//        $form // il faut récupérer le nom du pack et le réassocier à son id
+//        $now = date('Y-m-d',time());
+//        $nowstr=strtotime($now); // temps en secondes depuis 1/1/1970
+//        $resa=$reservationRepository->find();
+        }
+
 
 
 

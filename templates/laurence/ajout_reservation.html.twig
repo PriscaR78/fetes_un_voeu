@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {% if not app.user %}
+
+
+
+{#        redirection page connexion #}
+
+        {% else %}
+
+            {{ form_start(formResa) }}
+
+            {{ form_row(formResa.date) }}
+            {{ form_row(formResa.pack) }}
+
+
+{#            redirection reserver#}
+
+    <button class="btn btn-outline-primary mb-5" type="submit">Ajouter</button>
+{% endif %}
+
+
+    {{ form_end(formResa) }}
+
+
+
+
+
+
+
+
+
+{% endblock %}
+
+{% block title %}
+
+{% endblock %}
+

@@ -29,7 +29,7 @@ class Reservation
     private $user;
 
     /**
-     * @ORM\OneToOne(targetEntity=Pack::class, cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity=Pack::class, inversedBy="reservations")
      * @ORM\JoinColumn(nullable=false)
      */
     private $pack;

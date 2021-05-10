@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+{#il faut que l'utilisateur soit connecté#}
+
+{% block body %}
+
+    <form action="reservation" method="get">
+
+        <label for="pack">Quel pack avez-vous choisi ?</label>
+
+            {% for pack in packs %}
+            <select name="pack" >
+            <option value="">--Choisir une option--</option>
+            <option value=" {{ pack.nom}} "></option>
+            </select>
+            <label for="date">A quelle date désirez-vous réserver ?</label>
+            <input type="date"  name="date" min="2017-04-01" max="2017-04-30">
+
+        {% endfor %}
+
+    </form>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+{% endblock %}
