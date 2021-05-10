@@ -24,16 +24,15 @@ body {
 
 /* Declare heights because of positioning of img element */
 .carousel-item {
-   
-    height: 100vh;
-    width: 100vh;
+    height: 90vh;
+    width: 130vh;
     
 }
 .carousel-item > img {
     position: absolute;
     top: 0;
-    left: 60%;
-    min-width: 100%;
+    left: 38%;
+    width: 100%;
     height: auto;
 }
 
