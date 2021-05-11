@@ -1,69 +1,197 @@
 {% extends '/prisca/base.html.twig' %}
 
-   {% block content %}
-    
-  <!-- Three columns of text below the carousel -->
-        <div class="row">
-            <div class="col-lg-4">
-                <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-                <h2>Pack anniversaire enfants</h2>
-                <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-            </div><!-- /.col-lg-4 -->
-            <div class="col-lg-4">
-                <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-                <h2>Heading</h2>
-                <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
-                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-            </div><!-- /.col-lg-4 -->
-            <div class="col-lg-4">
-                <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
-                <h2>Heading</h2>
-                <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-            </div><!-- /.col-lg-4 -->
-        </div><!-- /.row -->
+{% block content %}
+
+	<h2 class="text-center bg-light mt-5">NOS PRESTATIONS</h2>
+
+	<!-- div card packs -->
+	<div class="packsCards">
+		<div class="album py-4 bg-light">
+			<div class="container">
+
+				<div class="row">
+					<div class="col-md-6">
+						<div class="card mb-6 box-shadow">
+							<h3 class="text-center">Pack anniversaire enfant</h2>
+							<img class="card-img-top" width="140" height="140" src={{asset('/images/imagesUpload/KohLanta/DSC_0017.jpg')}} alt="Card image cap">
+							<div class="card-body">
+								<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+								<div class="d-flex justify-content-between align-items-center">
+									<div class="btn-group">
+										<button type="button" class="btn btn-sm btn-outline-secondary">En savoir plus</button>
+										<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+									</div>
+									<small class="text-muted">9 mins</small>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-6">
+						<div class="card mb-6 box-shadow">
+							<h3 class="text-center">Pack anniversaire adulte</h2>
+							<img class="card-img-top" width="140" height="140" src={{asset('/images/imagesUpload/KohLanta/DSC_0017.jpg')}} alt="Card image cap">
+							<div class="card-body">
+								<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+								<div class="d-flex justify-content-between align-items-center">
+									<div class="btn-group">
+										<button type="button" class="btn btn-sm btn-outline-secondary">En savoir plus</button>
+										<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+									</div>
+									<small class="text-muted">9 mins</small>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="album py-4 bg-light">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="card mb-6 box-shadow">
+							<h3 class="text-center">Pack aventure en famille</h2>
+							<img class="card-img-top" width="140" height="140" src={{asset('/images/imagesUpload/KohLanta/DSC_0017.jpg')}} alt="Card image cap">
+							<div class="card-body">
+								<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+								<div class="d-flex justify-content-between align-items-center">
+									<div class="btn-group">
+										<button type="button" class="btn btn-sm btn-outline-secondary">En savoir plus</button>
+										<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+									</div>
+									<small class="text-muted">9 mins</small>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-6">
+						<div class="card mb-6 box-shadow">
+							<h3 class="text-center">Pack soirée années 90</h2>
+							<img class="card-img-top" width="140" height="140" src={{asset('/images/imagesUpload/KohLanta/DSC_0017.jpg')}} alt="Card image cap">
+							<div class="card-body">
+								<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+								<div class="d-flex justify-content-between align-items-center">
+									<div class="btn-group">
+										<button type="button" class="btn btn-sm btn-outline-secondary">En savoir plus</button>
+										<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+									</div>
+									<small class="text-muted">9 mins</small>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
 
-        <!-- START THE FEATURETTES -->
+		<!-- GALERIE -->
 
-        <hr class="featurette-divider">
+		<div class="container mt-5">
+			<div>
+				<h2 class="text-center bg-light">GALERIE</h2>
+			</div>
+			<div class="d-flex justify-content-center">
+				<div class="row">
+					<div class="col-xs-3">
+						<a href="images/image1.jpg" class="thumbnail">
+							<img class="m-5" width="200" height="200" src={{asset('/images/imagesUpload/KohLanta/DSC_0017.jpg')}} alt="Image 1"/>
+						</a>
+					</div>
+					<div class="col-xs-3">
+						<a href="images/image2.jpg" class="thumbnail ">
+						<img class="m-5" width="200" height="200" src={{asset('/images/imagesUpload/KohLanta/DSC_0017.jpg')}} alt="Image 2"/>
+						</a>
+					</div>
+					<div class="col-xs-3">
+						<a href="images/image3.jpg" class="thumbnail">
+						<img class="m-5" width="200" height="200" src={{asset('/images/imagesUpload/KohLanta/DSC_0017.jpg')}} alt="Image 3"/>
+						</a>
+					</div>
+				</div>
+			</div>
+            <br>
 
-        <div class="row featurette">
-            <div class="col-md-7">
-                <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It’ll blow your mind.</span></h2>
-                <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-            </div>
-            <div class="col-md-5">
-                <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-            </div>
-        </div>
+			<div class="d-flex justify-content-center">
+				<div class="row">
+					<div class="col-xs-3">
+						<a href="images/image1.jpg" class="thumbnail">
+						<img class="m-5" width="200" height="200" src={{asset('/images/imagesUpload/KohLanta/DSC_0017.jpg')}} alt="Image 1"/>
+						</a>
+					</div>
+					<div class="col-xs-3">
+						<a href="images/image2.jpg" class="thumbnail">
+							<img class="m-5" width="200" height="200" src={{asset('/images/imagesUpload/KohLanta/DSC_0017.jpg')}} alt="Image 2"/>
+						</a>
+					</div>
+					<div class="col-xs-3">
+						<a href="images/image3.jpg" class="thumbnail">
+							<img class="m-5" width="200" height="200" src={{asset('/images/imagesUpload/KohLanta/DSC_0017.jpg')}} alt="Image 3"/>
+						</a>
+					</div>
+				</div>
+			</div>
+			</div>
+		</div>
 
-        <hr class="featurette-divider">
 
-        <div class="row featurette">
-            <div class="col-md-7 order-md-2">
-                <h2 class="featurette-heading">Oh yeah, it’s that good. <span class="text-muted">See for yourself.</span></h2>
-                <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-            </div>
-            <div class="col-md-5 order-md-1">
-                <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-            </div>
-        </div>
+		<!-- AVIS -->
+		<div class="container mt-5">
+			<div>
+				<h2 class="text-center bg-light">AVIS</h2>
+			</div>
+			<div class="row mt-5">
 
-        <hr class="featurette-divider">
+				<div class="col-lg-4">
 
-        <div class="row featurette">
-            <div class="col-md-7">
-                <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-                <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
-            </div>
-            <div class="col-md-5">
-                <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 500x500"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>
-            </div>
-        </div>
+					<img class="bd-placeholder-img rounded-circle" width="140" height="140" src={{asset('')}} preserveaspectratio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140">
+						<title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
+					</img>
+					<h2>Pack anniversaire enfants</h2>
+					<p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
+					<p>
+						<a class="btn btn-secondary" href="#" role="button">View details &raquo;</a>
+					</p>
+				</div>
+				<!-- /.col-lg-4 -->
+				<div class="col-lg-4">
+					<img class="bd-placeholder-img rounded-circle" width="140" height="140" src={{asset('')}} preserveaspectratio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140">
+						<title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
+					</img>
+					<h2>Heading</h2>
+					<p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
+					<p>
+						<a class="btn btn-secondary" href="#" role="button">View details &raquo;</a>
+					</p>
+				</div>
+				<!-- /.col-lg-4 -->
+				<div class="col-lg-4">
+					<img class="bd-placeholder-img rounded-circle" width="140" height="140" src={{asset('')}} preserveaspectratio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: 140x140">
+						<title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text>
+					</img>
+					<h2>Heading</h2>
+					<p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+					<p>
+						<a class="btn btn-secondary" href="#" role="button">View details &raquo;</a>
+					</p>
+				</div>
+				<!-- /.col-lg-4 -->
+			</div>
+			<!-- /.row -->
+		</div>
 
-        <hr class="featurette-divider">
 
-        <!-- /END THE FEATURETTES -->
-  {% endblock %}
+		<!-- CONTACT -->
+
+		<div class="container mt-5">
+			<div>
+				<h2 class="text-center bg-light">GALERIE</h2>
+			</div>
+
+
+		</div>
+
+	{% endblock %}
