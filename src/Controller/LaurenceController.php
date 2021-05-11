@@ -8,9 +8,9 @@ use App\Entity\User;
 use App\Form\PackType;
 use App\Form\RegistrationType;
 use App\Form\ReservationType;
-use App\Repository\CommandeRepository;
 use App\Repository\PackRepository;
 use App\Repository\ReservationRepository;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
@@ -45,7 +45,6 @@ class LaurenceController extends AbstractController
      */
     public function gestion_reservations(ReservationRepository $repository)
     {
-
         $reservations=$repository->findAll();
         return $this->render('laurence/gestion_reservations.html.twig',[
             'reservations'=>$reservations
@@ -57,16 +56,25 @@ class LaurenceController extends AbstractController
      */
     public function gestion_packs(PackRepository $repository)
     {
-
         $packs=$repository->findAll();
         return $this->render('laurence/gestion_packs.html.twig',[
             'packs'=>$packs
         ]);
     }
 
+    /**
+     * @Route("/gestion_clients", name="gestion_clients")
+     */
+    public function gestion_clients(UserRepository $repository)
+    {
+        $users=$repository->findAll();
+        return $this->render('laurence/gestion_clients.html.twig',[
+            'users'=>$users
+        ]);
+    }
 
 
-    // -------------------------------------- PACK -------------------------------------- //
+    // -------------------------------------- PACK  -------------------------------------- //
     /**
      * @Route("/ajout_pack", name="ajout_pack")
      */
@@ -158,6 +166,103 @@ class LaurenceController extends AbstractController
 
     }
 
+            // -------------------- MODIFICATION PACK --------------------//
+
+    /**
+     * @Route("/modif_pack/{id}", name="modif_pack")
+     */
+    public function modif_pack(Pack $pack, Request $request, EntityManagerInterface $manager)
+    {
+        $form = $this->createForm(PackType::class, $pack, array(
+            'modifier'=>true
+        ));
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()):
+                            //  -----------  IMAGE1  -----------  //
+            $image1File = $form->get('image1File')->getData();
+            if ($image1File):
+                $nomimage1 = date('YmdHis') . "-" . uniqid() . "-" . $image1File->getClientOriginalName();
+
+                try {
+                    $image1File->move(
+                        $this->getParameter('images_directory'),
+                        $nomimage1
+                    );
+                }
+                catch (FileException $e){
+
+                }
+                if(!empty($pack->getImage1())):
+                    unlink($this->getParameter('images_directory') . '/' . $pack->getImage1());
+                endif;
+                $pack->setImage1($nomimage1);
+            endif;
+
+                              //  -----------  IMAGE2  -----------  //
+            $image2File = $form->get('image2File')->getData();
+            if ($image2File):
+                $nomimage2 = date('YmdHis') . "-" . uniqid() . "-" . $image2File->getClientOriginalName();
+
+                try {
+                    $image2File->move(
+                        $this->getParameter('images_directory'),
+                        $nomimage2
+                    );
+                }
+                catch (FileException $e){
+
+                }
+                if(!empty($pack->getImage2())):
+                    unlink($this->getParameter('images_directory') . '/' . $pack->getImage2());
+                endif;
+                $pack->setImage2($nomimage2);
+            endif;
+
+                             //  -----------  IMAGE3  -----------  //
+            $image3File = $form->get('image3File')->getData();
+            if ($image3File):
+                $nomimage3 = date('YmdHis') . "-" . uniqid() . "-" . $image3File->getClientOriginalName();
+
+                try {
+                    $image3File->move(
+                        $this->getParameter('images_directory'),
+                        $nomimage3
+                    );
+                }
+                catch (FileException $e){
+
+                }
+                if(!empty($pack->getImage3())):
+                    unlink($this->getParameter('images_directory') . '/' . $pack->getImage3());
+                endif;
+                $pack->setImage3($nomimage3);
+            endif;
+
+        $manager->persist($pack);
+        $manager->flush();
+
+        return $this->redirectToRoute("gestion_packs");
+
+        endif;
+
+        return $this->render("/laurence/modif_pack.html.twig");
+
+}
+
+            // -------------------- SUPPRESSION PACK --------------------//
+
+    /**
+     * @Route("/suppr_pack/{id}", name="suppr_pack")
+     */
+    public function suppr_pack(Pack $pack, EntityManagerInterface $manager)
+    {
+        $manager->remove($pack);
+        $manager->flush();
+
+        $this->addFlash('success', "Le pack a bien été supprimé.");
+        return $this->redirectToRoute('gestion_packs');
+    }
 
 
 
@@ -165,13 +270,7 @@ class LaurenceController extends AbstractController
 
 
 
-
-
-
-
-
-
-        // -------------------- RESERVATION --------------------//
+               // -------------------- RESERVATION --------------------//
 
     /**
      * @Route("ajout_resa", name="ajout_resa")
@@ -206,7 +305,6 @@ class LaurenceController extends AbstractController
     }
 
 
-
     public function verif_dispo(Pack $pack, Request $request, ReservationRepository $reservationRepository)
     {
 //         Dans le repository ? reservation where date_bdd = date_formulaire_utilisateur
@@ -221,7 +319,17 @@ class LaurenceController extends AbstractController
 
 
 
-
+    // -------------------- A METTRE FRONTCONTROLLER --------------------//
+            // A REPRENDRE NE MARCHE PAS PROB ROUTE VOIR AUSSU gestion_packs.html.twig et detail_pack.html.twig
+    /**
+     * @Route("/detail_pack/{id}", name="detail_pack")
+     */
+    public function detail_pack(Pack $pack)
+    {
+        return $this->render('laurence/detail_pack.html.twig', [
+            'pack'=>$pack
+        ]);
+    }
 
 
 

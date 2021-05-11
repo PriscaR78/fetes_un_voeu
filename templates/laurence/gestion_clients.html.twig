@@ -1,26 +1,25 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Gestion des réservation</h1>
-    {% for message in app.flashes('success') %}
-        <div class="col-md-6 bg-secondary p-4 rounded mx-auto text-center text-white mb-3">
-            {{ message }}
-        </div>
-    {% endfor %}
+    <h1>Gestion des clients</h1>
+{#    {% for message in app.flashes('success') %}#}
+{#        <div class="col-md-6 bg-secondary p-4 rounded mx-auto text-center text-white mb-3">#}
+{#            {{ message }}#}
+{#        </div>#}
+{#    {% endfor %}#}
     <div class="row justify-content-end">
-        <div class="col-md-3">
-            <a class="btn btn-info my-3 " href="{{ path('ajout_resa') }}">Ajouter une nouvelle réservation</a>
-        </div>
+
     </div>
     <table class="table table-striped">
         <thead class="thead-dark">
         <tr>
             <th scope="col">#</th>
-            <th scope="col">Pack</th>
-            <th scope="col">Prix</th>
-            <th scope="col">Cients</th>
-            <th scope="col">Date</th>
-
+            <th scope="col">Nom</th>
+            <th scope="col">Prénom</th>
+            <th scope="col">Pseudo</th>
+            <th scope="col">Email</th>
+            <th scope="col">Date de naissance</th>
+            <th scope="col">Réservations effectuées</th>
 
             <th scope="col">Voir</th>
             <th scope="col">Modifier</th>
@@ -28,13 +27,17 @@
         </tr>
         </thead>
         <tbody class="text-center">
-        {% for reservation in reservations %}
+        {% for user in users %}
             <tr>
-                <td>{{ reservation.id }}</td>
-                <td>{{ reservation.pack.nom }}</td>
-                <td>{{ reservation.pack.prix }}€</td>
-                <td>{{ reservation.user.username }}</td>
-               <td>{{ reservation.date | date('d-m-Y')}}</td>
+                <td>{{ user.id }}</td>
+                <td>{{ user.nom }}</td>
+                <td>{{ user.prenom }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.birthday | date('d-m-Y') }}</td>
+
+{#               <td>{{ reservation.pack.nom }}</td>#}
+
 
                 {#               <td><a href="{{ path('detail_pack', {'id': pack.id }) }}">Voir</a></td>#}
                 {#                <td><a href="{{ path('article_modif', {'id': article.id}) }}"><img src="{{ asset('images/update.png') }}" alt="modifier"></a></td>#}

@@ -15,6 +15,7 @@ class PackType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        if ($options['ajouter']==true):
         $builder
             ->add('nom', TextType::class, [
                 'required'=>false,
@@ -83,8 +84,11 @@ class PackType extends AbstractType
                     'placeholder'=> "Saisir le prix du pack",
 
                 ]
-            ])
-        ;
+            ]) ;
+        elseif ($options['modifier']==true):
+
+
+            endif;
     }
 
     public function configureOptions(OptionsResolver $resolver)

@@ -1,10 +1,19 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+<div class="container m-5 d-flex">
+    <a class="nav-link " href="{{ path('gestion_packs') }}"><button class="btn  btn-outline-info">Gestion des
+            packs</button></a>
+
+    <a class="nav-link " href="{{ path('gestion_reservations') }}"><button class="btn  btn-outline-danger">Gestion des
+            réservations</button></a>
+    <a class="nav-link " href="{{ path('gestion_clients') }}"><button class="btn  btn-outline-warning">Gestion des
+            clients</button></a>
+    </div>
 
 {% endblock %}
 
 {% block title %}
-
+Back-Office
 {% endblock %}
 

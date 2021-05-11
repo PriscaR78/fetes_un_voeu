@@ -1,10 +1,49 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    <h1>Gestion des articles</h1>
+    {% for message in app.flashes('success') %}
+        <div class="col-md-6 bg-secondary p-4 rounded mx-auto text-center text-white mb-3">
+            {{ message }}
+        </div>
+    {% endfor %}
+    <div class="row justify-content-end">
+        <div class="col-md-3">
+            <a class="btn btn-info my-3 " href="{{ path('ajout_pack') }}">Ajouter un nouveau pack</a>
+        </div>
+    </div>
+    <table class="table table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Prix</th>
+            <th scope="col">Description</th>
+            <th scope="col">Suite description</th>
+            <th scope="col">Photo</th>
+
+            <th scope="col">Voir</th>
+            <th scope="col">Modifier</th>
+            <th scope="col">Supprimer</th>
+        </tr>
+        </thead>
+        <tbody class="text-center">
+        {% for pack in packs %}
+            <tr>
+                <td>{{ pack.id }}</td>
+                <td>{{ pack.nom }}</td>
+                <td>{{ pack.prix }}€</td>
+                <td>{{ pack.description1 }}</td>
+                <td>{{ pack.description2 }}</td>
+                <td><img width="50" height="50" src="{{ asset('images/imagesUpload/') }}{{ pack.image1 }}" alt=""></td>
+               <td><a href="{{ path('detail_pack', {'id': pack.id }) }}"><img src="{{ asset('images/loupe.png') }}" alt="voir detail"></a></td>
+                <td><a href="{{ path('modif_pack', {'id': pack.id}) }}"><img src="{{ asset('images/pencil.png') }}" alt="modifier"></a></td>
+               <td><a href="{{ path('suppr_pack', {'id': pack.id}) }}"><img src="{{ asset('images/delete.png') }}" alt="supprimer"></a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 
 {% endblock %}
 
-{% block title %}
-
-{% endblock %}
 
