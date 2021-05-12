@@ -15,46 +15,33 @@ class PackType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        if ($options['ajouter']==true):
+
+
         $builder
             ->add('nom', TextType::class, [
-                'required'=>false,
+                'required' => false,
 //                'label'=>false,
-                'attr'=>[
-                    'placeholder'=> "Saisir le nom du pack",
-                    'class'=>'inputNamePack' ]
-                ])
+                'attr' => [
+                    'placeholder' => "Saisir le nom du pack",
+                    'class' => 'inputNamePack']
+            ])
             ->add('description1', TextType::class, [
-                'required'=>false,
+                'required' => false,
 //                'label'=>false,
-                'attr'=>[
-                    'placeholder'=> "Saisir la description du pack",
-                    ]
-                ])
-            ->add('description2', TextType::class,[
-                'required'=>false,
+                'attr' => [
+                    'placeholder' => "Saisir la description du pack",
+                ]
+            ])
+            ->add('description2', TextType::class, [
+                'required' => false,
 //                'label'=>false,
-                'attr'=>[
-                    'placeholder'=> "Compléter la description du pack",
+                'attr' => [
+                    'placeholder' => "Compléter la description du pack",
                 ]
             ])
             ->add('image1', FileType::class, [
-                "required"=>false,
-                    'constraints'=> [
-                        new File([
-                            'mimeTypes' => [
-                                "image/png",
-                                "image/jpg",
-                                "image/jpeg",
-                            ],
-                            'mimeTypesMessage' => "Extensions Autorisées : PNG JPG JPEG"
-                        ])
-                    ]
-                ])
-
-            ->add('image2', FileType::class,[
-                "required"=>false,
-                'constraints'=> [
+                "required" => false,
+                'constraints' => [
                     new File([
                         'mimeTypes' => [
                             "image/png",
@@ -65,9 +52,22 @@ class PackType extends AbstractType
                     ])
                 ]
             ])
-            ->add('image3', FileType::class,[
-                "required"=>false,
-                'constraints'=> [
+            ->add('image2', FileType::class, [
+                "required" => false,
+                'constraints' => [
+                    new File([
+                        'mimeTypes' => [
+                            "image/png",
+                            "image/jpg",
+                            "image/jpeg",
+                        ],
+                        'mimeTypesMessage' => "Extensions Autorisées : PNG JPG JPEG"
+                    ])
+                ]
+            ])
+            ->add('image3', FileType::class, [
+                "required" => false,
+                'constraints' => [
                     new File([
                         'mimeTypes' => [
                             "image/png",
@@ -79,16 +79,13 @@ class PackType extends AbstractType
                 ]
             ])
             ->add('prix', NumberType::class, [
-                'required'=>false,
-                'attr'=>[
-                    'placeholder'=> "Saisir le prix du pack",
+                'required' => false,
+                'attr' => [
+                    'placeholder' => "Saisir le prix du pack",
 
                 ]
-            ]) ;
-        elseif ($options['modifier']==true):
+            ]);
 
-
-            endif;
     }
 
     public function configureOptions(OptionsResolver $resolver)
@@ -98,3 +95,8 @@ class PackType extends AbstractType
         ]);
     }
 }
+
+
+
+
+

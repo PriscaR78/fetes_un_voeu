@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Pack;
 use App\Entity\Reservation;
 use App\Entity\User;
+use App\Form\ModifPackType;
 use App\Form\PackType;
 use App\Form\RegistrationType;
 use App\Form\ReservationType;
@@ -93,65 +94,65 @@ class LaurenceController extends AbstractController
 
             if ($image1File):
                 $nomImage1=date("YmdHis").uniqid()."-".$image1File->getClientOriginalName();
-            try {
-                $image1File->move (
-                    $this->getParameter('images_directory'),
-                    $nomImage1
-                );
-            }
-            catch (FileException $e) {
-                $this->redirectToRoute('ajout_pack', [
-                    'erreur'=>$e
-                ]);
-            }
-            $pack->setImage1($nomImage1);
+                try {
+                    $image1File->move (
+                        $this->getParameter('images_directory'),
+                        $nomImage1
+                    );
+                }
+                catch (FileException $e) {
+                    $this->redirectToRoute('ajout_pack', [
+                        'erreur'=>$e
+                    ]);
+                }
+                $pack->setImage1($nomImage1);
             endif;
 
-                if ($image2File):
-                    $nomImage2=date("YmdHis").uniqid()."-".$image2File->getClientOriginalName();
+            if ($image2File):
+                $nomImage2=date("YmdHis").uniqid()."-".$image2File->getClientOriginalName();
 
-                    try {
-                        $image2File->move (
-                            $this->getParameter('images_directory'),
-                            $nomImage2
-                        );
-                    }
-                    catch (FileException $e) {
-                        $this->redirectToRoute('ajout_pack', [
-                            'erreur'=>$e
-                        ]);
-                    }
+                try {
+                    $image2File->move (
+                        $this->getParameter('images_directory'),
+                        $nomImage2
+                    );
+                }
+                catch (FileException $e) {
+                    $this->redirectToRoute('ajout_pack', [
+                        'erreur'=>$e
+                    ]);
+                }
 
-                    $pack->setImage2($nomImage2);
-                     endif;
+                $pack->setImage2($nomImage2);
+            endif;
 
-                    if ($image3File):
-                        $nomImage3=date("YmdHis").uniqid()."-".$image3File->getClientOriginalName();
+            if ($image3File):
+                $nomImage3=date("YmdHis").uniqid()."-".$image3File->getClientOriginalName();
 
-                        try {
-                            $image3File->move (
-                                $this->getParameter('images_directory'),
-                                $nomImage3
-                            );
-                        }
-                        catch (FileException $e) {
-                            $this->redirectToRoute('ajout_pack', [
-                                'erreur'=>$e
-                            ]);
-                        }
+                try {
+                    $image3File->move (
+                        $this->getParameter('images_directory'),
+                        $nomImage3
+                    );
+                }
+                catch (FileException $e) {
+                    $this->redirectToRoute('ajout_pack', [
+                        'erreur'=>$e
+                    ]);
+                }
 
-                        $pack->setImage3($nomImage3);
+                $pack->setImage3($nomImage3);
 
-        endif;
+            endif;
 
-        $manager->persist($pack);
-        $manager->flush();
-        $this->addFlash("success", "Le pack a bien été ajouté.");
+            $manager->persist($pack);
+            $manager->flush();
+            $this->addFlash("success", "Le pack a bien été ajouté.");
 
 
 //        A DECOMMENTER QUAND ROUTE EXISTERA
-//        return $this->redirectToRoute("gestion_pack");
-    endif;
+            return $this->redirectToRoute("gestion_packs");
+        endif;
 
 
 //    VERSION PROVISOIRE
@@ -166,20 +167,18 @@ class LaurenceController extends AbstractController
 
     }
 
-            // -------------------- MODIFICATION PACK --------------------//
+    // -------------------- MODIFICATION PACK --------------------//
 
     /**
      * @Route("/modif_pack/{id}", name="modif_pack")
      */
     public function modif_pack(Pack $pack, Request $request, EntityManagerInterface $manager)
     {
-        $form = $this->createForm(PackType::class, $pack, array(
-            'modifier'=>true
-        ));
+        $form = $this->createForm(ModifPackType::class, $pack);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()):
-                            //  -----------  IMAGE1  -----------  //
+            //  -----------  IMAGE1  -----------  //
             $image1File = $form->get('image1File')->getData();
             if ($image1File):
                 $nomimage1 = date('YmdHis') . "-" . uniqid() . "-" . $image1File->getClientOriginalName();
@@ -199,7 +198,7 @@ class LaurenceController extends AbstractController
                 $pack->setImage1($nomimage1);
             endif;
 
-                              //  -----------  IMAGE2  -----------  //
+            //  -----------  IMAGE2  -----------  //
             $image2File = $form->get('image2File')->getData();
             if ($image2File):
                 $nomimage2 = date('YmdHis') . "-" . uniqid() . "-" . $image2File->getClientOriginalName();
@@ -219,7 +218,7 @@ class LaurenceController extends AbstractController
                 $pack->setImage2($nomimage2);
             endif;
 
-                             //  -----------  IMAGE3  -----------  //
+            //  -----------  IMAGE3  -----------  //
             $image3File = $form->get('image3File')->getData();
             if ($image3File):
                 $nomimage3 = date('YmdHis') . "-" . uniqid() . "-" . $image3File->getClientOriginalName();
@@ -239,23 +238,25 @@ class LaurenceController extends AbstractController
                 $pack->setImage3($nomimage3);
             endif;
 
-        $manager->persist($pack);
-        $manager->flush();
+            $manager->persist($pack);
+            $manager->flush();
 
-        return $this->redirectToRoute("gestion_packs");
+            return $this->redirectToRoute("gestion_packs");
 
         endif;
 
-        return $this->render("/laurence/modif_pack.html.twig");
+        return $this->render("/laurence/modif_pack.html.twig", [
+            'formModifPack'=>$form->createView()
+        ]);
 
-}
+    }
 
-            // -------------------- SUPPRESSION PACK --------------------//
+    // -------------------- SUPPRESSION PACK --------------------//
 
     /**
      * @Route("/suppr_pack/{id}", name="suppr_pack")
      */
-    public function suppr_pack(Pack $pack, EntityManagerInterface $manager)
+    public function suppr_pack(Pack $pack, EntityManagerInterface $manager, $id)
     {
         $manager->remove($pack);
         $manager->flush();
@@ -270,7 +271,7 @@ class LaurenceController extends AbstractController
 
 
 
-               // -------------------- RESERVATION --------------------//
+    // -------------------- RESERVATION --------------------//
 
     /**
      * @Route("ajout_resa", name="ajout_resa")
@@ -297,7 +298,7 @@ class LaurenceController extends AbstractController
 
         return $this->render('laurence/ajout_reservation.html.twig',[
             'formResa'=>$form->createView(),
-                    ]);
+        ]);
 
 
 
@@ -312,7 +313,7 @@ class LaurenceController extends AbstractController
 //        $now = date('Y-m-d',time());
 //        $nowstr=strtotime($now); // temps en secondes depuis 1/1/1970
 //        $resa=$reservationRepository->find();
-        }
+    }
 
 
 
@@ -320,7 +321,7 @@ class LaurenceController extends AbstractController
 
 
     // -------------------- A METTRE FRONTCONTROLLER --------------------//
-            // A REPRENDRE NE MARCHE PAS PROB ROUTE VOIR AUSSU gestion_packs.html.twig et detail_pack.html.twig
+    // A REPRENDRE NE MARCHE PAS PROB ROUTE VOIR AUSSU gestion_packs.html.twig et detail_pack.html.twig
     /**
      * @Route("/detail_pack/{id}", name="detail_pack")
      */
@@ -341,3 +342,4 @@ class LaurenceController extends AbstractController
 
 
 }
+
