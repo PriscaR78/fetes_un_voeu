@@ -34,9 +34,9 @@ body {
 .carousel-item > img {
     position: absolute;
     top: 0;
-    left: 35%;
-    width: 100%;
-    height: auto;
+    left: 45%;
+    width: auto;
+    height: 80%;
 }
 
 
