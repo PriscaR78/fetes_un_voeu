@@ -3,25 +3,51 @@
 
 {% block body %}
 
-    <form action="reservation" method="get">
+{#Nous sommes le : {{ today }}#}
 
-        <label for="pack">Quel pack avez-vous choisi ?</label>
+{#    {{ path('verif_dispo')}}#}
+    <h1 class="my-5">Vérifions la disponibilité de votre pack </h1>
 
-            {% for pack in packs %}
-            <select name="pack" >
-            <option value="">--Choisir une option--</option>
-            <option value=" {{ pack.nom}} "></option>
-            </select>
-            <label for="date">A quelle date désirez-vous réserver ?</label>
-            <input type="date"  name="date" min="2017-04-01" max="2017-04-30">
-
+    {% for message in app.flashes('success') %}
+        <div class="col-md-6 bg-primary p-4 rounded mx-auto text-center text-white mb-3">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% for message in app.flashes('danger') %}
+        <div class="col-md-6 bg-danger p-4 rounded mx-auto text-center text-white mb-3">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% if requete == true %}
+        Ce pack n'est pas disponible aux dates suivantes :
+        <ul>
+        {% for reservation in reservations %}
+       <li>  {{ reservation.date | date('d-m-Y') }} </li>
         {% endfor %}
+        </ul>
+    {% endif %}
+        <form action=" " method="get">
+
+        <label class="my-3" for="pack">Quel pack avez-vous choisi ?</label>
+
+        <select name="pack" class="form-control w-25" id="verif_pack">
+            <option value=""></option>
+            {% for pack in packs %}
+                <option value="{{ pack.id }}">{{ pack.nom }}</option>
+            {% endfor %}
+        </select>
+
+            <label class="my-3" for="date">Entre quelles dates désirez-vous réserver ?</label>
+          <p>  <input type="date"  name="date_debut" min={{ resa_min }}  max={{ resa_max }}>
+            <input type="date" name="date_fin" min={{ resa_min }} max={{ resa_max }}></p>
+
+    <button type="submit">Vérifier</button>
 
     </form>
-    
-    
-    
-    
+
+
+
+
     
     
     
