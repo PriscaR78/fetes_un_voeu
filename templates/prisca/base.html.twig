@@ -1,134 +1,219 @@
 <!doctype html>
-<html lang="fr">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Le meilleur du service évènementiel familial">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Jekyll v4.1.1">
-    <title>FETES UN VOEU</title>
+<html lang="fr-FR">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="Le meilleur du service évènementiel familial">
+		<meta name="author" content="Fêtes un voeu, au service de vos festivités">
+</style>
+	
+		<title>FETES UN VOEU</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href={{asset('assets/css/bootstrap.min.css')}} rel="stylesheet">
-    <link href={{asset('assets/css/style.css')}} rel="stylesheet">
+		<!-- Bootstrap core CSS -->
+		<link href={{asset('assets/css/bootstrap.min.css')}} rel="stylesheet">
+		<link href={{asset('assets/css/style.css')}} rel="stylesheet">
 
-    <style>
-        .bd-placeholder-img {
-            font-size: 1.125rem;
-            text-anchor: middle;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
+		<style>
+			.bd-placeholder-img {
+				font-size: 1.125rem;
+				text-anchor: middle;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
+			}
 
-        @media (min-width: 768px) {
-            .bd-placeholder-img-lg {
-                font-size: 3.5rem;
-            }
-        }
-    </style>
-    <!-- Custom styles for this template -->
-    <link href={{asset('assets/css/carousel.css')}} rel="stylesheet">
-</head>
-<body>
-<header>
-    <nav class="navbar-default navbar-expand-md navbar-dark fixed-top">
-        <img src={{asset('images/imagesUpload/logo/Logo_fete_un_voeu.png')}} alt="Logo fête un voeu" width="100"><a class="navbar-brand" href="/prisca">Fêtes un voeu</a></img>
-        <br>
-        <a class="navbar-brand ml-5" href="">...au service de vos festivités</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <hr>
-        <div class="">
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav w-50 mx-auto justify-content-around p-2" style="background-color:">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Accueil<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">A propos<span class="sr-only">(current)</span></a>
-                </li>
-                   <li class="nav-item active">
-                    <a class="nav-link" href="#">Nos prestations<span class="sr-only">(current)</span></a>
-                </li>
-                   <li class="nav-item active">
-                    <a class="nav-link" href="#">Galerie<span class="sr-only">(current)</span></a>
-                </li>
-                </li>
-                   <li class="nav-item active">
-                    <a class="nav-link" href="#">Avis<span class="sr-only">(current)</span></a>
-                </li>
-                 </li>
-                   <li class="nav-item active">
-                    <a class="nav-link" href="#">Contact<span class="sr-only">(current)</span></a>
-                </li>
-                 </li>
-                   <li class="nav-item active">
-                    <a class="nav-link" href="#">Réservation<span class="sr-only">(current)</span></a>
-                </li>
+			@media(min-width: 768px) {
+				.bd-placeholder-img-lg {
+					font-size: 3.5rem;
+				}
+			}
+		</style>
+		<!-- Custom styles for this template -->
+		<link href={{asset('assets/css/carousel.css')}} rel="stylesheet">
+	</head>
+	<body>
+		<header>
 
-            </ul>
-           
-        </div>
-        </div>
-            <hr>
-    </nav>
+			<nav class="d-flex navbar-default navbar-expand-md fixed-top ">
+				<div><img src={{asset('images/imagesUpload/logo/logo_fetes_un_voeu.png')}} alt="Logo fête un voeu" width="125">
+					</img></div>
+				<div><a class="navbar-brand mt-4 ml-5" href="/prisca">Fêtes un voeu<br>...au service de vos festivités
+				</a></div>
+				<hr>
+					<div class="collapse navbar-collapse container-fluid pb-5" id="navbarCollapse">
+						<ul class="navbar-nav w-100 mt-4 ml-5 justify-content-around" style="background-color:">
+							<li class="nav-item active">
+								<a class="nav-link" href="#">Accueil
+								</a>
+							</li>
+							<li class="nav-item active">
+								<a class="nav-link" href="#">A propos
+								</a>
+							</li>
+							<li class="nav-item active">
+								<a class="nav-link" href="#">Nos prestations
+								</a>
+							</li>
+							<li class="nav-item active">
+								<a class="nav-link" href="#">Galerie
+								</a>
+							</li>
+						</li>
+						<li class="nav-item active">
+							<a class="nav-link" href="#">Avis
+							</a>
+						</li>
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" href="">Contact
+						</a>
+					</li>
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link" href="#">Réservation
+					</a>
+				</li>
 
+					<li class="nav-item active">
+					<a href="{{path('profil')}}"><img class="bd-placeholder-img rounded-circle" width="50" height="50" src={{asset('/images/imagesUpload/icones/fem.jpeg')}} role="img" aria-label="profil">
+					</img>
+					
+			</ul>
+
+</div><hr></nav>
 </header>
 
-<main role="main">
 
-    <div id="myCarousel" class="carousel slide img-fluid mx-auto" data-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img class="bd-placeholder-img" width="100%" height="auto" src={{asset('/images/imagesUpload/KohLanta/DSC_0017.jpg')}} preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="auto" ></img>
-                
-            </div>
-            <div class="carousel-item">
-             <img class="bd-placeholder-img" width="100%" height="auto" src={{asset('/images/imagesUpload/KohLanta/DSC_0025.JPG')}} preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="auto" ></img>
-                    
-            </div>
-            <div class="carousel-item">
-            <img class="bd-placeholder-img" width="100%" height="auto" src={{asset('/images/imagesUpload/KohLanta/DSC_0013.JPG')}} preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="auto" ></img>
-                   
-            </div>
-        </div>
-        <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-    </div>
+<main role="main"><div id="myCarousel" class="carousel slide img-fluid mx-auto mt-2" data-ride="carousel"><ol class="carousel-indicators">
+<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+<li data-target="#myCarousel" data-slide-to="1"></li>
+<li data-target="#myCarousel" data-slide-to="2"></li></ol><div class="carousel-inner">
+<div class="carousel-item active">
+	<img class="bd-placeholder-img" width="100%" height="auto" src={{asset('/images/imagesUpload/KohLanta/DSC_0017.jpg')}} preserveaspectratio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="auto"></img>
 
+</div>
+<div class="carousel-item">
+	<img class="bd-placeholder-img" width="100%" height="auto" src={{asset('/images/imagesUpload/KohLanta/DSC_0025.JPG')}} preserveaspectratio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="auto"></img>
 
-    <!-- Marketing messaging and featurettes
-    ================================================== -->
-    <!-- Wrap the rest of the page in another container to center all the content. -->
+</div>
+<div class="carousel-item">
+	<img class="bd-placeholder-img" width="100%" height="auto" src={{asset('/images/imagesUpload/KohLanta/DSC_0013.JPG')}} preserveaspectratio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="auto"></img>
 
-    <div class="container marketing">
+</div></div><a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+<span class="sr-only">Previous</span></a><a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+<span class="carousel-control-next-icon" aria-hidden="true"></span>
+<span class="sr-only">Next</span></a></div>
 
-      {% block content %}
-      {% endblock %}
+<div class="w-70 text-center mt-4">
+<h1>Le concept de “Fêtes un voeu”</h1><br>
+<p class="concept">L'anniversaire de votre bambin arrive ?<br>
+Une fête de famille ?<br>
+Ou tout simplement envie de déguster un bon gâteau fait maison ?<br>
+Demandez-nous !<br>
+Fêtes un voeu, au service de vos festivités !</p></div><br><!-- Marketing messaging and featurettes
+					    ================================================== --><!-- Wrap the rest of the page in another container to center all the content. --><div class="container marketing">{% block content %}{% endblock %} </div><!-- /.container --><!-- FOOTER --><!-- RENSEIGNEMENYS --><!-- Footer -->
+<footer class="text-center text-lg-start bg-light text-muted"> <!-- CONTACT -->
 
-    </div><!-- /.container -->
+<div class="container mt-5 border p-5">
+	<div>
+		<h2 class="text-center bg-light">Contactez-nous</h2>
+	</div>
 
-    <!-- FOOTER -->
-    <footer class="container">
-        <p class="float-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2017-2020 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-    </footer>
-</main>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src={{asset('assets/js/bootstrap.bundle.js')}}></script>
-</body>
-</html>
+	<div class="container">
+		<div class="row g-2 mt-4">
+			<div class="col-md">
+				<div class="form-floating">
+					<input type="text" class="form-control" id="nom" value="" placeholder="Votre nom">
+
+				</div>
+			</div>
+			<div class="col-md">
+				<div class="form-floating">
+					<input type="text" class="form-control" id="prenom" value="" placeholder="Votre prénom">
+
+				</div>
+			</div>
+		</div>
+
+		<fieldset>
+			<div class="form-group mt-4">
+				<label for="email">Entrez votre mail</label>
+				<input type="email" class="form-control" id="email" placeholder="Votre e-mail">
+			</div>
+
+			<div class="form-group mt-4">
+				<label for="text">Votre message</label>
+				<textarea class="form-control" id="message" rows="3"></textarea>
+			</div>
+
+			<input class="mt-4" type="button" submit="Envoyer" value="Envoyer">
+		</fieldset>
+	</form>
+</div></div>
+
+<!-- Section: Links  --><section class=""><div
+class="container text-center text-md-start mt-5">
+<!-- Grid row -->
+<div
+	class="row mt-3">
+	<!-- Grid column -->
+	<div
+		class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+		<!-- Content -->
+		<h6 class="text-uppercase fw-bold mb-4">
+			FETES UN VOEU
+		</h6>
+		<p>
+			10 rue Paul DOUMER
+			<br>
+			78 130 LES MUREAUX
+		</p>
+
+</div><!-- Section: Links  --><!-- Grid column --><!-- Grid column -->
+
+<div
+class="col-md-2 col-lg-3 col-xl-3 mx-auto mb-4"> <!-- Links -->
+<h6 class="text-uppercase fw-bold mb-4">
+	Contact
+</h6>
+<p>contact@fetesunvoeu.fr<br>06 18 45 75 88 - 01 12 21 34 89
+</p></div><!-- Grid column --><!-- Grid column -->
+<div
+class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-4">
+<!-- Links -->
+<h6 class="text-uppercase fw-bold mb-4">
+	Horaires d'ouverture
+</h6>
+<p>
+	Lundi à Samedi
+	<br>
+	9h - 18h30
+</p></div></div>
+		<div style="background-color:red;" width="100%">
+			<img width="100%" src={{asset('/images/imagesUpload/carte_fuv_optimisee.jpg')}}></img>
+		</div>
+
+</div>
+
+</section></footer><!-- Footer -->
+<p class="float-right d-block flex-row justify-content-center m-4 box">
+
+<a href="#"><svg width="48" height="48" class="bi bi-arrow-up-circle-fill" viewbox="0 0 16 16"><path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/></svg></a></p><!-- Copyright --><div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">© 2021 Fêtes un voeu
+	- <a class="text-reset fw-bold" href="/"> Protection des données</a><!-- Copyright -->
+			<!-- Section: Social media -->
+<a href="" class="me-4 text-reset">
+	<i class="fab fa-facebook-f"></i>
+</a>
+<a href="" class="me-4 text-reset">
+	<i class="fab fa-instagram"></i>
+</a>
+<a href="" class="me-4 text-reset">
+	<i class="fab fa-github"></i>
+</a></div></footer><!-- Footer --></main>
+	
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+	<script src={{asset('assets/js/bootstrap.bundle.js')}}></script>
+	<script src="https://kit.fontawesome.com/e4895b9a2a.js" crossorigin="anonymous"></script>
+	</body></html>
