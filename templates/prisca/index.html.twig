@@ -2,97 +2,142 @@
 
 {% block content %}
 
-	<h2 class="text-center bg-light mt-5">Nos prestations</h2>
+	<h2 class="text-center mt-5">Nos prestations</h2>
 
 	<!-- div card packs -->
 	<div class="packsCards">
-		<div class="album py-4 bg-light">
+		<div class="album py-4">
 			<div class="container">
 
-				<div class="row">
-					<div class="col-md-6">
-						<div class="card mb-6 box-shadow">
-							<h3 class="text-center">Pack anniversaire enfant</h2>
-							<img class="card-img-top" width="140" height="140" src={{asset('/images/imagesUpload/KohLanta/DSC_0017.jpg')}} alt="Card image cap">
-							<div class="card-body">
-								<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-								<div class="d-flex justify-content-between align-items-center">
-									<div class="btn-group">
-										<button type="button" class="btn btn-sm btn-outline-secondary">En savoir plus</button>
-										<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-									</div>
-									<small class="text-muted">9 mins</small>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-md-6">
-						<div class="card mb-6 box-shadow">
-							<h3 class="text-center">Pack anniversaire adulte</h2>
-							<img class="card-img-top" width="140" height="140" src={{asset('/images/imagesUpload/KohLanta/DSC_0017.jpg')}} alt="Card image cap">
-							<div class="card-body">
-								<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-								<div class="d-flex justify-content-between align-items-center">
-									<div class="btn-group">
-										<button type="button" class="btn btn-sm btn-outline-secondary">En savoir plus</button>
-										<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-									</div>
-									<small class="text-muted">9 mins</small>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+			
 			</div>
 		</div>
-
-		<div class="album py-4 bg-light">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-6">
-						<div class="card mb-6 box-shadow">
-							<h3 class="text-center">Pack aventure en famille</h2>
-							<img class="card-img-top" width="140" height="140" src={{asset('/images/imagesUpload/KohLanta/DSC_0017.jpg')}} alt="Card image cap">
-							<div class="card-body">
-								<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-								<div class="d-flex justify-content-between align-items-center">
-									<div class="btn-group">
-										<button type="button" class="btn btn-sm btn-outline-secondary">En savoir plus</button>
-										<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-									</div>
-									<small class="text-muted">9 mins</small>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-md-6">
-						<div class="card mb-6 box-shadow">
-							<h3 class="text-center">Pack soirée années 90</h2>
-							<img class="card-img-top" width="140" height="140" src={{asset('/images/imagesUpload/KohLanta/DSC_0017.jpg')}} alt="Card image cap">
-							<div class="card-body">
-								<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-								<div class="d-flex justify-content-between align-items-center">
-									<div class="btn-group">
-										<button type="button" class="btn btn-sm btn-outline-secondary">En savoir plus</button>
-										<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-									</div>
-									<small class="text-muted">9 mins</small>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
 		</div>
+
+
+<div>
+
+<div class="row row-cols-1 row-cols-md-2 g-4 ">
+  <div class="col">
+    <div class="card shadow m-4">
+      <img
+        src="{{asset('/images/imagesUpload/img-card-anniv-enfants.jpg')}}"
+        class="card-img-top"
+        alt="..."
+      />
+      <div class="card-body">
+        <h5 class="card-title">Pack anniversaire enfant</h5>
+        <p class="card-text">
+          Des formules clefs en main à une fête plus personnalisée, chez vous ou dans un autre lieu, tout est possible.
+Votre enfant, Roi de la fête choisit alors l’atelier ou une thématique parmi notre sélection d’activités, toutes sélectionnées pour leurs approches créatives, ludiques et originales.
+
+Vous avez un gourmand ? C’est une graine d’artiste ? Le sport, il adore ? Geek un jour, geek toujours ? Il a une âme d’explorateur ? Une vocation scientifique ?… parmi les nombreuses activités que nous avons sélectionnées auprès de professionnels, nous trouverons ensemble le thème et le programme de rêve pour son anniversaire.
+
+Nous vous rencontrons avec votre enfant pour connaître ses goûts, votre budget, le nombre d’invités et pour définir vos besoins (invitations, animations, décorations, gâteaux, etc).
+
+Le jour-J nous coordonnons et gérons l’anniversaire : Installation et déroulement (animation-gâteau-cadeau).
+Prix : A partir de 300 €
+        </p>
+
+										<div class="btn-group">
+										<button type="button" class="btn btn-info shadow m-4">En savoir plus</button>
+										<button type="button" class="btn shadow m-4">Réserver</button>
+									</div>
+								
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card shadow m-4">
+      <img
+        src="{{asset('/images/imagesUpload/img-card-anniv-adultes.jpg')}}"
+        class="card-img-top"
+        alt="..."
+      />
+      <div class="card-body">
+        <h5 class="card-title">Pack anniversaire adulte</h5>
+        <p class="card-text">
+         Un anniversaire programmé ? Un anniversaire surprise ? Votre petite amie, votre mari, votre grand-mère ? Pour ses 35 ans, vos 50 ans, ses 80 ans ? Bubbly Event vous conseille et vous accompagne dans le choix du lieu (à domicile, dans un restaurant ou dans une salle), la durée (sur un week-end, une soirée), et de la thématique, etc. Nous nous occupons de vos réservations, de l’installation et de l’envoi des invitations si vous le souhaitez.
+
+Prix : Nous consulter
+        </p>
+
+
+										<div class="btn-group">
+										<button type="button" class="btn btn-info shadow m-4">En savoir plus</button>
+										<button type="button" class="btn shadow m-4">Réserver</button>
+									</div>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card shadow m-4">
+      <img
+        src="{{asset('/images/imagesUpload/img-card-karaoke.jpg')}}"
+        class="card-img-top"
+        alt="..."
+      />
+      <div class="card-body">
+        <h5 class="card-title">Pack soirées karaoké</h5>
+        <p class="card-text">
+         D'arbres en arbres, découvrez ce parcours acrobatique en hauteur dans un cadre splendide sur le domaine de Figuerolles, à Martigues.
+
+A la découverte de ce lieu, c'est un nouveau goût de nature que vous allez découvrir. Cet espace de 130 hectares recèle de richesses immenses en termes de patrimoine, d'histoire et de végétation. Patrimoine agricole, nature méditerranéenne et loisirs de plein air vont se conjuguer dans un cadre grandiose.</p>
+								
+        </p>
+		
+										<div class="btn-group">
+										<button type="button" class="btn btn-info shadow m-4">En savoir plus</button>
+										<button type="button" class="btn shadow m-4">Réserver</button>
+									</div>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card shadow m-4">
+      <img
+        src="{{asset('/images/imagesUpload/image-soirees.jpeg')}}"
+        class="card-img-top"
+        alt="..."
+      />
+      <div class="card-body">
+        <h5 class="card-title">Pack soirées dansantes</h5>
+        <p class="card-text">
+          Vous souhaitez plutôt une soirée classique autour d’un cocktail au rythme d’un rock endiablé ou une soirée à thème qui transforme vos invités en acteurs de l’évènement grâce à une activité collective ou atypique.
+Lieu, traiteur, ambiance musicale, service de sécurité, etc. Nous prenons en charge l’ensemble des prestations (réservation, gestion, coordination, …).
+
+ 
+
+Prix : Nous consulter
+        </p>
+
+
+										<div class="btn-group">
+										<button type="button" class="btn btn-info shadow m-4">En savoir plus</button>
+
+
+
+
+
+
+
+										
+										<button type="button" class="btn shadow m-4">Réserver</button>
+									</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</div>
 
 
 		<!-- GALERIE -->
 
 		<div class="container mt-5">
 			<div>
-				<h2 class="text-center bg-light">Galerie</h2>
+				<h2 class="text-center">Galerie</h2>
 			</div>
 			<div class="d-flex justify-content-center">
 				<div class="row">
@@ -141,7 +186,7 @@
 	<!-- AVIS -->
 	<div class="container mt-5">
 		<div>
-			<h2 class="text-center bg-light">Avis</h2>
+			<h2 class="text-center">Avis</h2>
 		</div>
 		<div class="row mt-5">
 
