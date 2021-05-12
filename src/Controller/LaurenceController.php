@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Pack;
 use App\Entity\Reservation;
 use App\Entity\User;
+use App\Form\ModifPackType;
 use App\Form\PackType;
 use App\Form\RegistrationType;
 use App\Form\ReservationType;
@@ -150,7 +151,7 @@ class LaurenceController extends AbstractController
 
 
 //        A DECOMMENTER QUAND ROUTE EXISTERA
-//        return $this->redirectToRoute("gestion_pack");
+        return $this->redirectToRoute("gestion_packs");
     endif;
 
 
@@ -173,9 +174,7 @@ class LaurenceController extends AbstractController
      */
     public function modif_pack(Pack $pack, Request $request, EntityManagerInterface $manager)
     {
-        $form = $this->createForm(PackType::class, $pack, array(
-            'modifier'=>true
-        ));
+        $form = $this->createForm(ModifPackType::class, $pack);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()):
@@ -246,7 +245,10 @@ class LaurenceController extends AbstractController
 
         endif;
 
-        return $this->render("/laurence/modif_pack.html.twig");
+        return $this->render("/laurence/modif_pack.html.twig", [
+            'formModifPack'=>$form->createView(),
+            'pack'=>$pack
+        ]);
 
 }
 
@@ -255,7 +257,7 @@ class LaurenceController extends AbstractController
     /**
      * @Route("/suppr_pack/{id}", name="suppr_pack")
      */
-    public function suppr_pack(Pack $pack, EntityManagerInterface $manager)
+    public function suppr_pack(Pack $pack, EntityManagerInterface $manager, $id)
     {
         $manager->remove($pack);
         $manager->flush();
@@ -277,6 +279,7 @@ class LaurenceController extends AbstractController
      */
     public function ajout_resa(Request $request, EntityManagerInterface $manager)
     {
+
         $reservation = new Reservation();
         $form = $this->createForm(ReservationType::class, $reservation);
         $form->handleRequest($request);
@@ -305,13 +308,78 @@ class LaurenceController extends AbstractController
     }
 
 
-    public function verif_dispo(Pack $pack, Request $request, ReservationRepository $reservationRepository)
+
+
+    /**
+     * @Route("/verif_dispo", name="verif_dispo")
+      */
+    public function verif_dispo(Request $request, ReservationRepository $reservationRepository, PackRepository $packRepository)
     {
-//         Dans le repository ? reservation where date_bdd = date_formulaire_utilisateur
-//        $form // il faut récupérer le nom du pack et le réassocier à son id
-//        $now = date('Y-m-d',time());
-//        $nowstr=strtotime($now); // temps en secondes depuis 1/1/1970
-//        $resa=$reservationRepository->find();
+        $reservations=$reservationRepository->findAll();
+        $packs=$packRepository->findAll();
+        // ------------ CONTROLE FORMULAIRE ------------ //
+           $resa_min= date('Y-m-d', time());
+           $resa_max = date('Y-m-d',time() + (365 * 24 * 60 * 60 ))   ;
+
+
+
+
+
+        // ------------ CONTROLES RECEPTION FORMULAIRE ------------ //
+                if(!empty($request->query->all()))://            if($form->isSubmitted && $form->isValid) $request pas vide
+             $request->query->all(); // va chercher le formulaire get
+//        dump($request);
+        $date_debut=$request->query->get('date_debut');
+        $date_fin=$request->query->get('date_fin');
+        $timstamp_debut = strtotime($date_debut);
+        $timstamp_fin = strtotime($date_fin);
+//        dump($date_debut);
+//        dump($timstamp_debut);
+
+            if ($timstamp_fin <= $timstamp_debut):
+                dump($timstamp_fin);
+                $this->addFlash('danger', "Les dates renseignées ne sont pas cohérentes");
+
+            endif;
+//        $this->redirectToRoute('verif_dispo');
+
+        dump($date_fin);
+
+        // ------------ ENVOI DONNEES FORMULAIRE VERS REPOSITORY ------------ //
+
+//        $pack=$packRepository->find($request->query->get('pack'));
+
+        $date_debut= new \DateTime($request->query->get('date_debut'));
+        $date_fin= new \DateTime($request->query->get('date_fin'));
+
+
+        $packs=$packRepository->findAll();
+        $reservations= $reservationRepository->findByPackDate($request->query->get('pack'), $date_debut, $date_fin);
+//        dd($reservations);
+        $requete = true;
+        return $this->render('front/verif_dispo.html.twig', [
+            "reservations"=>$reservations,
+            "requete"=>$requete,
+            'packs'=>$packs,
+            'resa_min'=>$resa_min,
+            'resa_max'=>$resa_max,
+        ]);
+
+        endif;
+        $requete = false;
+
+
+    return $this->render('front/verif_dispo.html.twig',[
+        'packs'=>$packs,
+        'resa_min'=>$resa_min,
+        'resa_max'=>$resa_max,
+        "requete"=>$requete
+
+
+               ]);
+
+
+
         }
 
 

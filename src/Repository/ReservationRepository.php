@@ -36,6 +36,7 @@ class ReservationRepository extends ServiceEntityRepository
 
     public function findByPackDate( $pack, \DateTime $date_debut, \DateTime $date_fin)
     {
+
         return $this->createQueryBuilder('r')
             ->where("r.date > :debut")
             ->andWhere("r.date < :fin")
