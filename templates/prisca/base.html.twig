@@ -12,6 +12,7 @@
 		<!-- Bootstrap core CSS -->
 		<link href={{asset('assets/css/bootstrap.min.css')}} rel="stylesheet">
 		<link href={{asset('assets/css/style.css')}} rel="stylesheet">
+		<link href={{asset('assets/css/bootstrap.bundle.js')}} rel="stylesheet">
 
 		<style>
 			.bd-placeholder-img {
@@ -33,11 +34,12 @@
 		<link href={{asset('assets/css/carousel.css')}} rel="stylesheet">
 	</head>
 	<body>
+
 		<header>
 
 			<nav class="d-flex navbar-default navbar-expand-md fixed-top p-3 ">
-				<div><img src={{asset('images/imagesUpload/logo/logo_fetes_un_voeu.png')}} alt="Logo fête un voeu" width="125">
-					</img></div>
+				<div><a href="/prisca"> <img src={{asset('images/imagesUpload/logo/logo_fetes_un_voeu.png')}} alt="Logo fête un voeu" width="125">
+					</img></a></div>
 				<div><a class="navbar-brand mt-4 ml-5" href="/prisca">Fêtes un voeu<br>...au service de vos festivités
 				</a></div>
 				<hr>
@@ -136,14 +138,14 @@ Fêtes un voeu, au service de vos festivités !</p></div></div><br>
 					    ================================================== --><!-- Wrap the rest of the page in another container to center all the content. -->
 						<div class="container marketing">{% block content %}{% endblock %} </div><!-- /.container --><!-- FOOTER --><!-- RENSEIGNEMENYS --><!-- Footer -->
 <footer class="text-center bg-light text-muted "> <!-- CONTACT -->
-<div class="mt-5 mb-5 p-5 shadow m-4 ">
+<div class="mb-5 p-3 shadow m-4 ">
 <div class="align-content-center">
 	<div>
-		<h2 class="text-center bg-light">Contactez-nous</h2>
+		<h2 class="text-center bg-light" id="contact">Contactez-nous</h2>
 	</div>
 
 	<div class="container">
-		<div class="row g-2 mt-4">
+		<div class="row g-2">
 			<div class="col-md">
 				<div class="form-floating">
 					<input type="text" class="form-control" id="nom" value="" placeholder="Votre nom">
@@ -159,17 +161,17 @@ Fêtes un voeu, au service de vos festivités !</p></div></div><br>
 		</div>
 
 		<fieldset>
-			<div class="form-group mt-4">
+			<div class="form-group">
 				<label for="email">Entrez votre mail</label>
 				<input type="email" class="form-control" id="email" placeholder="Votre e-mail">
 			</div>
 
-			<div class="form-group mt-4 ">
+			<div class="form-group">
 				<label for="text">Votre message</label>
 				<textarea class="form-control" id="message" rows="3"></textarea>
 			</div>
 
-			<input class="mt-4 mb-5" type="button" submit="Envoyer" value="Envoyer">
+			<input class="mb-5" type="button" submit="Envoyer" value="Envoyer">
 		</fieldset>
 	</form>
 </div></div>
@@ -220,10 +222,14 @@ class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-4">
 </div>
 
 </section></footer><!-- Footer -->
-<p class="float-right d-block flex-row justify-content-center m-4 box">
 
-<a href="#"><svg width="48" height="48" class="bi bi-arrow-up-circle-fill" viewbox="0 0 16 16">
-<path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/></svg></a></p><!-- Copyright --><div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">© 2021 Fêtes un voeu
+<!-- Back to top button -->
+<button type="button" class="btn-floating btn-lg" id="btn-back-to-top">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+
+<!-- Copyright --><div class="text-center p-4" style="background-color: #eddcf9">© 2021 Fêtes un voeu
 	- <a class="text-reset fw-bold" href="/"> Protection des données</a><!-- Copyright -->
 		</div></footer><!-- Footer -->
 		
