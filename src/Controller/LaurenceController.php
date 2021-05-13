@@ -94,65 +94,65 @@ class LaurenceController extends AbstractController
 
             if ($image1File):
                 $nomImage1=date("YmdHis").uniqid()."-".$image1File->getClientOriginalName();
-                try {
-                    $image1File->move (
-                        $this->getParameter('images_directory'),
-                        $nomImage1
-                    );
-                }
-                catch (FileException $e) {
-                    $this->redirectToRoute('ajout_pack', [
-                        'erreur'=>$e
-                    ]);
-                }
-                $pack->setImage1($nomImage1);
+            try {
+                $image1File->move (
+                    $this->getParameter('images_directory'),
+                    $nomImage1
+                );
+            }
+            catch (FileException $e) {
+                $this->redirectToRoute('ajout_pack', [
+                    'erreur'=>$e
+                ]);
+            }
+            $pack->setImage1($nomImage1);
             endif;
 
-            if ($image2File):
-                $nomImage2=date("YmdHis").uniqid()."-".$image2File->getClientOriginalName();
+                if ($image2File):
+                    $nomImage2=date("YmdHis").uniqid()."-".$image2File->getClientOriginalName();
 
-                try {
-                    $image2File->move (
-                        $this->getParameter('images_directory'),
-                        $nomImage2
-                    );
-                }
-                catch (FileException $e) {
-                    $this->redirectToRoute('ajout_pack', [
-                        'erreur'=>$e
-                    ]);
-                }
+                    try {
+                        $image2File->move (
+                            $this->getParameter('images_directory'),
+                            $nomImage2
+                        );
+                    }
+                    catch (FileException $e) {
+                        $this->redirectToRoute('ajout_pack', [
+                            'erreur'=>$e
+                        ]);
+                    }
 
-                $pack->setImage2($nomImage2);
-            endif;
+                    $pack->setImage2($nomImage2);
+                     endif;
 
-            if ($image3File):
-                $nomImage3=date("YmdHis").uniqid()."-".$image3File->getClientOriginalName();
+                    if ($image3File):
+                        $nomImage3=date("YmdHis").uniqid()."-".$image3File->getClientOriginalName();
 
-                try {
-                    $image3File->move (
-                        $this->getParameter('images_directory'),
-                        $nomImage3
-                    );
-                }
-                catch (FileException $e) {
-                    $this->redirectToRoute('ajout_pack', [
-                        'erreur'=>$e
-                    ]);
-                }
+                        try {
+                            $image3File->move (
+                                $this->getParameter('images_directory'),
+                                $nomImage3
+                            );
+                        }
+                        catch (FileException $e) {
+                            $this->redirectToRoute('ajout_pack', [
+                                'erreur'=>$e
+                            ]);
+                        }
 
-                $pack->setImage3($nomImage3);
+                        $pack->setImage3($nomImage3);
 
-            endif;
+        endif;
 
-            $manager->persist($pack);
-            $manager->flush();
-            $this->addFlash("success", "Le pack a bien été ajouté.");
+        $manager->persist($pack);
+        $manager->flush();
+        $this->addFlash("success", "Le pack a bien été ajouté.");
 
 
 //        A DECOMMENTER QUAND ROUTE EXISTERA
-            return $this->redirectToRoute("gestion_packs");
-        endif;
+        return $this->redirectToRoute("gestion_packs");
+    endif;
 
 
 //    VERSION PROVISOIRE
@@ -167,7 +167,7 @@ class LaurenceController extends AbstractController
 
     }
 
-    // -------------------- MODIFICATION PACK --------------------//
+            // -------------------- MODIFICATION PACK --------------------//
 
     /**
      * @Route("/modif_pack/{id}", name="modif_pack")
@@ -178,7 +178,7 @@ class LaurenceController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()):
-            //  -----------  IMAGE1  -----------  //
+                            //  -----------  IMAGE1  -----------  //
             $image1File = $form->get('image1File')->getData();
             if ($image1File):
                 $nomimage1 = date('YmdHis') . "-" . uniqid() . "-" . $image1File->getClientOriginalName();
@@ -198,7 +198,7 @@ class LaurenceController extends AbstractController
                 $pack->setImage1($nomimage1);
             endif;
 
-            //  -----------  IMAGE2  -----------  //
+                              //  -----------  IMAGE2  -----------  //
             $image2File = $form->get('image2File')->getData();
             if ($image2File):
                 $nomimage2 = date('YmdHis') . "-" . uniqid() . "-" . $image2File->getClientOriginalName();
@@ -218,7 +218,7 @@ class LaurenceController extends AbstractController
                 $pack->setImage2($nomimage2);
             endif;
 
-            //  -----------  IMAGE3  -----------  //
+                             //  -----------  IMAGE3  -----------  //
             $image3File = $form->get('image3File')->getData();
             if ($image3File):
                 $nomimage3 = date('YmdHis') . "-" . uniqid() . "-" . $image3File->getClientOriginalName();
@@ -238,20 +238,21 @@ class LaurenceController extends AbstractController
                 $pack->setImage3($nomimage3);
             endif;
 
-            $manager->persist($pack);
-            $manager->flush();
+        $manager->persist($pack);
+        $manager->flush();
 
-            return $this->redirectToRoute("gestion_packs");
+        return $this->redirectToRoute("gestion_packs");
 
         endif;
 
         return $this->render("/laurence/modif_pack.html.twig", [
-            'formModifPack'=>$form->createView()
+            'formModifPack'=>$form->createView(),
+            'pack'=>$pack
         ]);
 
-    }
+}
 
-    // -------------------- SUPPRESSION PACK --------------------//
+            // -------------------- SUPPRESSION PACK --------------------//
 
     /**
      * @Route("/suppr_pack/{id}", name="suppr_pack")
@@ -271,13 +272,14 @@ class LaurenceController extends AbstractController
 
 
 
-    // -------------------- RESERVATION --------------------//
+               // -------------------- RESERVATION --------------------//
 
     /**
      * @Route("ajout_resa", name="ajout_resa")
      */
     public function ajout_resa(Request $request, EntityManagerInterface $manager)
     {
+
         $reservation = new Reservation();
         $form = $this->createForm(ReservationType::class, $reservation);
         $form->handleRequest($request);
@@ -298,22 +300,87 @@ class LaurenceController extends AbstractController
 
         return $this->render('laurence/ajout_reservation.html.twig',[
             'formResa'=>$form->createView(),
+                    ]);
+
+
+
+
+    }
+
+
+
+
+    /**
+     * @Route("/verif_dispo", name="verif_dispo")
+      */
+    public function verif_dispo(Request $request, ReservationRepository $reservationRepository, PackRepository $packRepository)
+    {
+        $reservations=$reservationRepository->findAll();
+        $packs=$packRepository->findAll();
+        // ------------ CONTROLE FORMULAIRE ------------ //
+           $resa_min= date('Y-m-d', time());
+           $resa_max = date('Y-m-d',time() + (365 * 24 * 60 * 60 ))   ;
+
+
+
+
+
+        // ------------ CONTROLES RECEPTION FORMULAIRE ------------ //
+                if(!empty($request->query->all()))://            if($form->isSubmitted && $form->isValid) $request pas vide
+             $request->query->all(); // va chercher le formulaire get
+//        dump($request);
+        $date_debut=$request->query->get('date_debut');
+        $date_fin=$request->query->get('date_fin');
+        $timstamp_debut = strtotime($date_debut);
+        $timstamp_fin = strtotime($date_fin);
+//        dump($date_debut);
+//        dump($timstamp_debut);
+
+            if ($timstamp_fin <= $timstamp_debut):
+                dump($timstamp_fin);
+                $this->addFlash('danger', "Les dates renseignées ne sont pas cohérentes");
+
+            endif;
+//        $this->redirectToRoute('verif_dispo');
+
+        dump($date_fin);
+
+        // ------------ ENVOI DONNEES FORMULAIRE VERS REPOSITORY ------------ //
+
+//        $pack=$packRepository->find($request->query->get('pack'));
+
+        $date_debut= new \DateTime($request->query->get('date_debut'));
+        $date_fin= new \DateTime($request->query->get('date_fin'));
+
+
+        $packs=$packRepository->findAll();
+        $reservations= $reservationRepository->findByPackDate($request->query->get('pack'), $date_debut, $date_fin);
+//        dd($reservations);
+        $requete = true;
+        return $this->render('front/verif_dispo.html.twig', [
+            "reservations"=>$reservations,
+            "requete"=>$requete,
+            'packs'=>$packs,
+            'resa_min'=>$resa_min,
+            'resa_max'=>$resa_max,
         ]);
 
+        endif;
+        $requete = false;
+
+
+    return $this->render('front/verif_dispo.html.twig',[
+        'packs'=>$packs,
+        'resa_min'=>$resa_min,
+        'resa_max'=>$resa_max,
+        "requete"=>$requete
+
+
+               ]);
 
 
 
-    }
-
-
-    public function verif_dispo(Pack $pack, Request $request, ReservationRepository $reservationRepository)
-    {
-//         Dans le repository ? reservation where date_bdd = date_formulaire_utilisateur
-//        $form // il faut récupérer le nom du pack et le réassocier à son id
-//        $now = date('Y-m-d',time());
-//        $nowstr=strtotime($now); // temps en secondes depuis 1/1/1970
-//        $resa=$reservationRepository->find();
-    }
+        }
 
 
 
@@ -321,7 +388,7 @@ class LaurenceController extends AbstractController
 
 
     // -------------------- A METTRE FRONTCONTROLLER --------------------//
-    // A REPRENDRE NE MARCHE PAS PROB ROUTE VOIR AUSSU gestion_packs.html.twig et detail_pack.html.twig
+            // A REPRENDRE NE MARCHE PAS PROB ROUTE VOIR AUSSU gestion_packs.html.twig et detail_pack.html.twig
     /**
      * @Route("/detail_pack/{id}", name="detail_pack")
      */
@@ -342,4 +409,3 @@ class LaurenceController extends AbstractController
 
 
 }
-
