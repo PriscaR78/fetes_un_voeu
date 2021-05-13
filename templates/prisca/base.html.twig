@@ -47,10 +47,7 @@
 								<a class="nav-link mr-2" href="#">Accueil
 								</a>
 							</li>
-							<li class="nav-item active mr-2">
-								<a class="nav-link" href="#">A propos
-								</a>
-							</li>
+						
 							<li class="nav-item active mr-2">
 								<a class="nav-link" href="#prestations">Nos prestations
 								</a>
@@ -94,7 +91,8 @@
 </header>
 
 
-<main role="main"><div id="myCarousel" class="carousel slide img-fluid mx-auto" data-ride="carousel"><ol class="carousel-indicators">
+<main role="main">
+<div id="myCarousel" class="carousel slide img-fluid mx-auto" data-ride="carousel"><ol class="carousel-indicators">
 <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
 <li data-target="#myCarousel" data-slide-to="1"></li>
 <li data-target="#myCarousel" data-slide-to="2"></li>
@@ -135,7 +133,8 @@ Fêtes un voeu, au service de vos festivités !</p></div></div><br>
 
 
 <!-- Marketing messaging and featurettes
-					    ================================================== --><!-- Wrap the rest of the page in another container to center all the content. --><div class="container marketing">{% block content %}{% endblock %} </div><!-- /.container --><!-- FOOTER --><!-- RENSEIGNEMENYS --><!-- Footer -->
+					    ================================================== --><!-- Wrap the rest of the page in another container to center all the content. -->
+						<div class="container marketing">{% block content %}{% endblock %} </div><!-- /.container --><!-- FOOTER --><!-- RENSEIGNEMENYS --><!-- Footer -->
 <footer class="text-center bg-light text-muted "> <!-- CONTACT -->
 <div class="mt-5 mb-5 p-5 shadow m-4 ">
 <div class="align-content-center">
@@ -223,9 +222,12 @@ class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-4">
 </section></footer><!-- Footer -->
 <p class="float-right d-block flex-row justify-content-center m-4 box">
 
-<a href="#"><svg width="48" height="48" class="bi bi-arrow-up-circle-fill" viewbox="0 0 16 16"><path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/></svg></a></p><!-- Copyright --><div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">© 2021 Fêtes un voeu
+<a href="#"><svg width="48" height="48" class="bi bi-arrow-up-circle-fill" viewbox="0 0 16 16">
+<path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/></svg></a></p><!-- Copyright --><div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">© 2021 Fêtes un voeu
 	- <a class="text-reset fw-bold" href="/"> Protection des données</a><!-- Copyright -->
-		</div></footer><!-- Footer --></main>
+		</div></footer><!-- Footer -->
+		
+		</main>
 	
 	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 	<script src={{asset('assets/js/bootstrap.bundle.js')}}></script>
