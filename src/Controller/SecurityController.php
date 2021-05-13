@@ -80,6 +80,17 @@ class SecurityController extends AbstractController
 
     }
 
+    /**
+     * @Route("/supp_user/{id}", name="supp_user")
+     */
+    public function suppression_user(User $user, EntityManagerInterface $manager)
+    {
+        $manager->remove($user);
+        $manager->flush();
+        $this->addFlash('success', 'Le compte client a bien été supprimé');
+        return $this->redirectToRoute('gestion_clients');
+    }
+
 
 
 
