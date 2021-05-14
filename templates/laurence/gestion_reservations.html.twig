@@ -1,7 +1,7 @@
-{% extends 'base.html.twig' %}
+{% extends 'backoffice.html.twig' %}
 
 {% block body %}
-    <h1>Gestion des réservation</h1>
+    <h1>Gestion des réservations</h1>
     {% for message in app.flashes('success') %}
         <div class="col-md-6 bg-secondary p-4 rounded mx-auto text-center text-white mb-3">
             {{ message }}
@@ -21,7 +21,6 @@
             <th scope="col">Cients</th>
             <th scope="col">Date</th>
 
-
             <th scope="col">Voir</th>
             <th scope="col">Modifier</th>
             <th scope="col">Supprimer</th>
@@ -36,9 +35,9 @@
                 <td>{{ reservation.user.username }}</td>
                 <td>{{ reservation.date | date('d-m-Y')}}</td>
 
-                {#               <td><a href="{{ path('detail_pack', {'id': pack.id }) }}">Voir</a></td>#}
-                {#                <td><a href="{{ path('article_modif', {'id': article.id}) }}"><img src="{{ asset('images/update.png') }}" alt="modifier"></a></td>#}
-                {#                <td><a href=""><img src="{{ asset('images/delete.png') }}" alt="supprimer"></a></td>#}
+                <td><a href=""><img src="{{ asset('images/loupe.png') }}" alt="voir"></a></td>
+                <td><a href=""><img src="{{ asset('images/pencil.png') }}" alt="modifier"></a></td>
+                <td><a href="{{ path('suppr_reservation', {'id': reservation.id}) }}"><img src="{{ asset('images/delete.png') }}" alt="supprimer"></a></td>
             </tr>
         {% endfor %}
         </tbody>

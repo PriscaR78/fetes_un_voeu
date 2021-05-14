@@ -19,10 +19,14 @@
 <div style=" height: 100vh" class="col-md-2 vertical-nav bg-info pl-3" id="sidebar">
     <nav class="ml-3">
         <ul class="nav flex-column pt-5">
-            <li class="nav-item btn btn-light m-3"><a class="nav-link text-dark" href="{{path('utilisateurs') }}">Utilisateurs</a></li>
-            <li class="nav-item btn btn-light m-3"><a class="nav-link text-dark" href="#">Articles</a></li>
+            <li class="nav-item btn btn-light m-3"><a class="nav-link text-dark" href="{{ path('gestion_clients') }}">Clients</a></li>
+            <a class="nav-item btn btn-light m-3" href="{{ path('gestion_reservations') }}">Réservations</a>
+            <li class="nav-item btn btn-light m-3"><a class="nav-link text-dark" href="{{ path('gestion_packs') }}">Packs</a></li>
             <li class="nav-item btn btn-light m-3"><a class="nav-link text-dark" href="#">Soutien</a></li>
             <li class="nav-item btn btn-light m-3"><a class="nav-link text-dark " href="#">Contact</a></li>
+            <li class="nav-item btn btn-light m-3">
+                <a class="nav-link text-dark" href="{{ path('home')}} ">Accueil</a>
+            </li>
         </ul>
     </nav>
 

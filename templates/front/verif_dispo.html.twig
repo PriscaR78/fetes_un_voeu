@@ -3,60 +3,26 @@
 
 {% block body %}
 
-{#Nous sommes le : {{ today }}#}
+Nous sommes le : {{ today }}
 
 {#    {{ path('verif_dispo')}}#}
-    <h1 class="my-5">Vérifions la disponibilité de votre pack </h1>
+<h1 class="my-5">Vérifions la disponibilité de votre pack </h1>
+<form action=" " method="get">
 
-    {% for message in app.flashes('success') %}
-        <div class="col-md-6 bg-primary p-4 rounded mx-auto text-center text-white mb-3">
-            {{ message }}
-        </div>
-    {% endfor %}
-    {% for message in app.flashes('danger') %}
-        <div class="col-md-6 bg-danger p-4 rounded mx-auto text-center text-white mb-3">
-            {{ message }}
-        </div>
+    <label class="my-3" for="pack">Quel pack avez-vous choisi ?</label>
 
-    {% endfor %}
-    {% if requete == true %}
-        Ce pack n'est pas disponible aux dates suivantes :
-        <ul>
-        {% for reservation in reservations %}
-       <li>  {{ reservation.date | date('d-m-Y') }} </li>
+    <select name="pack" class="form-control w-25" id="verif_pack">
+        <option value=""></option>
+        {% for pack in packs %}
+            <option value="{{ pack.id }}">{{ pack.nom }}</option>
         {% endfor %}
-        </ul>
-    {% endif %}
-        <form action=" " method="get">
+    </select>
 
-        <label class="my-3" for="pack">Quel pack avez-vous choisi ?</label>
-
-        <select name="pack" class="form-control w-25" id="verif_pack">
-            <option value=""></option>
-            {% for pack in packs %}
-                <option value="{{ pack.id }}">{{ pack.nom }}</option>
-            {% endfor %}
-        </select>
-
-            <label class="my-3" for="date">Entre quelles dates désirez-vous réserver ?</label>
-          <p>  <input type="date"  name="date_debut" min={{ resa_min }}  max={{ resa_max }}>
-            <input type="date" name="date_fin" min={{ resa_min }} max={{ resa_max }}></p>
+    <label class="my-3" for="date">Entre quelles dates désirez-vous réserver ?</label>
+    <p>  <input type="date"  name="date_debut" min= {{ today }}  max="2022-04-30">
+        <input type="date" name="date_fin" min="2021-05-12" max="2022-04-30"></p>
 
     <button type="submit">Vérifier</button>
 
-    </form>
-
-
-
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+</form>
 {% endblock %}

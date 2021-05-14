@@ -1,17 +1,50 @@
-{% extends 'base.html.twig' %}
+{% extends 'backoffice.html.twig' %}
 
 {% block body %}
 <div class="container m-5 d-flex">
-    <a class="nav-link " href="{{ path('gestion_packs') }}"><button class="btn  btn-outline-info">Gestion des
-            packs</button></a>
+{#    <a class="nav-link " href="{{ path('gestion_packs') }}"><button class="btn  btn-outline-info">Gestion des#}
+{#            packs</button></a>#}
 
-    <a class="nav-link " href="{{ path('gestion_reservations') }}"><button class="btn  btn-outline-danger">Gestion des
-            réservations</button></a>
-    <a class="nav-link " href="{{ path('gestion_clients') }}"><button class="btn  btn-outline-warning">Gestion des
-            clients</button></a>
+{#    <a class="nav-link " href="{{ path('gestion_reservations') }}"><button class="btn  btn-outline-danger">Gestion des#}
+{#            réservations</button></a>#}
+{#    <a class="nav-link " href="{{ path('gestion_clients') }}"><button class="btn  btn-outline-warning">Gestion des#}
+{#            clients</button></a>#}
     </div>
 
+<h2> Les prochaines réservations</h2>
+    <table class="table table-striped w-50">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Pack</th>
+            <th scope="col">Cients</th>
+            <th scope="col">Date</th>
+
+
+        </tr>
+        </thead>
+        <tbody class="text-center">
+        {% for reservation in reservations %}
+            <tr>
+                <td>{{ reservation.id }}</td>
+                <td>{{ reservation.pack.nom }}</td>
+                <td>{{ reservation.user.username }}</td>
+                <td>{{ reservation.date | date('d-m-Y')}}</td>
+
+
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+
+
+
+
 {% endblock %}
+
+
 
 {% block title %}
 Back-Office
