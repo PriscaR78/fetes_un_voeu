@@ -4,10 +4,11 @@
  * Copyright 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
- 
+
+@import url('https://fonts.googleapis.com/css2?family=Original+Surfer&display=swap');
 @font-face {
 	font-family: 'OriginalSurfer';
-    src : url('/Users/Prisca/Documents/_PRISCA/_PRO/_FORMATIONS/_WEBFORCE3/DECOUVERTE/SEM14à16-PROJET/090521/fetes_un_voeu/public/fonts/Original_Surfer/OriginalSurfer-Regular.ttf');
+
 }
  
  :root

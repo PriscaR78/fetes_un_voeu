@@ -177,6 +177,7 @@ class LaurenceController extends AbstractController
         $form = $this->createForm(ModifPackType::class, $pack);
         $form->handleRequest($request);
 
+
         if($form->isSubmitted() && $form->isValid()):
             //  -----------  IMAGE1  -----------  //
             $image1File = $form->get('image1File')->getData();
@@ -306,21 +307,42 @@ class LaurenceController extends AbstractController
     }
 
 
-    public function verif_dispo(Pack $pack, Request $request, ReservationRepository $reservationRepository)
+    /**
+     * @Route("/verif_dispo", name="verif_dispo")
+     */
+    public function verif_dispo(Request $request, ReservationRepository $reservationRepository, PackRepository $packRepository)
     {
-//         Dans le repository ? reservation where date_bdd = date_formulaire_utilisateur
-//        $form // il faut récupérer le nom du pack et le réassocier à son id
-//        $now = date('Y-m-d',time());
-//        $nowstr=strtotime($now); // temps en secondes depuis 1/1/1970
-//        $resa=$reservationRepository->find();
+        $reservations = $reservationRepository->findAll();
+        $packs = $packRepository->findAll();
+        $today = date('Y-m-d', time());
+//
+////         Dans le repository ? reservation where date_bdd = date_formulaire_utilisateur
+////        $form // il faut récupérer le nom du pack et le réassocier à son id
+////        $now = date('Y-m-d',time());
+////        $nowstr=strtotime($now); // temps en secondes depuis 1/1/1970
+////        $resa=$reservationRepository->find();
+//
+
+//       CHOIX DE VARIABLES HASARDEUX
+        $verif = $request->query->all(); // va chercher le formulaire get
+
+//      $packs=$packRepository->findAll();
+//
+//      $reservations= $repository->findByPackDate($request->query->get('pack_id'), $request->query->get('date'));
+//
+//
+//
+//
+        return $this->render('front/verif_dispo.html.twig', [
+//        , [
+            'packs' => $packs,
+            'today' => date('Y-m-d')]);
+//        'dispo'=>$dispos
+//    ]);
     }
 
 
-
-
-
-
-    // -------------------- A METTRE FRONTCONTROLLER --------------------//
+        // -------------------- A METTRE FRONTCONTROLLER --------------------//
     // A REPRENDRE NE MARCHE PAS PROB ROUTE VOIR AUSSU gestion_packs.html.twig et detail_pack.html.twig
     /**
      * @Route("/detail_pack/{id}", name="detail_pack")
