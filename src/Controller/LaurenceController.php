@@ -36,9 +36,13 @@ class LaurenceController extends AbstractController
     /**
      * @Route("/backoffice", name="backoffice")
      */
-    public function backoffice()
+    public function backoffice(ReservationRepository $repository)
     {
-        return $this->render("/laurence/backoffice.html.twig");
+        $reservations=$repository->findBy(array(), array('date'=>'ASC'), 5, null);
+
+        return $this->render("/laurence/backoffice.html.twig", [
+            'reservations'=>$reservations
+        ]);
     }
 
     /**
@@ -66,11 +70,40 @@ class LaurenceController extends AbstractController
     /**
      * @Route("/gestion_clients", name="gestion_clients")
      */
-    public function gestion_clients(UserRepository $repository)
+    public function gestion_clients(UserRepository $repository, ReservationRepository $reservationRepository)
     {
         $users=$repository->findAll();
+        $reservations=$reservationRepository->findAll();
+
         return $this->render('laurence/gestion_clients.html.twig',[
-            'users'=>$users
+            'users'=>$users,
+            'reservations'=>$reservations
+        ]);
+    }
+
+    /**
+     * @Route("/resa_client/{id}", name="resa_client")
+     */
+    public function resa_client( $id, User $user, ReservationRepository $reservationRepository)
+    {
+        $resa_client=$reservationRepository->findResaUser($id);
+        return $this->render('laurence/resa_clients.html.twig', [
+//            'pack'=>$pack,
+            'reservations'=>$resa_client
+        ]);
+    }
+
+    /**
+     * @Route("/top_pack", name="top_pack")
+     */
+    public function top_pack(ReservationRepository $reservationRepository, PackRepository $packRepository)
+    {
+//        $pack=$packRepository->findAll();
+//        $top_packs=$reservationRepository->findTopPack($pack);
+        $top_packs=$reservationRepository->findBy(array(), array('pack'=>'ASC'), 5, null);
+        dd($top_packs);
+        return $this->render("/laurence/index.html.twig", [
+            'top_packs'=>$top_packs
         ]);
     }
 
@@ -177,7 +210,6 @@ class LaurenceController extends AbstractController
         $form = $this->createForm(ModifPackType::class, $pack);
         $form->handleRequest($request);
 
-
         if($form->isSubmitted() && $form->isValid()):
             //  -----------  IMAGE1  -----------  //
             $image1File = $form->get('image1File')->getData();
@@ -247,7 +279,8 @@ class LaurenceController extends AbstractController
         endif;
 
         return $this->render("/laurence/modif_pack.html.twig", [
-            'formModifPack'=>$form->createView()
+            'formModifPack'=>$form->createView(),
+            'pack'=>$pack
         ]);
 
     }
@@ -257,28 +290,30 @@ class LaurenceController extends AbstractController
     /**
      * @Route("/suppr_pack/{id}", name="suppr_pack")
      */
-    public function suppr_pack(Pack $pack, EntityManagerInterface $manager, $id)
+    public function suppr_pack($id, Pack $pack, EntityManagerInterface $manager, ReservationRepository $reservationRepository)
     {
-        $manager->remove($pack);
-        $manager->flush();
+        $resa_pack=$reservationRepository->findResaPack($id);
+        if ($resa_pack):
+            $this->addFlash('danger', 'Ce pack est actuellement réservé. Sa suppression n\'est pas possible avant l\'annulation de ces réservations');
+        else:
 
-        $this->addFlash('success', "Le pack a bien été supprimé.");
+            $manager->remove($pack);
+            $manager->flush();
+            $this->addFlash('success', "Le pack a bien été supprimé.");
+        endif;
+
         return $this->redirectToRoute('gestion_packs');
     }
 
 
-
-
-
-
-
-    // -------------------- RESERVATION --------------------//
+    // ----------------------- RESERVATION ------------------------//
 
     /**
      * @Route("ajout_resa", name="ajout_resa")
      */
-    public function ajout_resa(Request $request, EntityManagerInterface $manager)
+    public function ajout_resa(Request $request, EntityManagerInterface $manager, ReservationRepository $reservationRepository)
     {
+
         $reservation = new Reservation();
         $form = $this->createForm(ReservationType::class, $reservation);
         $form->handleRequest($request);
@@ -286,6 +321,8 @@ class LaurenceController extends AbstractController
 
 
         if ($form->isSubmitted() && $form->isValid()):
+//            $resa_bdd=$reservationRepository->findByPackDate($request->query->get('pack'), $request->query->get('date'));
+//            if ($resa_bdd == count(null)):
 
             $manager->persist($reservation);
             $manager->flush();
@@ -294,10 +331,11 @@ class LaurenceController extends AbstractController
 
             // provisoire à modifier avec vraie route
             return $this->redirectToRoute("home");
-
+//                endif;
         endif;
 
-        return $this->render('laurence/ajout_reservation.html.twig',[
+//        return $this->render('laurence/ajout_reservation.html.twig',[
+        return $this->render('laurence/reservation.html.twig',[
             'formResa'=>$form->createView(),
         ]);
 
@@ -306,48 +344,108 @@ class LaurenceController extends AbstractController
 
     }
 
+    // ----------------------- MODIF RESERVATION ------------------------//
+
+
+
+
+    // ----------------------- SUPPRESSION RESERVATION ------------------------//
+    /**
+     * @Route("/suppr_reservation/{id}", name="suppr_reservation")
+     */
+    public function suppr_reservation(Reservation $reservation, EntityManagerInterface $manager, $id)
+    {
+        $manager->remove($reservation);
+        $manager->flush();
+
+        $this->addFlash('success', "La réservation a bien été supprimée.");
+        return $this->redirectToRoute('gestion_reservations');
+    }
+
+
+    // ----------------------- VERIFICATION DISPONIBILITE ------------------------//
 
     /**
      * @Route("/verif_dispo", name="verif_dispo")
      */
     public function verif_dispo(Request $request, ReservationRepository $reservationRepository, PackRepository $packRepository)
     {
-        $reservations = $reservationRepository->findAll();
-        $packs = $packRepository->findAll();
-        $today = date('Y-m-d', time());
-//
-////         Dans le repository ? reservation where date_bdd = date_formulaire_utilisateur
-////        $form // il faut récupérer le nom du pack et le réassocier à son id
-////        $now = date('Y-m-d',time());
-////        $nowstr=strtotime($now); // temps en secondes depuis 1/1/1970
-////        $resa=$reservationRepository->find();
-//
+        $reservations=$reservationRepository->findAll();
+        $packs=$packRepository->findAll();
 
-//       CHOIX DE VARIABLES HASARDEUX
-        $verif = $request->query->all(); // va chercher le formulaire get
+        // ------------ CONTROLE FORMULAIRE ------------ //
 
-//      $packs=$packRepository->findAll();
-//
-//      $reservations= $repository->findByPackDate($request->query->get('pack_id'), $request->query->get('date'));
-//
-//
-//
-//
-        return $this->render('front/verif_dispo.html.twig', [
-//        , [
-            'packs' => $packs,
-            'today' => date('Y-m-d')]);
-//        'dispo'=>$dispos
+        $resa_min= date('Y-m-d', time());
+        $resa_max = date('Y-m-d',time() + (365 * 24 * 60 * 60 ))   ;
+
+
+
+        // ------------ CONTROLES RECEPTION FORMULAIRE ------------ //
+
+        if(!empty($request->query->all())):
+            $request->query->all(); // va chercher le formulaire get
+//          dump($request);
+            $date_debut=$request->query->get('date_debut');
+            $date_fin=$request->query->get('date_fin');
+
+            $timstamp_debut = strtotime($date_debut);
+            $timstamp_fin = strtotime($date_fin);
+//          dump($date_debut);
+//          dump($timstamp_debut);
+
+            if ($timstamp_fin < $timstamp_debut):
+//              dump($timstamp_fin);
+                $this->addFlash('danger', "Les dates renseignées ne sont pas cohérentes");
+            endif;
+//        $this->redirectToRoute('verif_dispo');
+
+
+            // ------------ ENVOI DONNEES FORMULAIRE VERS REPOSITORY ------------ //
+
+            $date_debut= new \DateTime($request->query->get('date_debut'));
+            $date_fin= new \DateTime($request->query->get('date_fin'));
+
+            $packs=$packRepository->findAll();
+            $reservations= $reservationRepository->findByPackDate($request->query->get('pack'), $date_debut, $date_fin);
+//          dd($reservations);
+            $requete = true;
+            return $this->render('front/verif_dispo.html.twig', [
+                "reservations"=>$reservations,
+                "requete"=>$requete,
+                'packs'=>$packs,
+                'resa_min'=>$resa_min,
+                'resa_max'=>$resa_max,
+            ]);
+
+        endif;
+        $requete = false;
+
+
+//    return $this->render('front/verif_dispo.html.twig',[
+//        'packs'=>$packs,
+//        'resa_min'=>$resa_min,
+//        'resa_max'=>$resa_max,
+//        "requete"=>$requete,
 //    ]);
+        return $this->render('laurence/reservation.html.twig',[
+            'packs'=>$packs,
+            'resa_min'=>$resa_min,
+            'resa_max'=>$resa_max,
+            "requete"=>$requete,
+        ]);
+
+
     }
 
 
-        // -------------------- A METTRE FRONTCONTROLLER --------------------//
-    // A REPRENDRE NE MARCHE PAS PROB ROUTE VOIR AUSSU gestion_packs.html.twig et detail_pack.html.twig
+
+
+    // -------------------- A METTRE FRONTCONTROLLER --------------------//
+    // une fois qu'il y aura une page qui montre tous les packs
     /**
      * @Route("/detail_pack/{id}", name="detail_pack")
      */
-    public function detail_pack(Pack $pack)
+    public function detail_pack(Pack $pack, $id)
     {
         return $this->render('laurence/detail_pack.html.twig', [
             'pack'=>$pack
@@ -364,4 +462,3 @@ class LaurenceController extends AbstractController
 
 
 }
-
