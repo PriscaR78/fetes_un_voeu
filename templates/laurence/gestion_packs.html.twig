@@ -7,6 +7,13 @@
             {{ message }}
         </div>
     {% endfor %}
+    {% for message in app.flashes('danger') %}
+        <div class="col-md-6 bg-danger p-4 rounded mx-auto text-center text-white mb-3">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+
     <div class="row justify-content-end">
         <div class="col-md-3">
             <a class="btn btn-info my-3 " href="{{ path('ajout_pack') }}">Ajouter un nouveau pack</a>

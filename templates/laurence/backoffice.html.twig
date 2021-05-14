@@ -19,8 +19,6 @@
             <th scope="col">Pack</th>
             <th scope="col">Cients</th>
             <th scope="col">Date</th>
-
-
         </tr>
         </thead>
         <tbody class="text-center">
@@ -30,12 +28,13 @@
                 <td>{{ reservation.pack.nom }}</td>
                 <td>{{ reservation.user.username }}</td>
                 <td>{{ reservation.date | date('d-m-Y')}}</td>
-
-
             </tr>
         {% endfor %}
         </tbody>
     </table>
+
+{#    <h2>Le pack le plus commandé</h2>#}
+{#    <p> {{ pack }}  </p>#}
 
 
 

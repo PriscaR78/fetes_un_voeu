@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\RegistrationType;
+use App\Repository\ReservationRepository;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -83,11 +84,16 @@ class SecurityController extends AbstractController
     /**
      * @Route("/supp_user/{id}", name="supp_user")
      */
-    public function suppression_user(User $user, EntityManagerInterface $manager)
+    public function suppression_user($id, User $user, EntityManagerInterface $manager, ReservationRepository $reservationRepository)
     {
+        $resa_client=$reservationRepository->findResaUser($id);
+        if ($resa_client):
+        $this->addFlash('danger', 'Ce client a des réservations en cours, la suppression de son compte n\'est pas possible avant l\'annulation de ces réservations');
+        else:
         $manager->remove($user);
         $manager->flush();
         $this->addFlash('success', 'Le compte client a bien été supprimé');
+        endif;
         return $this->redirectToRoute('gestion_clients');
     }
 

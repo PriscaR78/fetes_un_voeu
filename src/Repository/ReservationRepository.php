@@ -19,23 +19,23 @@ class ReservationRepository extends ServiceEntityRepository
         parent::__construct($registry, Reservation::class);
     }
 
-
+//  -------------------------  VERIFICATION D'UNE PLAGE DE DISPONIBILITE  -------------------------  //
     public function findByPackDate( $pack, \DateTime $date_debut, \DateTime $date_fin)
     {
-
         return $this->createQueryBuilder('r')
             ->where("r.date >= :debut")
             ->andWhere("r.date <= :fin")
             ->andWhere("r.pack = :pack" )
-//            ->andWhere("r.date' = :date")
             ->setParameter('debut', $date_debut)
             ->setParameter('fin', $date_fin)
             ->setParameter('pack', $pack)
-//            ->setParameter('date', $date)
            ->orderBy('r.date')
             ->getQuery()
             ->getResult();
     }
+
+
+//  -------------  VERIFICATION DE DISPONIBILITE POUR CONDITION RESERVATION  ------------  //
 
     public function findByResa($pack, \DateTime $date)
     {
@@ -48,11 +48,33 @@ class ReservationRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+
+//  -------------------------  RESERVATION PAR CLIENT POUR BACK-OFFICE  -------------------------  //
     public function findResaUser($user)
     {
         return $this->createQueryBuilder('r')
             ->where("r.user = :user")
             ->setParameter('user', $user)
+            ->getQuery()
+            ->getResult();
+    }
+
+//  -------------------  RESERVATION PAR PACK POUR BACK-OFFICE (vérif avant supp_pack)   ------------------  //
+    public function findResaPack($pack)
+    {
+        return $this->createQueryBuilder('r')
+            ->where("r.pack = :pack")
+            ->setParameter('pack', $pack)
+            ->getQuery()
+            ->getResult();
+    }
+
+//  -------------------------  PACKS LES PLUS RESERVES POUR BACK-OFFICE  -------------------------  //
+    public function findTopPack($pack)
+    {
+        return $this->createQueryBuilder('r')
+            ->where("r.pack = :pack")
+            ->setParameter('pack', $pack)
             ->getQuery()
             ->getResult();
     }
