@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'backoffice.html.twig' %}
 
 {% block body %}
     <h1>Gestion des clients</h1>
@@ -19,10 +19,7 @@
             <th scope="col">Pseudo</th>
             <th scope="col">Email</th>
             <th scope="col">Date de naissance</th>
-            <th scope="col">Réservations effectuées</th>
-
-            <th scope="col">Voir</th>
-            <th scope="col">Modifier</th>
+            <th scope="col">Voir Réservations effectuées</th>
             <th scope="col">Supprimer</th>
         </tr>
         </thead>
@@ -38,10 +35,9 @@
 
 {#               <td>{{ reservation.pack.nom }}</td>#}
 
+                <td><a href="{{ path('resa_client', {'id': user.id }) }}"><img src="{{ asset('images/loupe.png') }}" alt="voir"></a></td>
 
-                {#               <td><a href="{{ path('detail_pack', {'id': pack.id }) }}">Voir</a></td>#}
-                {#                <td><a href="{{ path('article_modif', {'id': article.id}) }}"><img src="{{ asset('images/update.png') }}" alt="modifier"></a></td>#}
-                {#                <td><a href=""><img src="{{ asset('images/delete.png') }}" alt="supprimer"></a></td>#}
+                    <td><a href="{{ path('supp_user', {'id': user.id }) }}"><img src="{{ asset('images/delete.png') }}" alt="supprimer"></a></td>
             </tr>
         {% endfor %}
         </tbody>

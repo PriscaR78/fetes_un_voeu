@@ -19,6 +19,44 @@ class ReservationRepository extends ServiceEntityRepository
         parent::__construct($registry, Reservation::class);
     }
 
+
+    public function findByPackDate( $pack, \DateTime $date_debut, \DateTime $date_fin)
+    {
+
+        return $this->createQueryBuilder('r')
+            ->where("r.date >= :debut")
+            ->andWhere("r.date <= :fin")
+            ->andWhere("r.pack = :pack" )
+//            ->andWhere("r.date' = :date")
+            ->setParameter('debut', $date_debut)
+            ->setParameter('fin', $date_fin)
+            ->setParameter('pack', $pack)
+//            ->setParameter('date', $date)
+           ->orderBy('r.date')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findByResa($pack, \DateTime $date)
+    {
+        return $this->createQueryBuilder('r')
+            ->where("r.date = :date")
+            ->andWhere("r.pack = :pack")
+            ->setParameter('date', $date)
+            ->setParameter('pack', $pack)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findResaUser($user)
+    {
+        return $this->createQueryBuilder('r')
+            ->where("r.user = :user")
+            ->setParameter('user', $user)
+            ->getQuery()
+            ->getResult();
+    }
+
     // /**
     //  * @return Reservation[] Returns an array of Reservation objects
     //  */

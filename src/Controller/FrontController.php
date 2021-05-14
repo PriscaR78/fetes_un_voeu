@@ -17,8 +17,11 @@ class FrontController extends AbstractController
     {
         $informations=[
             'fonction'=>'doudou',
-            'faiblesse'=>'cookies'
+            'faiblesse'=>'cookies',
+            'today'=>date('Y-m-d')
         ];
+
+
 
         return $this->render('front/home.html.twig', [
             'prenom'=>'Marcel',
@@ -35,4 +38,6 @@ class FrontController extends AbstractController
     {
         return $this->render('front/profil.html.twig');
     }
+
+
 }

@@ -1,0 +1,42 @@
+{% extends 'backoffice.html.twig' %}
+
+{% block body %}
+{#<h1>Réservations effectuées par {{ user.prenom }} {{ user.nom }}</h1>#}
+    <table class="table table-striped w-50">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Pack</th>
+            <th scope="col">Date</th>
+
+        </tr>
+        </thead>
+        <tbody class="text-center">
+        {% for reservation  in reservations %}
+            <tr>
+                <td>{{ reservation.id }}</td>
+                <td>{{ reservation.pack.nom }}</td>
+                <td>{{ reservation.date | date('d-m-Y')  }}</td>
+
+
+
+                {#               <td>{{ reservation.pack.nom }}</td>#}
+
+
+                {#    <td><a href="{{ path('detail_pack', {'id': pack.id }) }}">Voir</a></td>#}
+
+                {#    <td><a href=""><img src="{{ asset('images/delete.png') }}" alt="supprimer"></a></td>#}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+
+
+{% endblock %}
+
+{% block title %}
+
+{% endblock %}
+

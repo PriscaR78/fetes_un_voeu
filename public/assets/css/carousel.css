@@ -5,8 +5,8 @@
 body {
     padding-top: 5rem;
     padding-bottom: 2rem;
-    color: #5a5a5a;
-  
+    color: #4b1348;
+    
 }
 
 
@@ -15,7 +15,9 @@ body {
 
 /* Carousel base class */
 .carousel {
-    margin-bottom: 4rem;
+    padding-top: 6rem;
+    padding-bottom: 4rem;
+    background-color: #ffb908e1;
   
 }
 /* Since positioning the image, we need to help out the caption */
@@ -27,8 +29,8 @@ body {
 
 /* Declare heights because of positioning of img element */
 .carousel-item {
-    height: 80vh;
-    width: 130vh;
+    height: 67.72vh;
+    width: 120.40vh;
        
 }
 .carousel-item > img {
@@ -36,7 +38,7 @@ body {
     top: 0;
     left: 40%;
     width: 100%;
-    height: auto;
+    height: 100%;
 }
 
 

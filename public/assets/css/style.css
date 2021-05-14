@@ -1,5 +1,46 @@
 .navbar-default {
 
     background-color: #eddcf9;
+    border-bottom: 2px solid #ffba08e1;
+   
 }
 
+body {
+
+    margin-top: 5vh;
+    
+}
+
+#prestations, #galerie, #avis, #contact {
+
+    margin-top: 8vh;
+    margin-bottom: 8vh;
+   
+}
+
+#email, #message, #prenom, #nom {
+
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+   
+}
+
+#btn-back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: none;
+    background-color: #FFBA08;
+  }
+
+  /* Par défaut, une étoile est en gris,
+   avec un padding et un curseur en forme de main. */
+.fa-star {
+	color: gray;
+	cursor: pointer;
+	padding: 0.0625rem;
+}
+/* Si elle porte en plus la classe '.gold', elle sera en jaune. */
+.fa-star.gold {
+	color: #ffba08;
+}
