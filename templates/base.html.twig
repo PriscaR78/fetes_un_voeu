@@ -101,8 +101,9 @@
                 <div class="nav-item dropdown my-2 my-lg-0 mr-5">
                     <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        utilisateur
-                    </a>
+						{{ app.user.username }}
+
+                    </a
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{ path('profil', {id:app.user.id}) }}">Profil</a>
                         {% if is_granted('ROLE_ADMIN') %}
