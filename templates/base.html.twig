@@ -40,9 +40,7 @@
 
            {% endblock %}
 	</head>
-	<body>
-
-		<header>
+	<header>
 
     <nav class="d-flex navbar-default navbar-expand-md fixed-top p-3 ">
 				<div><a href="/prisca"> <img src={{asset('images/imagesUpload/logo/logo_fetes_un_voeu.png')}} alt="Logo fête un voeu" width="125">
@@ -81,36 +79,6 @@
 					</a>
 				</li>
 
-				<!-- Section: Social media -->
-
-				<a href="https://www.facebook.com/fetesvosvoeux" target="blank"><img src="{{asset('/images/imagesUpload/icones/facebook.svg')}}" width="40em" height="40em" class="mr-2"></img></a>
-				<a href="https://www.instagram.com/fetes_unvoeu/?hl=fr" target="blank"><img src="{{asset('/images/imagesUpload/icones/instagram-orange.svg')}}" width="40em" height="40em" class="mr-2" ></img></a>
-				<a href="https://github.com/PriscaR78/fetes_un_voeu" target="blank"><img src="{{asset('/images/imagesUpload/icones/github-border-dark.svg')}}" width="45em" height="45em" class="mr-5"></img></a>
-
-
-					<li class="nav-item active mr-2">
-					<a href=""><img class="bd-placeholder-img rounded-circle" width="50" height="50" src={{asset('/images/imagesUpload/icones/fem.jpeg')}} role="img" aria-label="profil">
-					</a></img>
-				
-	
-			</ul>
-
-</div>
- </nav>
-
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-        <a class="navbar-brand text-info" href="{{ path('home')}}">Back Office</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse ml-5" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active mr-4">
-                    <a class="nav-link text-white" href="{{ path('home')}} ">Accueil</a>
-                </li>
                 <li class="nav-item active mr-4">
                     <a class="nav-link text-white" href="{{ path('ajout_pack')}} ">Ajout pack</a>
                 </li>
@@ -124,8 +92,18 @@
                     <a class="nav-link text-white" href="{{ path('top_pack')}}">Top</a>
                 </li>
 
-            </ul>
-            {% if app.user %}
+				<!-- Section: Social media -->
+
+				<a href="https://www.facebook.com/fetesvosvoeux" target="blank"><img src="{{asset('/images/imagesUpload/icones/facebook.svg')}}" width="40em" height="40em" class="mr-2"></img></a>
+				<a href="https://www.instagram.com/fetes_unvoeu/?hl=fr" target="blank"><img src="{{asset('/images/imagesUpload/icones/instagram-orange.svg')}}" width="40em" height="40em" class="mr-2" ></img></a>
+				<a href="https://github.com/PriscaR78/fetes_un_voeu" target="blank"><img src="{{asset('/images/imagesUpload/icones/github-border-dark.svg')}}" width="45em" height="45em" class="mr-5"></img></a>
+
+
+					<li class="nav-item active mr-2">
+					<a href=""><img class="bd-placeholder-img rounded-circle" width="50" height="50" src={{asset('/images/imagesUpload/icones/fem.jpeg')}} role="img" aria-label="profil">
+					</a></img>
+				
+	 {% if app.user %}
                 <div class="nav-item dropdown my-2 my-lg-0 mr-5">
                     <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -146,15 +124,15 @@
                 <a class="nav-link " href="{{path('login')}}">Connexion</a>
                 <a class="nav-link " href="{{ path('inscription') }}">Inscription</a>
             {% endif %}
-        </div>
-    </nav>
-</header>
+			</ul>
 
+</div>
+ </nav>
+
+</header>
+<body>
     <div class="container">
     
-
-
-
 <main role="main">
 <div id="myCarousel" class="carousel slide img-fluid mx-auto" data-ride="carousel"><ol class="carousel-indicators">
 <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -198,7 +176,7 @@ Fêtes un voeu, au service de vos festivités !</p></div></div><br>
 
 <!-- Marketing messaging and featurettes
 					    ================================================== --><!-- Wrap the rest of the page in another container to center all the content. -->
-						<div class="container marketing">{% block content %}{% endblock %} </div><!-- /.container --><!-- FOOTER --><!-- RENSEIGNEMENYS --><!-- Footer -->
+						<div class="container marketing">{% block content %}{% endblock %} </div>
 <footer class="text-center bg-light text-muted "> <!-- CONTACT -->
 <div class="mb-5 p-3 shadow m-4 ">
 <div class="align-content-center">
@@ -295,17 +273,6 @@ class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-4">
 	- <a class="text-reset fw-bold" href="/"> Protection des données</a>
 		</div></footer>
 
-
-
-        {% for message in app.flashes('success') %}
-            <div class="col-md-6 bg-secondary p-4 rounded mx-auto text-center text-white mb-3">
-                {{ message }}
-            </div>
-        {% endfor %}
-
- {% block body %}
-
-        {% endblock %}
 
         {% block javascripts %}
             <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
