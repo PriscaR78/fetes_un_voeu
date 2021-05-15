@@ -40,7 +40,9 @@
 
            {% endblock %}
 	</head>
-	<header>
+	<body>
+
+		<header>
 
     <nav class="d-flex navbar-default navbar-expand-md fixed-top p-3 ">
 				<div><a href="/prisca"> <img src={{asset('images/imagesUpload/logo/logo_fetes_un_voeu.png')}} alt="Logo fête un voeu" width="125">
@@ -79,6 +81,36 @@
 					</a>
 				</li>
 
+				<!-- Section: Social media -->
+
+				<a href="https://www.facebook.com/fetesvosvoeux" target="blank"><img src="{{asset('/images/imagesUpload/icones/facebook.svg')}}" width="40em" height="40em" class="mr-2"></img></a>
+				<a href="https://www.instagram.com/fetes_unvoeu/?hl=fr" target="blank"><img src="{{asset('/images/imagesUpload/icones/instagram-orange.svg')}}" width="40em" height="40em" class="mr-2" ></img></a>
+				<a href="https://github.com/PriscaR78/fetes_un_voeu" target="blank"><img src="{{asset('/images/imagesUpload/icones/github-border-dark.svg')}}" width="45em" height="45em" class="mr-5"></img></a>
+
+
+					<li class="nav-item active mr-2">
+					<a href=""><img class="bd-placeholder-img rounded-circle" width="50" height="50" src={{asset('/images/imagesUpload/icones/fem.jpeg')}} role="img" aria-label="profil">
+					</a></img>
+				
+	
+			</ul>
+
+</div>
+ </nav>
+
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+        <a class="navbar-brand text-info" href="{{ path('home')}}">Back Office</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse ml-5" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active mr-4">
+                    <a class="nav-link text-white" href="{{ path('home')}} ">Accueil</a>
+                </li>
                 <li class="nav-item active mr-4">
                     <a class="nav-link text-white" href="{{ path('ajout_pack')}} ">Ajout pack</a>
                 </li>
@@ -92,18 +124,8 @@
                     <a class="nav-link text-white" href="{{ path('top_pack')}}">Top</a>
                 </li>
 
-				<!-- Section: Social media -->
-
-				<a href="https://www.facebook.com/fetesvosvoeux" target="blank"><img src="{{asset('/images/imagesUpload/icones/facebook.svg')}}" width="40em" height="40em" class="mr-2"></img></a>
-				<a href="https://www.instagram.com/fetes_unvoeu/?hl=fr" target="blank"><img src="{{asset('/images/imagesUpload/icones/instagram-orange.svg')}}" width="40em" height="40em" class="mr-2" ></img></a>
-				<a href="https://github.com/PriscaR78/fetes_un_voeu" target="blank"><img src="{{asset('/images/imagesUpload/icones/github-border-dark.svg')}}" width="45em" height="45em" class="mr-5"></img></a>
-
-
-					<li class="nav-item active mr-2">
-					<a href=""><img class="bd-placeholder-img rounded-circle" width="50" height="50" src={{asset('/images/imagesUpload/icones/fem.jpeg')}} role="img" aria-label="profil">
-					</a></img>
-				
-	 {% if app.user %}
+            </ul>
+            {% if app.user %}
                 <div class="nav-item dropdown my-2 my-lg-0 mr-5">
                     <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -124,15 +146,26 @@
                 <a class="nav-link " href="{{path('login')}}">Connexion</a>
                 <a class="nav-link " href="{{ path('inscription') }}">Inscription</a>
             {% endif %}
-			</ul>
-
-</div>
- </nav>
-
+        </div>
+    </nav>
 </header>
-<body>
+
     <div class="container">
     
+
+
+        {% for message in app.flashes('success') %}
+            <div class="col-md-6 bg-secondary p-4 rounded mx-auto text-center text-white mb-3">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+ {% block body %}
+
+        {% endblock %}
+       
+
+
 <main role="main">
 <div id="myCarousel" class="carousel slide img-fluid mx-auto" data-ride="carousel"><ol class="carousel-indicators">
 <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -176,292 +209,7 @@ Fêtes un voeu, au service de vos festivités !</p></div></div><br>
 
 <!-- Marketing messaging and featurettes
 					    ================================================== --><!-- Wrap the rest of the page in another container to center all the content. -->
-						<div class="container marketing">
-                        <!-- div card packs prestations -->
-	<div id="prestations">
-	<div class="packsCards">
-		<h2 class="text-center" id="">Nos prestations</h2>
-		<div class="album py-4">
-			<div class="container">
- 			</div>
-		
-		
-		</div>
-	</div>
-
-<div class="row row-cols-1 row-cols-md-2 g-4 ">
-  <div class="col">
-    <div class="card shadow m-4">
-      <img
-        src="{{asset('/images/imagesUpload/img-card-anniv-enfants.jpg')}}"
-        class="card-img-top"
-        alt="..."
-      />
-      <div class="card-body">
-        <h5 class="card-title">Pack anniversaire enfant</h5>
-        <p class="card-text">
-          Des formules clefs en main à une fête plus personnalisée, chez vous ou dans un autre lieu, tout est possible.
-Votre enfant, Roi de la fête choisit alors l’atelier ou une thématique parmi...
-        </p> 		
-
-<p>
-  <a class="btn btn-info shadow m-4" data-toggle="collapse" href="verif_dispo.html.twig" role="button" aria-expanded="false" aria-controls="collapseExample">
-    Réserver
-  </a>
-  <button class="btn shadow m-4" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-   En savoir plus
-  </button>
-</p>
-<div class="collapse" id="collapseExample">
-  <div class="card m-2 p-3 text-justify">
-    notre sélection d’activités, toutes sélectionnées pour leurs approches créatives, ludiques et originales. Vous avez un gourmand ? C’est une graine d’artiste ? 
-	   Le sport, il adore ? Geek un jour, geek toujours ? Il a une âme d’explorateur ? Une vocation scientifique ?… 
-	   Parmi les nombreuses activités que nous avons sélectionnées auprès de professionnels, nous trouverons ensemble le thème et le programme de rêve pour son anniversaire.
-	   Nous vous rencontrons avec votre enfant pour connaître ses goûts, votre budget, le nombre d’invités et pour définir vos besoins (invitations, animations, décorations, gâteaux, etc).
-	   Le jour-J nous coordonnons et gérons l’anniversaire : installation et déroulement (animation-gâteau-décoration).
-	   <br>Prix : A partir de 300 € </div>
-</div>
-								
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card shadow m-4">
-      <img
-        src="{{asset('/images/imagesUpload/img-card-anniv-adultes.jpg')}}"
-        class="card-img-top"
-        alt="..."
-      />
-      <div class="card-body">
-        <h5 class="card-title">Pack anniversaire adulte</h5>
-        <p class="card-text">
-         Un anniversaire programmé ? Un anniversaire surprise ? Votre petite amie, votre mari, votre grand-mère ? Pour ses 35 ans, vos 50 ans, ses 80 ans ? 
-		 Fêtes un voeu vous conseille et... 
-        </p>
-<p>
-  <a class="btn btn-info shadow m-4" data-toggle="collapse" href="verif_dispo.html.twig" role="button" aria-expanded="false" aria-controls="collapseExample">
-    Réserver
-  </a>
-  <button class="btn shadow m-4" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
-   En savoir plus
-  </button>
-</p>
-<div class="collapse" id="collapseExample2">
-  <div class="card m-2 p-3 text-justify">
-   vous accompagne dans le choix du lieu (à domicile, dans un restaurant ou dans une salle), la durée (sur un week-end, une soirée), et de la thématique, etc. Nous nous occupons de vos réservations, de l’installation et de l’envoi des invitations si vous le souhaitez.
-       <br>  Prix : Nous consulter</div>
-</div>
-
-
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card shadow m-4">
-      <img
-        src="{{asset('/images/imagesUpload/img-card-karaoke.jpg')}}"
-        class="card-img-top"
-        alt="..."
-      />
-      <div class="card-body">
-        <h5 class="card-title">Pack soirées karaoké</h5>
-        <p class="card-text">
-        Les soirées les plus réussies sont souvent les plus simples, celles dans lesquelles on peut chanter et danser, avec une programmation musicale que tout le monde connait, et qui rappelle à tous de bons souvenirs... 
-			</p>
-								
-        </p><p>
-  <a class="btn btn-info shadow m-4" data-toggle="collapse" href="verif_dispo.html.twig" role="button" aria-expanded="false" aria-controls="collapseExample">
-    Réserver
-  </a>
-  <button class="btn shadow m-4" type="button" data-toggle="collapse" data-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample">
-   En savoir plus
-  </button>
-</p>
-<div class="collapse" id="collapseExample3">
-  <div class="card m-2 p-3 text-justify">
-  D’ailleurs, souvent les chansons les plus populaires sont le meilleur moyen de permettre à chacun de se lâcher comme il le faut.
-	 Une animation Karaoké pour vos soirées privées avec plus de 44 000 titres disponibles, un book de sélection rapide personnalisable, 4 micros sans fil, une sonorisation professionnelle. 
-  Bref, un matériel professionnel de qualité, adapté aux soirées privées. 
-  <br>Prix : à partir de 300€</div>
-</div>
-      </div>
-    </div>
-  </div>
-  <div class="col">
-    <div class="card shadow m-4">
-      <img
-        src="{{asset('/images/imagesUpload/image-soirees.jpeg')}}"
-        class="card-img-top"
-        alt="..."
-      />
-      <div class="card-body">
-        <h5 class="card-title">Pack soirées dansantes</h5>
-        <p class="card-text">
-          Vous souhaitez plutôt une soirée classique autour d’un cocktail au rythme d’un rock endiablé ou une soirée à thème qui transforme vos invités en acteurs de l’évènement grâce à une activité collective ou atypique.
-
-        </p><p>
-  <a class="btn btn-info shadow m-4" data-toggle="collapse" href="verif_dispo.html.twig" role="button" aria-expanded="false" aria-controls="collapseExample">
-    Réserver
-  </a>
-  <button class="btn shadow m-4" type="button" data-toggle="collapse" data-target="#collapseExample4" aria-expanded="false" aria-controls="collapseExample">
-   En savoir plus
-  </button>
-</p>
-<div class="collapse" id="collapseExample4">
-  <div class="card m-2 p-3 text-justify">
-  Lieu, traiteur, ambiance musicale, service de sécurité, etc. Nous prenons en charge l’ensemble des prestations (réservation, gestion, coordination, …).
-<br>Prix : Nous consulter</div>
-</div>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-</div>
-		<!-- GALERIE -->
-
-<div class="container" >
-			
-<section id="shadows">
-
-  <!--Title-->
-  <h2 class="section-heading text-center" id="galerie">
-   Galerie
-  </h2>
-  <!--Section: Live preview-->
-  <section class="section-preview">
-    <!--Grid row-->
-    <div class="row">
-      <!--Grid column-->
-      <div class="col-lg-4 col-md-12 mb-4">
-        <img src={{asset('/images/imagesUpload/img-1.jpg')}} class="img-fluid z-depth-1" alt="1">
-      </div>
-      <!--Grid column-->
-      <!--Grid column-->
-      <div class="col-lg-4 col-md-6 mb-4">
-        <img src={{asset('/images/imagesUpload/img-2.jpg')}}  class="img-fluid z-depth-1-half" alt="2">
-      </div>
-      <!--Grid column-->
-      <!--Grid column-->
-      <div class="col-lg-4 col-md-6 mb-4">
-        <img src={{asset('/images/imagesUpload/img-3.jpg')}}  class="img-fluid z-depth-2" alt="3">
-      </div>
-      <!--Grid column-->
-    </div>
-    <!--Grid row-->
-    <!--Grid row-->
-    <div class="row">
-      <!--Grid column-->
-      <div class="col-lg-4 col-md-12 mb-4">
-        <img src={{asset('/images/imagesUpload/img-4.jpg')}}  class="img-fluid z-depth-3" alt="4">
-      </div>
-      <!--Grid column-->
-      <!--Grid column-->
-      <div class="col-lg-4 col-md-6 mb-4">
-        <img src={{asset('/images/imagesUpload/img-5.jpg')}}  class="img-fluid z-depth-4" alt="5">
-      </div>
-      <!--Grid column-->
-      <!--Grid column-->
-      <div class="col-lg-4 col-md-6 mb-4">
-        <img src={{asset('/images/imagesUpload/img-6.jpg')}}  class="img-fluid z-depth-5" alt="6">
-      </div>
-      <!--Grid column-->
-    </div>
-    <!--Grid row-->
-
-	
-  </section>
-
-
-</div>
-
-
-		
-
-
-	<!-- AVIS -->
-	<div class="container">
-		<div>
-			<h2 class="text-center" id="avis">Avis</h2>
-		</div>
-		<div class="row mt-5 justify-self-center">
-
-<!-- 1er avis -->
-			<div class="col-lg-4 text-center">
-       <div class="col-lg-4 text-center">
-        <img src={{asset('/images/imagesUpload/Olivia.png')}} class="" alt="6">
-      </div>
-
-			<div class="rating">
-	<div class="stars">
-		<i class="fa fa-star gold"></i>
-		<i class="fa fa-star gold"></i>
-		<i class="fa fa-star gold"></i>
-		<i class="fa fa-star gold"></i>
-		<i class="fa fa-star"></i>
-	</div>
-	
-</div>
-
-				<h2 class="mt-4">Olivia</h2>
-				<p class="text-justify">
-Bonjour bonjour!
-Le cadre idyllique des plus beaux paysages de vacances, les mines réjouies de nos invités, et surtout… un feu d’artifices mémorable qui nous a été offert par notre ami artificier.
-Comment ne pas garder ces précieux souvenirs toute une vie! Cela nous motive à organiser une énorme fête pour nos 15 ans de mariage. On prend les mêmes et on recommence?
-								</p>
-			</div>
-			<!-- 2e avis -->
-			<div class="col-lg-4 text-center">
-       <div class="col-lg-4 text-center">
-        <img src={{asset('/images/imagesUpload/eric.png')}} class="" alt="6">
-      </div>
-
-			<div class="rating">
-	<div class="stars">
-		<i class="fa fa-star gold"></i>
-		<i class="fa fa-star gold"></i>
-		<i class="fa fa-star gold"></i>
-		<i class="fa fa-star gold"></i>
-		<i class="fa fa-star"></i>
-	</div>
-	
-</div>
-
-				<h2 class="mt-4">Eric</h2>
-				<p class="text-justify">
-Salut !
-Mon anniversaire était un moment unique dans ma vie. Je m’en souviens comme si c’était hier. Son ambiance « Love Power », le cadre idyllique des plus beaux paysages de vacances...
-								</p>
-			</div>
-			<!-- 3e avis -->
-			<div class="col-lg-4 text-center">
-       <div class="col-lg-4 text-center">
-        <img src={{asset('/images/imagesUpload/faby.png')}} class="" alt="6">
-      </div>
-
-			<div class="rating">
-	<div class="stars">
-		<i class="fa fa-star gold"></i>
-		<i class="fa fa-star gold"></i>
-		<i class="fa fa-star gold"></i>
-		<i class="fa fa-star gold"></i>
-		<i class="fa fa-star gold"></i>
-	</div>
-	
-</div>
-
-				<h2 class="mt-4">Faby</h2>
-				<p class="text-justify">
-Hi !
-Mon mariage était un moment unique dans ma vie. Je m’en souviens comme si c’était hier. Son ambiance « Love Power », le cadre idyllique des plus beaux paysages de vacances, les mines réjouies de nos invités, et surtout… un feu d’artifices mémorable qui nous a été offert par notre ami artificier.
-Comment ne pas garder ces précieux souvenirs toute une vie! Cela nous motive à organiser une énorme fête pour nos 15 ans de mariage. On prend les mêmes et on recommence?
-								</p>
-			</div>
-		
-		</div>
-	
-	</div>
-</div><!-- Footer -->
+						<div class="container marketing">{% block content %}{% endblock %} </div><!-- /.container --><!-- FOOTER --><!-- RENSEIGNEMENYS --><!-- Footer -->
 <footer class="text-center bg-light text-muted "> <!-- CONTACT -->
 <div class="mb-5 p-3 shadow m-4 ">
 <div class="align-content-center">
@@ -557,7 +305,6 @@ class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-4">
 <div class="text-center p-4" style="background-color: #eddcf9">© 2021 Fêtes un voeu
 	- <a class="text-reset fw-bold" href="/"> Protection des données</a>
 		</div></footer>
-
 
         {% block javascripts %}
             <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
