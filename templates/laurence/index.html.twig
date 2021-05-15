@@ -9,6 +9,31 @@
         </div>
     {% endfor %}
 
+    <table class="table table-striped w-50">
+        <thead class="thead-light">
+        <tr>
+
+            <th scope="col">Pack</th>
+
+        </tr>
+        </thead>
+        <tbody class="text-center">
+        {% for top_pack in top_packs %}
+            <tr>
+
+                <td>{{ top_packs.id }}</td>
+
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+
+
+
+        <h2>Le pack le plus commandé</h2>
+        <p> {{ pack }}  </p>
 
 <style>
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }

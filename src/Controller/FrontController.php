@@ -2,6 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
+use App\Repository\ReservationRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -32,11 +35,16 @@ class FrontController extends AbstractController
        }
 
        /**
-        * @Route("/profil", name="profil")
+        * @Route("/profil/{id}", name="profil")
         */
-    public function profil()
+    public function profil(User $user, EntityManagerInterface $manager, ReservationRepository $reservationRepository)
     {
-        return $this->render('front/profil.html.twig');
+        $resa_client=$reservationRepository->findBy(array('user'=>$user));
+
+
+        return $this->render('front/profil.html.twig', [
+            'reservations'=>$resa_client
+        ]);
     }
 
 

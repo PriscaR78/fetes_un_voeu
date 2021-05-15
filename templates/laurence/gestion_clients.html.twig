@@ -2,11 +2,17 @@
 
 {% block body %}
     <h1>Gestion des clients</h1>
-{#    {% for message in app.flashes('success') %}#}
-{#        <div class="col-md-6 bg-secondary p-4 rounded mx-auto text-center text-white mb-3">#}
-{#            {{ message }}#}
-{#        </div>#}
-{#    {% endfor %}#}
+    {% for message in app.flashes('success') %}
+        <div class="col-md-6 bg-secondary p-4 rounded mx-auto text-center text-white mb-3">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    {% for message in app.flashes('danger') %}
+        <div class="col-md-6 bg-danger p-4 rounded mx-auto text-center text-white mb-3">
+            {{ message }}
+        </div>
+    {% endfor %}
     <div class="row justify-content-end">
 
     </div>

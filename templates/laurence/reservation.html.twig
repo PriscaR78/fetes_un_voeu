@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+
+    <h1>Réservation</h1>
+    <p>Nous vous proposons de vérifier un créneau de disponibilité.
+        Ensuite, après vous être connecté(e), vous pourrez réserver votre pack.</p>
+
+    <h2>Vérifiez les disponibilités</h2>
+
+    {% for message in app.flashes('success') %}
+    <div class="col-md-6 bg-primary p-4 rounded mx-auto text-center text-white mb-3">
+        {{ message }}
+    </div>
+{% endfor %}
+
+    {% for message in app.flashes('danger') %}
+        <div class="col-md-6 bg-danger p-4 rounded mx-auto text-center text-white mb-3">
+            {{ message }}
+        </div>
+
+    {% endfor %}
+    {% if requete == true %}
+        Ce pack n'est pas disponible aux dates suivantes :
+        <ul>
+            {% for reservation in reservations %}
+                <li>  {{ reservation.date | date('d-m-Y') }} </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <form action=" {{ path('verif_dispo')}} " method="get">
+
+        <label class="my-3" for="pack">Quel pack avez-vous choisi ?</label>
+
+        <select name="pack" class="form-control w-25" id="verif_pack">
+            <option value=""></option>
+            {% for pack in packs %}
+                <option value="{{ pack.id }}">{{ pack.nom }}</option>
+            {% endfor %}
+        </select>
+
+        <label class="my-3" for="date">Entre quelles dates désirez-vous réserver ?</label>
+        <p>  <input type="date"  name="date_debut" min={{ resa_min }}  max={{ resa_max }}>
+            <input type="date" name="date_fin" min={{ resa_min }} max={{ resa_max }}></p>
+
+        <button type="submit">Vérifier</button>
+
+    </form>
+
+
+    {% for message in app.flashes('success') %}
+        <div class="col-md-6 bg-secondary p-4 rounded mx-auto text-center text-white mb-3">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+
+    {#    {% if not app.user %}#}
+    {#        redirection page connexion #}
+    {#        {% else %}#}
+
+
+    <div class="w-25 m-4">
+        {{ form_start(formResa) }}
+
+        {{ form_row(formResa.date) }}
+        {#            <label for="date">Quelle date :</label>#}
+        {#            <input type="date" name="date">#}
+        {{ form_row(formResa.pack) }}
+
+
+        <button class="btn btn-outline-primary mb-5" type="submit">Ajouter</button>
+        {#{% endif %}#}
+
+        {{ form_end(formResa) }}
+
+    </div>
+
+
+
+
+
+
+
+
+{% endblock %}

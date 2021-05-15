@@ -1,6 +1,11 @@
 {% extends 'backoffice.html.twig' %}
 
 {% block body %}
+    {% for message in app.flashes('success') %}
+        <div class="col-md-6 bg-secondary p-4 rounded mx-auto text-center text-white mb-3">
+            {{ message }}
+        </div>
+    {% endfor %}
 {#<h1>Réservations effectuées par {{ user.prenom }} {{ user.nom }}</h1>#}
     <table class="table table-striped w-50">
         <thead class="thead-light">
