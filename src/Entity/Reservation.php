@@ -27,7 +27,7 @@ class Reservation
      * @ORM\JoinColumn(nullable=true)
      */
     private $user;
-
+//  @Assert\NotBlank(message="Ce champs doit être rempli")
     /**
      * @ORM\ManyToOne(targetEntity=Pack::class, inversedBy="reservations")
      * @ORM\JoinColumn(nullable=true)

@@ -27,7 +27,7 @@ class Pack
     /**
      * @ORM\Column(type="text")
      * @Assert\NotBlank(message="Merci de saisir une descrption")
-     * @Assert\Length(max=300, maxMessage="La description ne doit pas dépasser 300 caractères",min=30, minMessage="Veuillez remplir une description d'un minimum de 30 caractères")
+     * @Assert\Length(max=300, maxMessage="La description ne doit pas dépasser 300 caractères")
      */
     private $description1;
 
@@ -63,6 +63,11 @@ class Pack
     public $image1File;
     public $image2File;
     public $image3File;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $nbResa;
 
 
     public function getId(): ?int
@@ -150,6 +155,18 @@ class Pack
     public function setImage3(?string $image3): self
     {
         $this->image3 = $image3;
+
+        return $this;
+    }
+
+    public function getNbResa(): ?int
+    {
+        return $this->nbResa;
+    }
+
+    public function setNbResa(?int $nbResa): self
+    {
+        $this->nbResa = $nbResa;
 
         return $this;
     }

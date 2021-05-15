@@ -36,12 +36,17 @@ class LaurenceController extends AbstractController
     /**
      * @Route("/backoffice", name="backoffice")
      */
-    public function backoffice(ReservationRepository $repository)
+    public function backoffice(ReservationRepository $repository, UserRepository $userRepository, PackRepository $packRepository)
     {
         $reservations=$repository->findBy(array(), array('date'=>'ASC'), 5, null);
 
+        $top_clients=$userRepository->findBy(array(), array('resa_eff'=>'DESC'), 3, null);
+//dd($top_clients);
+        $top_packs=$packRepository->findBy(array(), array('nbResa'=>'DESC'), 3, null);
         return $this->render("/laurence/backoffice.html.twig", [
-            'reservations'=>$reservations
+            'reservations'=>$reservations,
+            'clients'=>$top_clients,
+            'packs'=>$top_packs
         ]);
     }
 
@@ -80,7 +85,7 @@ class LaurenceController extends AbstractController
             'reservations'=>$reservations
         ]);
     }
-
+// -----        permet l'affichage des réservations effectuées par client dans back-office        ----- //
     /**
      * @Route("/resa_client/{id}", name="resa_client")
      */
@@ -92,7 +97,7 @@ class LaurenceController extends AbstractController
             'reservations'=>$resa_client
         ]);
     }
-
+// -----        permet l'affichage des 3 packs les plus réservés dans back-office        ----- //
     /**
      * @Route("/top_pack", name="top_pack")
      */
@@ -104,12 +109,20 @@ class LaurenceController extends AbstractController
         foreach ($packs as $pack):
             $resas[$pack->getId()]=count($reservationRepository->findBy(array('pack'=>$pack)));
             endforeach;
-        dd($resas);
+//        dd($resas);
         $top_packs=$reservationRepository->findBy(array(), array('pack'=>'ASC'), 5, null);
-        dd($top_packs);
+//        dd($top_packs);
         return $this->render("/laurence/index.html.twig", [
             'top_packs'=>$top_packs
         ]);
+    }
+
+    /**
+     * @Route("/top-client", name="top_client")
+     */
+    public function top_client(UserRepository $userRepository)
+    {
+
     }
 
 
@@ -332,12 +345,12 @@ class LaurenceController extends AbstractController
     }
 
 
-            // ----------------------- VERIFICATION DISPONIBILITE ------------------------//
+            // --------------  VERIFICATION DISPONIBILITE + RESERVATION  ------------------//
 
     /**
      * @Route("/verif_dispo", name="verif_dispo")
       */
-    public function verif_dispo(EntityManagerInterface $manager,Request $request, ReservationRepository $reservationRepository, PackRepository $packRepository)
+    public function verif_dispo(EntityManagerInterface $manager,Request $request, ReservationRepository $reservationRepository, PackRepository $packRepository, UserRepository $userRepository)
     {
         $reservation = new Reservation();
         $form = $this->createForm(ReservationType::class, $reservation);
@@ -348,31 +361,38 @@ class LaurenceController extends AbstractController
         $requete = false;
         $packs=$packRepository->findAll();
 
-        if ($form->isSubmitted() && $form->isValid()):
-//
+
+        if ($form->isSubmitted() && $form->isValid()):  // formulaire post ajout_reservation
+//            dd($form);
             $d=new \DateTime($request->request->get('reservation')['date']);
             $p=$request->request->get('reservation')['pack'];
-            $resa_bdd=$reservationRepository->findBy(array('date'=>$d, 'pack'=>$p));
+            $resa_bdd=$reservationRepository->findBy(array('date'=>$d, 'pack'=>$p)); // vérif bdd si résa pack et jour
 
         if (count($resa_bdd)==0):
             $pack=$packRepository->find($request->request->get('reservation')['pack']);
-//        $NombreResas=$pack->getNombreResas
-//        $pack->setNombreResas($NombreResas+=1);
+          $NbResa=$pack->getNbResa();
+          $pack->setNbResa($NbResa+=1);
+            
+//          --------    A chaque réservation, on incrémente $resa_eff du client pour fonction top_client   ----
+            $user=$this->getUser();
+            $resa_eff=$user->getResaEff();
+            $user->setResaEff($resa_eff+=1);
+
+
             $manager->persist($reservation);
-//            $manager->persist(($pack));
+//          $manager->persist(($pack));
             $manager->flush();
 
             $this->addFlash("success", "La réservation a bien été enregistrée");
             return $this->redirectToRoute("home");
 
             else:
-                $this->addFlash("danger", "Une réservation est déjà enregistrée ce jour là ");
+                $this->addFlash("danger", "Ce pack n'est pas disponible à cette date.");
             // provisoire à modifier avec vraie route
            return $this->redirectToRoute('verif_dispo');
 
              endif;
         endif;
-
 
         $reservations=$reservationRepository->findAll();
         $packs=$packRepository->findAll();
@@ -382,7 +402,6 @@ class LaurenceController extends AbstractController
 
         $resa_min= date('Y-m-d', time());
         $resa_max = date('Y-m-d',time() + (365 * 24 * 60 * 60 ))   ;
-
 
 
         // ------------ CONTROLES RECEPTION FORMULAIRE ------------ //
@@ -397,12 +416,11 @@ class LaurenceController extends AbstractController
             $timstamp_fin = strtotime($date_fin);
 //          dump($date_debut);
 //          dump($timstamp_debut);
-
+//                                                      AJOUTER CONDITION SI date_debut==date_fin
             if ($timstamp_fin < $timstamp_debut):
 //              dump($timstamp_fin);
                 $this->addFlash('danger', "Les dates renseignées ne sont pas cohérentes");
             endif;
-//        $this->redirectToRoute('verif_dispo');
 
 
         // ------------ ENVOI DONNEES FORMULAIRE VERS REPOSITORY ------------ //
@@ -428,12 +446,6 @@ class LaurenceController extends AbstractController
         $requete = false;
 
 
-//    return $this->render('front/verif_dispo.html.twig',[
-//        'packs'=>$packs,
-//        'resa_min'=>$resa_min,
-//        'resa_max'=>$resa_max,
-//        "requete"=>$requete,
-//    ]);
         return $this->render('laurence/reservation.html.twig',[
             'formResa'=>$form->createView(),
             "requete"=>$requete,

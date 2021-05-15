@@ -1,15 +1,9 @@
 {% extends 'backoffice.html.twig' %}
 
 {% block body %}
-<div class="container m-5 d-flex">
-{#    <a class="nav-link " href="{{ path('gestion_packs') }}"><button class="btn  btn-outline-info">Gestion des#}
-{#            packs</button></a>#}
+<div class="container m-2 ">
 
-{#    <a class="nav-link " href="{{ path('gestion_reservations') }}"><button class="btn  btn-outline-danger">Gestion des#}
-{#            réservations</button></a>#}
-{#    <a class="nav-link " href="{{ path('gestion_clients') }}"><button class="btn  btn-outline-warning">Gestion des#}
-{#            clients</button></a>#}
-    </div>
+
 
 <h2> Les prochaines réservations</h2>
     <table class="table table-striped w-50">
@@ -26,19 +20,42 @@
             <tr>
                 <td>{{ reservation.id }}</td>
                 <td>{{ reservation.pack.nom }}</td>
-                <td>{{ reservation.user.username }}</td>
+                <td>{{ reservation.user.nom }}</td>
                 <td>{{ reservation.date | date('d-m-Y')}}</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
+    <div class="card w-50 ml-4 d-inline-flex">
+        <div class="card-header font-weight-bold bg-info text-center">
+            Meilleurs clients
+        </div>
 
-{#    <h2>Le pack le plus commandé</h2>#}
-{#    <p> {{ pack }}  </p>#}
+        <div class="card-body">
+            {% for client in clients %}
+            <p class="card-text"> {{ client.nom }}  {{ client.prenom }} : {{ client.resaEff }} réservation(s)</p>
+            <p class="card-text">  </p>
+            {% endfor %}
+        </div>
+
+    </div>
+
+    <div class="card w-50 ml-4 d-inline-flex">
+        <div class="card-header font-weight-bold bg-info text-center">
+            Meilleurs packs
+        </div>
+
+        <div class="card-body">
+            {% for pack in packs %}
+                <p class="card-text"> {{ pack.nom }}  : {{ pack.nbResa }} réservation(s)</p>
+                <p class="card-text">  </p>
+            {% endfor %}
+        </div>
+
+    </div>
 
 
-
-
+</div>
 
 
 {% endblock %}

@@ -69,15 +69,7 @@ class ReservationRepository extends ServiceEntityRepository
             ->getResult();
     }
 
-//  -------------------------  PACKS LES PLUS RESERVES POUR BACK-OFFICE  -------------------------  //
-    public function findTopPack($pack)
-    {
-        return $this->createQueryBuilder('r')
-            ->where("r.pack = :pack")
-            ->setParameter('pack', $pack)
-            ->getQuery()
-            ->getResult();
-    }
+
 
     // /**
     //  * @return Reservation[] Returns an array of Reservation objects
