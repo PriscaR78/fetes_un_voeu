@@ -4,10 +4,10 @@
 
  <div class="container mt-4">
     <h1 class="text-center p-4" style="background-color: #eddcf9">Réservation</h1>
-    <p class="text-center mt-4">Nous vous proposons de vérifier un créneau de disponibilité.
+    <p class="text-center mt-3">Nous vous proposons de vérifier un créneau de disponibilité.
     </p>
 
-    <h2>Vérifiez les disponibilités</h2>
+    <h2 class="mt-5">Vérifiez les disponibilités</h2>
 
     {% for message in app.flashes('success') %}
     <div class="col-md-6 bg-primary p-4 rounded mx-auto text-center text-white mb-3">
@@ -63,7 +63,7 @@
  <div class="container mt-4">
   <h4 class="text-danger text-center mt-4">PENSEZ A VOUS CONNECTER POUR RESERVER VOTRE PACK !</h4>
 <h2 class="mt-5">Votre réservation</h2>
-    <div class="w-25 m-4">
+    <div class="w-25 p-4">
         {{ form_start(formResa) }}
 
         {{ form_row(formResa.date) }}
