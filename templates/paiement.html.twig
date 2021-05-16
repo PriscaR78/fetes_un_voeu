@@ -1,3 +1,4 @@
+
 {% extends 'modeleConnexion.html.twig' %}
 
 {% block body %}
@@ -62,7 +63,7 @@
    <hr> 
  <div class="container mt-4">
   <h4 class="text-danger text-center mt-4">PENSEZ A VOUS CONNECTER POUR RESERVER VOTRE PACK !</h4>
-    <h2 class="mt-5">Votre réservation</h2>
+<h2 class="mt-5">Votre réservation</h2>
     <div class="w-25 p-4">
         {{ form_start(formResa) }}
 
@@ -70,15 +71,13 @@
         {#            <label for="date">Quelle date :</label>#}
         {#            <input type="date" name="date">#}
         {{ form_row(formResa.pack) }}
-</div>
-        <a href="" > <button class="btn btn-info m-2" type="submit">Paiement</button></a>
-        <a href="{{path('login')}}"> <button class="btn btn-info m-2" type="submit">Se connecter</button></a>
-        <a href="{{path('inscription')}}"> <button class="btn btn-info m-2" type="submit">S'inscrire</button></a>
-      
+
+
+        <button class="btn btn-info mt-4 mb-4" type="submit">Ajouter</button>
         {#{% endif %}#}
 
         {{ form_end(formResa) }}
- 
+
     </div>
 </div>
 </div>
