@@ -97,13 +97,13 @@
 					<a href=""><img class="bd-placeholder-img rounded-circle" width="50" height="50" src={{asset('/images/imagesUpload/icones/fem.jpeg')}} role="img" aria-label="profil">
 					</a></img>
 				
-	{% if app.user %}
+			{% if app.user %}
                 <div class="nav-item dropdown my-2 my-lg-0 mr-5">
                     <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						{{ app.user.username }}
 
-                    </a
+                    </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{ path('profil', {id:app.user.id}) }}">Profil</a>
                         {% if is_granted('ROLE_ADMIN') %}
@@ -285,7 +285,7 @@ class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-4">
             </div>
         {% endfor %}
  {% block body %}
- 
+
         {% endblock %}
 
         {% block javascripts %}

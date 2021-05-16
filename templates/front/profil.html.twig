@@ -1,7 +1,4 @@
-{% extends 'base.html.twig' %}
-
-
-
+{% extends 'modeleConnexion.html.twig' %}
 
 {% block body %}
 
@@ -14,9 +11,9 @@
             <p class="card-text">Votre pseudo : {{ app.user.username}} </p>
             <p class="card-text">Votre nom : {{ app.user.nom}} </p>
             <p class="card-text">Votre prénom : {{ app.user.prenom}} </p>
-            <p class="card-text">Votre prénom : {{ app.user.adresse}} </p>
-            <p class="card-text">Votre prénom : {{ app.user.cp}} </p>
-            <p class="card-text">Votre prénom : {{ app.user.ville}} </p>
+            <p class="card-text">Votre adresse : {{ app.user.adresse}} </p>
+            <p class="card-text">Votre code postal : {{ app.user.cp}} </p>
+            <p class="card-text">Votre ville : {{ app.user.ville}} </p>
 
 
 
