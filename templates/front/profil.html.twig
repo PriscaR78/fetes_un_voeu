@@ -1,10 +1,10 @@
 {% extends 'modeleConnexion.html.twig' %}
 
 {% block body %}
-<div class="container m-5">
+<div class="container mt-4">
     <h1 class="text-center p-4" style="background-color: #eddcf9">Mon profil</h1>
-    <div class="card w-50">
-        <div class="card-header font-weight-bold bg-info text-center">
+    <div class="card w-100">
+        <div class="card-header font-weight-bold text-center">
             Mes informations
         </div>
         <div class="card-body">
@@ -25,12 +25,12 @@
 
 </div>
 <hr>
-<div class="container m-5">
+<div class="container mt-4">
     <h2 class="text-center p-4" style="background-color: #eddcf9">Historique de vos réservations</h2>
-    <table class="table table-striped w-50">
-        <thead class="thead-light w-50">
+    <table class="table table-striped w-100 text-center">
+        <thead class="thead-light w-100">
         <tr>
-            <th scope="col">#</th>
+           
             <th scope="col">Pack</th>
             <th scope="col">Prix</th>
             <th scope="col">Date</th>
@@ -39,7 +39,6 @@
         <tbody class="text-center">
         {% for reservation in reservations %}
             <tr>
-                <td>{{ reservation.id }}</td>
                 <td>{{ reservation.pack.nom }}</td>
                 <td>{{ reservation.pack.prix }}</td>
                 <td>{{ reservation.date | date('d-m-Y') }}</td>
