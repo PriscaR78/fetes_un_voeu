@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Repository\ReservationRepository;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -37,7 +38,7 @@ class FrontController extends AbstractController
        /**
         * @Route("/profil/{id}", name="profil")
         */
-    public function profil(User $user, EntityManagerInterface $manager, ReservationRepository $reservationRepository)
+    public function profil(User $user, EntityManagerInterface $manager, ReservationRepository $reservationRepository, UserRepository $userRepository)
     {
         $resa_client=$reservationRepository->findBy(array('user'=>$user));
 

@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\RegistrationType;
 use App\Repository\ReservationRepository;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -50,8 +51,6 @@ class SecurityController extends AbstractController
                 $this->addFlash('success', "Vos modification ont bien été enregistrées.");
                     return $this->redirectToRoute('profil');
             endif;
-
-
         endif;
 
         return $this->render('security/inscription.html.twig',[
@@ -59,6 +58,9 @@ class SecurityController extends AbstractController
             'mode'=>$mode
         ]);
     }
+
+
+
 
     /**
      * @Route("/login", name="login")

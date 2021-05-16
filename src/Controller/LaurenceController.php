@@ -98,33 +98,6 @@ class LaurenceController extends AbstractController
             'reservations'=>$resa_client
         ]);
     }
-// -----        permet l'affichage des 3 packs les plus réservés dans back-office        ----- //
-    /**
-     * @Route("/top_pack", name="top_pack")
-     */
-    public function top_pack(ReservationRepository $reservationRepository, PackRepository $packRepository)
-    {
-       $packs=$packRepository->findAll();
-//        $top_packs=$reservationRepository->findTopPack($pack);
-        $resas=array();
-        foreach ($packs as $pack):
-            $resas[$pack->getId()]=count($reservationRepository->findBy(array('pack'=>$pack)));
-            endforeach;
-//        dd($resas);
-        $top_packs=$reservationRepository->findBy(array(), array('pack'=>'ASC'), 5, null);
-//        dd($top_packs);
-        return $this->render("/laurence/index.html.twig", [
-            'top_packs'=>$top_packs
-        ]);
-    }
-
-    /**
-     * @Route("/top-client", name="top_client")
-     */
-    public function top_client(UserRepository $userRepository)
-    {
-
-    }
 
 
     // -------------------------------------- PACK  -------------------------------------- //
