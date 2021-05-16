@@ -11,7 +11,8 @@
         <tr>
             <th scope="col">#</th>
             <th scope="col">Pack</th>
-            <th scope="col">Cients</th>
+            <th scope="col">Clients</th>
+            <th scope="col">Ville</th>
             <th scope="col">Date</th>
         </tr>
         </thead>
@@ -21,6 +22,7 @@
                 <td>{{ reservation.id }}</td>
                 <td>{{ reservation.pack.nom }}</td>
                 <td>{{ reservation.user.nom }}</td>
+                <td>{{ reservation.user.ville }}</td>
                 <td>{{ reservation.date | date('d-m-Y')}}</td>
             </tr>
         {% endfor %}

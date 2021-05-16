@@ -80,6 +80,13 @@ class RegistrationType extends AbstractType
                     "placeholder"=>'Veuillez saisir la ville']
             ])
 
+            ->add('telephone',NumberType::class, [
+                "label"=>'téléphone',
+                "required"=>false,
+                "attr"=>[
+                    "placeholder"=>'Veuillez saisir votre numéro de téléphone']
+            ])
+
             ->add('valider', SubmitType::class)
         ;
     }

@@ -100,6 +100,11 @@ class User implements UserInterface
      */
     private $resa_eff;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $telephone;
+
     public function __construct()
     {
         $this->reservations = new ArrayCollection();
@@ -290,6 +295,18 @@ class User implements UserInterface
     public function setResaEff(?int $resa_eff): self
     {
         $this->resa_eff = $resa_eff;
+
+        return $this;
+    }
+
+    public function getTelephone(): ?int
+    {
+        return $this->telephone;
+    }
+
+    public function setTelephone(?int $telephone): self
+    {
+        $this->telephone = $telephone;
 
         return $this;
     }
