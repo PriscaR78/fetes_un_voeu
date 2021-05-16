@@ -33,6 +33,7 @@ class LaurenceController extends AbstractController
 
     // -------------------------------------- BACK-OFFICE -------------------------------------- //
 
+
     /**
      * @Route("/backoffice", name="backoffice")
      */
@@ -331,6 +332,8 @@ class LaurenceController extends AbstractController
 
 
 
+
+
                 // ----------------------- SUPPRESSION RESERVATION ------------------------//
     /**
      * @Route("/suppr_reservation/{id}", name="suppr_reservation")
@@ -372,7 +375,7 @@ class LaurenceController extends AbstractController
             $pack=$packRepository->find($request->request->get('reservation')['pack']);
           $NbResa=$pack->getNbResa();
           $pack->setNbResa($NbResa+=1);
-            
+
 //          --------    A chaque réservation, on incrémente $resa_eff du client pour fonction top_client   ----
             $user=$this->getUser();
             $resa_eff=$user->getResaEff();
