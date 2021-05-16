@@ -8,12 +8,12 @@
             {{ message }}
         </div>
     {% endfor %}
-    
-<div class="container m-5">
-<h1>Connexion</h1>
 
-    <form action="{{ path('login') }}" method="post" class="col-md-10 mt-4   w-25">
-        <div class="form-group ">
+<div class="container m-5">
+<h1 class="text-center p-4" style="background-color: #eddcf9">Se connecter</h1>
+
+    <form action="{{ path('login') }}" method="post" class="col-md-10 mt-5 w-50">
+        <div class="form-group">
             <label for="_username">E-mail</label>
             <input class="form-control" type="text" id="_username" name="_username" value="{{ lastuser }}">
         </div>
@@ -22,7 +22,7 @@
             <label for="_password">Mot de passe</label>
             <input class="form-control" type="password" id="_password" name="_password" >
         </div>
-        <button class="btn btn-primary" type="submit">Se connecter</button>
+        <button class="btn btn-info mt-5" type="submit">Se connecter</button>
     </form>
     </div>
 
