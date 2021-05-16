@@ -1,7 +1,9 @@
 {% extends 'backoffice.html.twig' %}
 
 {% block body %}
-    <h1 class="text-center mb-5 p-4" style="background-color: #eddcf9">Gestion des articles</h1>
+
+<div class="container">
+    <h1 class="text-center mt-5 mb-5 p-4" style="background-color: #eddcf9">Gestion des articles</h1>
     {% for message in app.flashes('success') %}
         <div class="col-md-6 bg-secondary p-4 rounded mx-auto text-center text-white mb-3">
             {{ message }}
@@ -50,6 +52,7 @@
         {% endfor %}
         </tbody>
     </table>
+    </div>
 
 {% endblock %}
 
