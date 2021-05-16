@@ -18,7 +18,7 @@
 
 
             <p class="card-text">Votre date de naissance : {{ app.user.birthday | date('d/m/Y')}} </p>
-            <p class="card-text">Votre email {{ app.user.email}} </p>
+            <p class="card-text">Votre email : {{ app.user.email}} </p>
             <a href=" {{ path('modifprofil', {'id':app.user.id} )}} " class="btn btn-info mx-auto">Modifier</a>
         </div>
     </div>
