@@ -2,8 +2,8 @@
 
 {% block body %}
 
-
-    <h1>Réservation</h1>
+ <div class="container mt-4">
+    <h1 class="text-center p-4" style="background-color: #eddcf9">Réservation</h1>
     <p>Nous vous proposons de vérifier un créneau de disponibilité.
         Ensuite, après vous être connecté(e), vous pourrez réserver votre pack.</p>
 
@@ -44,7 +44,7 @@
         <p>  <input type="date"  name="date_debut" min={{ resa_min }}  max={{ resa_max }}>
             <input type="date" name="date_fin" min={{ resa_min }} max={{ resa_max }}></p>
 
-        <button type="submit">Vérifier</button>
+        <button class="btn btn-info mt-4 mb-4" type="submit">Vérifier</button>
 
     </form>
 
@@ -60,7 +60,7 @@
     {#        redirection page connexion #}
     {#        {% else %}#}
 
-<h2>Votre réservation</h2>
+<h2 class="mt-5">Votre réservation</h2>
     <div class="w-25 m-4">
         {{ form_start(formResa) }}
 
@@ -70,14 +70,14 @@
         {{ form_row(formResa.pack) }}
 
 
-        <button class="btn btn-outline-primary mb-5" type="submit">Ajouter</button>
+        <button class="btn btn-info mt-4 mb-4" type="submit">Ajouter</button>
         {#{% endif %}#}
 
         {{ form_end(formResa) }}
 
     </div>
 
-
+</div>
 
 
 
