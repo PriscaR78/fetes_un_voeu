@@ -1,20 +1,20 @@
 {% extends 'modeleConnexion.html.twig' %}
 
 {% block body %}
-
-    <h1 class="m-5 text-info">Mon profil</h1>
-    <div class="card w-25 ml-4">
+<div class="container m-5">
+    <h1 class="text-center p-4" style="background-color: #eddcf9">Mon profil</h1>
+    <div class="card w-50">
         <div class="card-header font-weight-bold bg-info text-center">
             Mes informations
         </div>
         <div class="card-body">
-            <p class="card-text">Votre pseudo : {{ app.user.username}} </p>
             <p class="card-text">Votre nom : {{ app.user.nom}} </p>
             <p class="card-text">Votre prénom : {{ app.user.prenom}} </p>
+            <p class="card-text">Votre pseudo : {{ app.user.username}} </p>
             <p class="card-text">Votre adresse : {{ app.user.adresse}} </p>
             <p class="card-text">Votre code postal : {{ app.user.cp}} </p>
             <p class="card-text">Votre ville : {{ app.user.ville}} </p>
-
+            {# <p class="card-text">Votre N° de téléphone : {{ app.user.tel}} </p> #}
 
 
             <p class="card-text">Votre date de naissance : {{ app.user.birthday | date('d/m/Y')}} </p>
@@ -23,8 +23,10 @@
         </div>
     </div>
 
-
-    <h2>Historique de vos réservations</h2>
+</div>
+<hr>
+<div class="container m-5">
+    <h2 class="text-center p-4" style="background-color: #eddcf9">Historique de vos réservations</h2>
     <table class="table table-striped w-50">
         <thead class="thead-light w-50">
         <tr>
@@ -47,7 +49,7 @@
     </table>
 
 
-
+</div>
 
 
 
