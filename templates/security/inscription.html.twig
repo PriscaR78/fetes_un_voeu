@@ -6,17 +6,17 @@
        {% if mode==true %}
 
 
-    <h1>Inscription</h1>
+    <h1 class="text-center p-4" style="background-color: #eddcf9">Créer un compte</h1>
            {% else %}
            <h1>Modifier le profil</h1>
        {% endif %}
 
-<div  class="col-md-10 mt-4   w-50">
+<div  class="col-md-10 mt-5 w-50">
     <div class="form-group ">
     {{ form_start(form) }}
-
-    {{ form_row(form.prenom) }}
+ 
     {{ form_row(form.nom) }}
+    {{ form_row(form.prenom) }}
     {{ form_row(form.username) }}
     {{ form_row(form.email) }}
     {{ form_row(form.password) }}

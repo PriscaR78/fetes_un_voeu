@@ -1,11 +1,11 @@
-{% extends 'base.html.twig' %}
+{% extends 'modeleConnexion.html.twig' %}
 
 {% block body %}
 
-
-    <h1>Réservation</h1>
-    <p>Nous vous proposons de vérifier un créneau de disponibilité.
-        Ensuite, après vous être connecté(e), vous pourrez réserver votre pack.</p>
+ <div class="container mt-4">
+    <h1 class="text-center p-4" style="background-color: #eddcf9">Réservation</h1>
+    <p class="text-center mt-4">Nous vous proposons de vérifier un créneau de disponibilité.
+    </p>
 
     <h2>Vérifiez les disponibilités</h2>
 
@@ -44,7 +44,7 @@
         <p>  <input type="date"  name="date_debut" min={{ resa_min }}  max={{ resa_max }}>
             <input type="date" name="date_fin" min={{ resa_min }} max={{ resa_max }}></p>
 
-        <button type="submit">Vérifier</button>
+        <button class="btn btn-info mt-4 mb-4" type="submit">Vérifier</button>
 
     </form>
 
@@ -59,8 +59,10 @@
     {#    {% if not app.user %}#}
     {#        redirection page connexion #}
     {#        {% else %}#}
-
-<h2>Votre réservation</h2>
+   <hr> 
+ <div class="container mt-4">
+  <h4 class="text-danger text-center mt-4">PENSEZ A VOUS CONNECTER POUR RESERVER VOTRE PACK !</h4>
+<h2 class="mt-5">Votre réservation</h2>
     <div class="w-25 m-4">
         {{ form_start(formResa) }}
 
@@ -70,14 +72,14 @@
         {{ form_row(formResa.pack) }}
 
 
-        <button class="btn btn-outline-primary mb-5" type="submit">Ajouter</button>
+        <button class="btn btn-info mt-4 mb-4" type="submit">Ajouter</button>
         {#{% endif %}#}
 
         {{ form_end(formResa) }}
 
     </div>
-
-
+</div>
+</div>
 
 
 
