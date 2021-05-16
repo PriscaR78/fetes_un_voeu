@@ -14,23 +14,28 @@
             <p class="card-text">Votre pseudo : {{ app.user.username}} </p>
             <p class="card-text">Votre nom : {{ app.user.nom}} </p>
             <p class="card-text">Votre prénom : {{ app.user.prenom}} </p>
+            <p class="card-text">Votre prénom : {{ app.user.adresse}} </p>
+            <p class="card-text">Votre prénom : {{ app.user.cp}} </p>
+            <p class="card-text">Votre prénom : {{ app.user.ville}} </p>
+
+
+
             <p class="card-text">Votre date de naissance : {{ app.user.birthday | date('d/m/Y')}} </p>
             <p class="card-text">Votre email {{ app.user.email}} </p>
             <a href=" {{ path('modifprofil', {'id':app.user.id} )}} " class="btn btn-info mx-auto">Modifier</a>
         </div>
-
     </div>
+
+
     <h2>Historique de vos réservations</h2>
-    <table class="table table-striped">
-        <thead class="thead-light">
+    <table class="table table-striped w-50">
+        <thead class="thead-light w-50">
         <tr>
             <th scope="col">#</th>
             <th scope="col">Pack</th>
             <th scope="col">Prix</th>
             <th scope="col">Date</th>
-            <th scope="col">Email</th>
-
-        </tr>
+                    </tr>
         </thead>
         <tbody class="text-center">
         {% for reservation in reservations %}
@@ -39,11 +44,6 @@
                 <td>{{ reservation.pack.nom }}</td>
                 <td>{{ reservation.pack.prix }}</td>
                 <td>{{ reservation.date | date('d-m-Y') }}</td>
-
-
-{#                <td><a href="{{ path('resa_client', {'id': user.id }) }}"><img src="{{ asset('images/loupe.png') }}" alt="voir"></a></td>#}
-
-{#                <td><a href="{{ path('supp_user', {'id': user.id }) }}"><img src="{{ asset('images/delete.png') }}" alt="supprimer"></a></td>#}
             </tr>
         {% endfor %}
         </tbody>

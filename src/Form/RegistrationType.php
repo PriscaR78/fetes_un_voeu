@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -57,6 +58,27 @@ class RegistrationType extends AbstractType
             ])
 
             ->add('birthday', BirthdayType::class, ['widget' => 'choice','placeholder'=>['day'=>'Jour','month'=>'Mois', 'year'=>'Année'] ,'format' => 'dd-MM-yyyy', 'html5'=>false, 'label'=>'Date de naissance'])
+
+            ->add('adresse',TextType::class,[
+                "label"=>'Adresse',
+                "required"=>false,
+                "attr"=>[
+                    "placeholder"=>'Veuillez saisir le n° et la rue']
+            ])
+
+            ->add('cp',NumberType::class, [
+                "label"=>'Code Postal',
+                "required"=>false,
+                "attr"=>[
+                    "placeholder"=>'Veuillez saisir le code postal']
+            ])
+
+            ->add('ville',TextType::class,[
+                "label"=>'Ville',
+                "required"=>false,
+                "attr"=>[
+                    "placeholder"=>'Veuillez saisir la ville']
+            ])
 
             ->add('valider', SubmitType::class)
         ;
