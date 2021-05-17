@@ -1,12 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}
-
-{% endblock %}
-
-
-
 {% block content %}
+
 
 	<!-- div card packs prestations -->
 	<div id="prestations">
@@ -32,11 +27,11 @@
         <h5 class="card-title">Pack anniversaire enfant</h5>
         <p class="card-text">
           Des formules clefs en main à une fête plus personnalisée, chez vous ou dans un autre lieu, tout est possible.
-Votre enfant, Roi de la fête choisit alors l’atelier ou une thématique parmi...
+Votre enfant, Roi de la fête choisit alors l’atelier ou une thématique parmi... blalblaaaaaaa
         </p> 		
 
 <p>
-  <a class="btn btn-info shadow m-4" data-toggle="collapse" href="verif_dispo.html.twig" role="button" aria-expanded="false" aria-controls="collapseExample">
+  <a class="btn btn-info shadow m-4" data-toggle="collapse" href="{{ path('verif_dispo')}}" role="button" aria-expanded="false" aria-controls="collapseExample">
     Réserver
   </a>
   <button class="btn shadow m-4" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
@@ -48,9 +43,7 @@ Votre enfant, Roi de la fête choisit alors l’atelier ou une thématique parmi
     notre sélection d’activités, toutes sélectionnées pour leurs approches créatives, ludiques et originales. Vous avez un gourmand ? C’est une graine d’artiste ? 
 	   Le sport, il adore ? Geek un jour, geek toujours ? Il a une âme d’explorateur ? Une vocation scientifique ?… 
 	   Parmi les nombreuses activités que nous avons sélectionnées auprès de professionnels, nous trouverons ensemble le thème et le programme de rêve pour son anniversaire.
-	   Nous vous rencontrons avec votre enfant pour connaître ses goûts, votre budget, le nombre d’invités et pour définir vos besoins (invitations, animations, décorations, gâteaux, etc).
-	   Le jour-J nous coordonnons et gérons l’anniversaire : installation et déroulement (animation-gâteau-décoration).
-	   <br>Prix : A partir de 300 € </div>
+	   <br>Prix : A partir de 300 €. Pack disponible pour 5 et 10 personnes.</div>
 </div>
 								
       </div>
@@ -70,7 +63,7 @@ Votre enfant, Roi de la fête choisit alors l’atelier ou une thématique parmi
 		 Fêtes un voeu vous conseille et... 
         </p>
 <p>
-  <a class="btn btn-info shadow m-4" data-toggle="collapse" href="verif_dispo.html.twig" role="button" aria-expanded="false" aria-controls="collapseExample">
+  <a class="btn btn-info shadow m-4" data-toggle="collapse" href="{{ path('verif_dispo')}}" role="button" aria-expanded="false" aria-controls="collapseExample">
     Réserver
   </a>
   <button class="btn shadow m-4" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
@@ -80,7 +73,7 @@ Votre enfant, Roi de la fête choisit alors l’atelier ou une thématique parmi
 <div class="collapse" id="collapseExample2">
   <div class="card m-2 p-3 text-justify">
    vous accompagne dans le choix du lieu (à domicile, dans un restaurant ou dans une salle), la durée (sur un week-end, une soirée), et de la thématique, etc. Nous nous occupons de vos réservations, de l’installation et de l’envoi des invitations si vous le souhaitez.
-       <br>  Prix : Nous consulter</div>
+       <br>  Prix : Nous consulter. Pack disponible pour 15 et 20 personnes.</div>
 </div>
 
 
@@ -101,7 +94,7 @@ Votre enfant, Roi de la fête choisit alors l’atelier ou une thématique parmi
 			</p>
 								
         </p><p>
-  <a class="btn btn-info shadow m-4" data-toggle="collapse" href="verif_dispo.html.twig" role="button" aria-expanded="false" aria-controls="collapseExample">
+  <a class="btn btn-info shadow m-4" data-toggle="collapse" href="{{ path('verif_dispo')}}" role="button" aria-expanded="false" aria-controls="collapseExample">
     Réserver
   </a>
   <button class="btn shadow m-4" type="button" data-toggle="collapse" data-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample">
@@ -131,7 +124,7 @@ Votre enfant, Roi de la fête choisit alors l’atelier ou une thématique parmi
           Vous souhaitez plutôt une soirée classique autour d’un cocktail au rythme d’un rock endiablé ou une soirée à thème qui transforme vos invités en acteurs de l’évènement grâce à une activité collective ou atypique.
 
         </p><p>
-  <a class="btn btn-info shadow m-4" data-toggle="collapse" href="verif_dispo.html.twig" role="button" aria-expanded="false" aria-controls="collapseExample">
+  <a class="btn btn-info shadow m-4" data-toggle="collapse" href="{{ path('verif_dispo')}}" role="button" aria-expanded="false" aria-controls="collapseExample">
     Réserver
   </a>
   <button class="btn shadow m-4" type="button" data-toggle="collapse" data-target="#collapseExample4" aria-expanded="false" aria-controls="collapseExample">
@@ -164,8 +157,8 @@ Votre enfant, Roi de la fête choisit alors l’atelier ou une thématique parmi
     <!--Grid row-->
     <div class="row">
       <!--Grid column-->
-      <div class="col-lg-4 col-md-12 mb-4">
-        <img src={{asset('/images/imagesUpload/img-1.jpg')}} class="img-fluid z-depth-1" alt="1">
+      <div class="col-lg-4 col-md-6 mb-4">
+        <img src={{asset('/images/imagesUpload/img-1.jpg')}} class="img-fluid z-depth-1-half" alt="1">
       </div>
       <!--Grid column-->
       <!--Grid column-->
@@ -175,7 +168,7 @@ Votre enfant, Roi de la fête choisit alors l’atelier ou une thématique parmi
       <!--Grid column-->
       <!--Grid column-->
       <div class="col-lg-4 col-md-6 mb-4">
-        <img src={{asset('/images/imagesUpload/img-3.jpg')}}  class="img-fluid z-depth-2" alt="3">
+        <img src={{asset('/images/imagesUpload/img-3.jpg')}}  class="img-fluid z-depth-2-half" alt="3">
       </div>
       <!--Grid column-->
     </div>
@@ -183,18 +176,18 @@ Votre enfant, Roi de la fête choisit alors l’atelier ou une thématique parmi
     <!--Grid row-->
     <div class="row">
       <!--Grid column-->
-      <div class="col-lg-4 col-md-12 mb-4">
-        <img src={{asset('/images/imagesUpload/img-4.jpg')}}  class="img-fluid z-depth-3" alt="4">
+      <div class="col-lg-4 col-md-6 mb-4">
+        <img src={{asset('/images/imagesUpload/img-4.jpg')}}  class="img-fluid z-depth-3-half" alt="4">
       </div>
       <!--Grid column-->
       <!--Grid column-->
       <div class="col-lg-4 col-md-6 mb-4">
-        <img src={{asset('/images/imagesUpload/img-5.jpg')}}  class="img-fluid z-depth-4" alt="5">
+        <img src={{asset('/images/imagesUpload/img-5.jpg')}}  class="img-fluid z-depth-4-half" alt="5">
       </div>
       <!--Grid column-->
       <!--Grid column-->
       <div class="col-lg-4 col-md-6 mb-4">
-        <img src={{asset('/images/imagesUpload/img-6.jpg')}}  class="img-fluid z-depth-5" alt="6">
+        <img src={{asset('/images/imagesUpload/img-6.jpg')}}  class="img-fluid z-depth-5-half" alt="6">
       </div>
       <!--Grid column-->
     </div>
@@ -206,6 +199,10 @@ Votre enfant, Roi de la fête choisit alors l’atelier ou une thématique parmi
 
 </div>
 
+
+		
+
+
 	<!-- AVIS -->
 	<div class="container">
 		<div>
@@ -214,9 +211,9 @@ Votre enfant, Roi de la fête choisit alors l’atelier ou une thématique parmi
 		<div class="row mt-5">
 
 <!-- 1er avis -->
-			<div class="col-lg-4 text-center">
+			<div class="text-center">
        <div class="text-center">
-        <img src={{asset('/images/imagesUpload/Olivia.png')}} width="auto" class="" role="img" aria-label="profil">
+        <img src={{asset('/images/imagesUpload/Olivia.png')}} width="10%" height="10%" class="" role="img" aria-label="profil">
       </div>
 
 			<div class="rating">
@@ -238,9 +235,9 @@ Comment ne pas garder ces précieux souvenirs toute une vie ! Cela nous motive �
 								</p>
 			</div>
 			<!-- 2e avis -->
-			<div class="col-lg-4 text-center">
+			<div class="text-center">
        <div class="text-center">
-        <img src={{asset('/images/imagesUpload/eric.png')}} width="auto" class="" role="img" aria-label="profil">
+        <img src={{asset('/images/imagesUpload/eric.png')}} width="10%" height="10%" class="" role="img" aria-label="profil">
       </div>
 
 			<div class="rating">
@@ -261,9 +258,9 @@ Mon anniversaire était un moment unique dans ma vie. Je m’en souviens comme s
 								</p>
 			</div>
 			<!-- 3e avis -->
-			<div class="col-lg-4 text-center">
+			<div class="text-center">
        <div class="text-center">
-        <img src={{asset('/images/imagesUpload/faby.png')}} width="auto" class="" role="img" aria-label="profil">
+        <img src={{asset('/images/imagesUpload/faby.png')}} width="10%" height="10%" class="" role="img" aria-label="profil">
       </div>
 
 			<div class="rating">
@@ -280,16 +277,14 @@ Mon anniversaire était un moment unique dans ma vie. Je m’en souviens comme s
 				<h2 class="mt-5">Faby</h2>
 				<p class="text-justify">
 Hi !
-Mon mariage était un moment unique dans ma vie. Je m’en souviens comme si c’était hier. Son ambiance « Love Power », le cadre idyllique des plus beaux paysages de vacances, les mines réjouies de nos invités, et surtout… un feu d’artifices mémorable qui nous a été offert par notre ami artificier.
-Comment ne pas garder ces précieux souvenirs toute une vie! Cela nous motive à organiser une énorme fête pour nos 15 ans de mariage. On prend les mêmes et on recommence?
+Ma soirée années 90 et son ambiance « Love Power », les mines réjouies de nos invités.
+Comment ne pas garder ces précieux souvenirs toute une vie! Cela nous motive à organiser une énorme fête pour nos 15 ans de mariage. On prend les mêmes et on recommence ?
 								</p>
 			</div>
 		
 		</div>
 	
 	</div>
-
-
 
 
 {% endblock %}

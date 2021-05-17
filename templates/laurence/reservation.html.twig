@@ -2,7 +2,7 @@
 
 {% block body %}
 
- <div class="container mt-4">
+  <div class="container mt-4">
     <h1 class="text-center p-4" style="background-color: #eddcf9">Réservation</h1>
     <p class="text-center mt-3">Nous vous proposons de vérifier un créneau de disponibilité.
     </p>
@@ -10,109 +10,105 @@
     <h2 class="mt-5">Vérifiez les disponibilités</h2>
 
     {% for message in app.flashes('success') %}
-    <div class="col-md-6 bg-primary p-4 rounded mx-auto text-center text-white mb-3">
+      <div class="col-md-6 bg-primary p-4 rounded mx-auto text-center text-white mb-3">
         {{ message }}
-    </div>
-{% endfor %}
-
-    {% for message in app.flashes('danger') %}
-        <div class="col-md-6 bg-danger p-4 rounded mx-auto text-center text-white mb-3">
-            {{ message }}
-        </div>
+      </div>
     {% endfor %}
 
-     {% for message in app.flashes('info') %}
-         <div class="col-md-6 bg-info p-4 rounded mx-auto text-center text-white mb-3">
-             {{ message }}
-         </div>
-     {% endfor %}
+    {% for message in app.flashes('danger') %}
+      <div class="col-md-6 bg-danger p-4 rounded mx-auto text-center text-white mb-3">
+        {{ message }}
+      </div>
+    {% endfor %}
+
+    {% for message in app.flashes('info') %}
+      <div class="col-md-6 bg-info p-4 rounded mx-auto text-center text-white mb-3">
+        {{ message }}
+      </div>
+    {% endfor %}
 
     {% if requete == true %}
-        {% if reservations %}
+      {% if reservations %}
         Ce pack n'est pas disponible aux dates suivantes :
         <ul>
-            {% for reservation in reservations %}
-                <li>  {{ reservation.date | date('d-m-Y') }} </li>
-            {% endfor %}
+          {% for reservation in reservations %}
+            <li>
+              {{ reservation.date | date('d-m-Y') }}
+            </li>
+          {% endfor %}
         </ul>
-            {% endif %}
-{#        {% if not reservations %}#}
-{#            <p>Ce pack est disponible aux dates indiquées</p>#}
-{#            {% endif %}#}
+      {% endif %}
+      {#        {% if not reservations %}#}
+      {#            <p>Ce pack est disponible aux dates indiquées</p>#}
+      {#            {% endif %}#}
     {% endif %}
     <form action=" {{ path('verif_dispo')}} " method="get">
 
-        <label class="my-3" for="pack">Quel pack avez-vous choisi ?</label>
+      <label class="my-3" for="pack">Quel pack avez-vous choisi ?</label>
 
-        <select name="pack" class="form-control w-25" id="verif_pack">
-            <option value=""></option>
-            {% for pack in packs %}
-                <option value="{{ pack.id }}">{{ pack.nom }}</option>
-            {% endfor %}
-        </select>
+      <select name="pack" class="form-control w-25" id="verif_pack">
+        <option value=""></option>
+        {% for pack in packs %}
+          <option value="{{ pack.id }}">{{ pack.nom }}</option>
+        {% endfor %}
+      </select>
 
-        <label class="my-3" for="date">Entre quelles dates désirez-vous réserver ?</label>
-        <p>  <input type="date"  name="date_debut" min={{ resa_min }}  max={{ resa_max }}>
-            <input type="date" name="date_fin" min={{ resa_min }} max={{ resa_max }}></p>
+      <label class="my-3" for="date">Entre quelles dates désirez-vous réserver ?</label>
+      <p>
+        <input type="date" name="date_debut" min={{ resa_min } }="}" max={{ resa_max }>
+        <input type="date" name="date_fin" min={{ resa_min } }="}" max={{ resa_max }></p>
 
-        <button class="btn btn-info mt-4 mb-4" type="submit">Vérifier</button>
+      <button class="btn btn-info mt-4 mb-4" type="submit">Vérifier</button>
 
     </form>
 
-
     {% for message in app.flashes('success') %}
-        <div class="col-md-6 bg-secondary p-4 rounded mx-auto text-center text-white mb-3">
-            {{ message }}
-        </div>
+      <div class="col-md-6 bg-secondary p-4 rounded mx-auto text-center text-white mb-3">
+        {{ message }}
+      </div>
     {% endfor %}
-
 
     {#    {% if not app.user %}#}
     {#        redirection page connexion #}
     {#        {% else %}#}
-   <hr> 
- <div class="container mt-4">
-  <h4 class="text-danger text-center mt-4">PENSEZ A VOUS CONNECTER POUR RESERVER VOTRE PACK !</h4>
+    <hr>
+    <div class="container mt-4">
+      <h4 class="text-danger text-center mt-4">PENSEZ A VOUS CONNECTER POUR RESERVER VOTRE PACK !</h4>
 
-     {% if app.user %}
+      {% if app.user %}
 
-    <h2 class="mt-5">Votre réservation</h2>
-    <div class="w-25 p-4">
-        {{ form_start(formResa) }}
+        <h2 class="mt-5">Votre réservation</h2>
+        <div class="w-25 p-4">
+          {{ form_start(formResa) }}
 
-        {{ form_row(formResa.date) }}
+          {{ form_row(formResa.date) }}
 
-        {{ form_row(formResa.pack) }}
-</div>
-<<<<<<< HEAD
-=======
-     {% if is_granted('ROLE_ADMIN') %}
-         <button class="btn btn-danger m-2" type="submit">Modifier</button>
-     {% endif %}
-
-
-     <button class="btn btn-info m-2" type="submit">Valider</button>
-
-     {{ form_end(formResa) }}
-     {% endif %}
-        <a href="" > <button class="btn btn-info m-2" type="submit">Paiement</button></a>
-
-     {% if not app.user %}
->>>>>>> 94b1f159198613f746a8577c00215ccc7600861f
-        <a href="{{path('login')}}"> <button class="btn btn-info m-2" type="submit">Se connecter</button></a>
-        <a href="{{path('inscription')}}"> <button class="btn btn-info m-2" type="submit">S'inscrire</button></a>
-      
+          {{ form_row(formResa.pack) }}
+        </div>
+        {% if is_granted('ROLE_ADMIN') %}
+          <button class="btn btn-danger m-2" type="submit">Modifier</button>
         {% endif %}
 
+        <button class="btn btn-info m-2" type="submit">Valider</button>
 
- 
+        {{ form_end(formResa) }}
+      {% endif %}
+      <a href="">
+        <button class="btn btn-info m-2" type="submit">Paiement</button>
+      </a>
+
+      {% if not app.user %}
+        <a href="{{path('login')}}">
+          <button class="btn btn-info m-2" type="submit">Se connecter</button>
+        </a>
+        <a href="{{path('inscription')}}">
+          <button class="btn btn-info m-2" type="submit">S'inscrire</button>
+        </a>
+
+      {% endif %}
+
     </div>
+  </div>
 </div>
-</div>
-
-
-
-
-
 
 {% endblock %}
