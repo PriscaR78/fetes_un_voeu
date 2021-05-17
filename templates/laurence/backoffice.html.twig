@@ -1,11 +1,8 @@
 {% extends 'backoffice.html.twig' %}
 
 {% block body %}
-<div class="container m-1 ">
-
-
-
-<h2> Les prochaines réservations</h2>
+<div class="container-fluid m-1 ">
+<h2 class="text-center mt-2 mb-5 p-2 text-white" style="background-color: #4b1348"> Les prochaines réservations</h2>
     <table class="table table-striped w-50">
         <thead class="thead-light">
         <tr>
@@ -28,7 +25,7 @@
         {% endfor %}
         </tbody>
     </table>
-    <div class="card mb-3 d-inline-flex" width="37%">
+    <div class="card mt-5 mb-3 d-inline-flex w-25">
         <div class="card-header font-weight-bold bg-info text-center">
             Meilleurs clients
         </div>
@@ -42,7 +39,7 @@
 
     </div>
 
-    <div class="card mb-3 d-inline-flex" width="37%">
+    <div class="card mt-5 mb-3 d-inline-flex w-25">
         <div class="card-header font-weight-bold bg-info text-center">
             Meilleurs packs
         </div>

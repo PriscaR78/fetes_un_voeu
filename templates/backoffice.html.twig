@@ -17,13 +17,13 @@
 <body>
 <div class="row">
 <div style=" height: 100vh" class="col-md-2 vertical-nav pl-3" id="sidebar">
-    <nav class="ml-3" style="background-color: #eddcf9">
-           <h3 class="text-center p-5 mt-2">Back-Office</h3>
+      <nav class="ml-3" style="background-color: #4b1348">
+           <h3 class="text-center p-5 mt-2" style="color:#ffff">Back-Office</h3>
         <ul class="nav flex-column pt-3 pb-5">
             <li class="nav-item btn btn-light m-3"><a class="nav-link text-dark" href="{{ path('gestion_clients') }}">Clients</a></li>
             <li class="nav-item btn btn-light m-3"><a class="nav-link text-dark"  href="{{ path('gestion_reservations') }}">Réservations</a></li>
             <li class="nav-item btn btn-light m-3"><a class="nav-link text-dark" href="{{ path('gestion_packs') }}">Packs</a></li>
-            <li class="nav-item btn btn-light m-3"><a class="nav-link text-dark" href="#">Soutien</a></li>
+          
             <li class="nav-item btn btn-light m-3"><a class="nav-link text-dark " href="#">Contact</a></li>
             <li class="nav-item btn btn-light m-3">
                 <a class="nav-link text-dark" href="{{ path('home')}} ">Accueil</a>
@@ -31,7 +31,18 @@
         </ul>
     </nav>
 
+ <div class="container-fluid p-5">
+            <a href="/">
+              <img src={{asset('images/imagesUpload/logo/logo_fetes_un_voeu.png')}} alt="Logo fêtes un voeu" width="125">
+            </a>
+          </div>
+          <div>
+            <a class="navbar-brand ml-5" style="color:#4b1348" href="/">Fêtes un voeu<br>...au service de vos festivités
+            </a>
+          </div>
 </div>
+
+ 
 
 <div class="col">
 
