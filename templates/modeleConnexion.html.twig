@@ -79,23 +79,7 @@
 					</a>
 				</li>
 
-                 <li class="nav-item active mr-4">
-                    <a class="nav-link text-white" href="{{ path('ajout_pack')}} ">Ajout pack</a>
-                </li>
-              
-
-				<!-- Section: Social media -->
-
-				<a href="https://www.facebook.com/fetesvosvoeux" target="blank"><img src="{{asset('/images/imagesUpload/icones/facebook.svg')}}" width="40em" height="40em" class="mr-2"></a>
-				<a href="https://www.instagram.com/fetes_unvoeu/?hl=fr" target="blank"><img src="{{asset('/images/imagesUpload/icones/instagram-orange.svg')}}" width="40em" height="40em" class="mr-2" ></a>
-				<a href="https://github.com/PriscaR78/fetes_un_voeu" target="blank"><img src="{{asset('/images/imagesUpload/icones/github-border-dark.svg')}}" width="45em" height="45em" class="mr-5"></a>
-
-
-					{# <li class="nav-item active mr-2">
-					<a href=""><img class="bd-placeholder-img rounded-circle" width="50" height="50" src={{asset('/images/imagesUpload/icones/fem.jpeg')}} role="img" aria-label="profil">
-					</a></img>
-				 #}
-			{% if app.user %}
+                {% if app.user %}
                 <div class="nav-item dropdown my-2 my-lg-0 mr-5" >
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -117,6 +101,20 @@
                 <a class="nav-link " href="{{path('login')}}">Connexion</a>
                 <a class="nav-link " href="{{ path('inscription') }}">Inscription</a>
             {% endif %}
+              
+
+				<!-- Section: Social media -->
+
+				<a href="https://www.facebook.com/fetesvosvoeux" target="blank"><img src="{{asset('/images/imagesUpload/icones/facebook.svg')}}" width="40em" height="40em" class="mr-2"></a>
+				<a href="https://www.instagram.com/fetes_unvoeu/?hl=fr" target="blank"><img src="{{asset('/images/imagesUpload/icones/instagram-orange.svg')}}" width="40em" height="40em" class="mr-2" ></a>
+				<a href="https://github.com/PriscaR78/fetes_un_voeu" target="blank"><img src="{{asset('/images/imagesUpload/icones/github-border-dark.svg')}}" width="45em" height="45em" class="mr-5"></a>
+
+
+					{# <li class="nav-item active mr-2">
+					<a href=""><img class="bd-placeholder-img rounded-circle" width="50" height="50" src={{asset('/images/imagesUpload/icones/fem.jpeg')}} role="img" aria-label="profil">
+					</a></img>
+				 #}
+			
 			</ul>
 
 </div>
