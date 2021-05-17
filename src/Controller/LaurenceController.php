@@ -363,7 +363,7 @@ class LaurenceController extends AbstractController
             $manager->flush();
 
             $this->addFlash("success", "La réservation a bien été enregistrée");
-            return $this->redirectToRoute("home");
+            return $this->redirectToRoute("/paiement");
 
             else:
                 $this->addFlash("danger", "Ce pack n'est pas disponible à cette date.");
@@ -436,8 +436,9 @@ class LaurenceController extends AbstractController
             'resa_max'=>$resa_max,
         ]);
 
-
         }
+
+    // ----------------------- MODIFICATION RESERVATION ------------------------//
     /**
     * @Route("/modif_reservation/{id}", name="modif_reservation")
     */
@@ -504,7 +505,15 @@ class LaurenceController extends AbstractController
         ]);
     }
 
-
+    /**
+     * @Route("/paiement", name="paiement")
+     */
+    public function paiement(Reservation $reservation)
+    {
+        return $this->render('paiement.html.twig', [
+            'reservation'=>$reservation
+        ]);
+    }
 
 
 
