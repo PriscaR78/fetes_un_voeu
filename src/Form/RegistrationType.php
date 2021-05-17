@@ -81,7 +81,7 @@ class RegistrationType extends AbstractType
             ])
 
             ->add('telephone',NumberType::class, [
-                "label"=>'téléphone',
+                "label"=>'Téléphone',
                 "required"=>false,
                 "attr"=>[
                     "placeholder"=>'Veuillez saisir votre numéro de téléphone']

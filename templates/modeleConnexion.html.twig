@@ -17,8 +17,7 @@
 		<!-- Bootstrap core CSS -->
 		<link href={{asset('assets/css/bootstrap.min.css')}} rel="stylesheet">
 		<link href={{asset('assets/css/style.css')}} rel="stylesheet">
-		<link href={{asset('assets/css/bootstrap.bundle.js')}} rel="stylesheet">
-
+		
 		<!-- Custom styles for this template -->
 		<link href={{asset('assets/css/carousel.css')}} rel="stylesheet">
 		<style>
@@ -43,8 +42,7 @@
 <body>
 
 <header>
-
-    <nav class="d-flex navbar-default navbar-expand-md fixed-top p-3 ">
+ <nav class="d-flex navbar-default navbar-expand-md fixed-top p-3 ">
 				<div><a href="/"> <img src={{asset('images/imagesUpload/logo/logo_fetes_un_voeu.png')}} alt="Logo fête un voeu" width="125">
 					</img></a></div>
 				<div><a class="navbar-brand mt-4 ml-5" href="/">Fêtes un voeu<br>...au service de vos festivités
@@ -65,17 +63,17 @@
 								<a class="nav-link" href="/#galerie">Galerie
 								</a>
 							</li>
-						</li>
+					
 						<li class="nav-item active mr-2">
 							<a class="nav-link" href="/#avis">Avis
 							</a>
 						</li>
-					</li>
+					
 					<li class="nav-item active mr-2">
 						<a class="nav-link" href="/#contact">Contact
 						</a>
 					</li>
-				</li>
+			
 				<li class="nav-item active mr-5">
 					<a class="nav-link" href="{{ path('verif_dispo')}}">Réservation
 					</a>
@@ -88,9 +86,9 @@
 
 				<!-- Section: Social media -->
 
-				<a href="https://www.facebook.com/fetesvosvoeux" target="blank"><img src="{{asset('/images/imagesUpload/icones/facebook.svg')}}" width="40em" height="40em" class="mr-2"></img></a>
-				<a href="https://www.instagram.com/fetes_unvoeu/?hl=fr" target="blank"><img src="{{asset('/images/imagesUpload/icones/instagram-orange.svg')}}" width="40em" height="40em" class="mr-2" ></img></a>
-				<a href="https://github.com/PriscaR78/fetes_un_voeu" target="blank"><img src="{{asset('/images/imagesUpload/icones/github-border-dark.svg')}}" width="45em" height="45em" class="mr-5"></img></a>
+				<a href="https://www.facebook.com/fetesvosvoeux" target="blank"><img src="{{asset('/images/imagesUpload/icones/facebook.svg')}}" width="40em" height="40em" class="mr-2"></a>
+				<a href="https://www.instagram.com/fetes_unvoeu/?hl=fr" target="blank"><img src="{{asset('/images/imagesUpload/icones/instagram-orange.svg')}}" width="40em" height="40em" class="mr-2" ></a>
+				<a href="https://github.com/PriscaR78/fetes_un_voeu" target="blank"><img src="{{asset('/images/imagesUpload/icones/github-border-dark.svg')}}" width="45em" height="45em" class="mr-5"></a>
 
 
 					{# <li class="nav-item active mr-2">
@@ -98,7 +96,7 @@
 					</a></img>
 				 #}
 			{% if app.user %}
-                <div class="nav-item dropdown my-2 my-lg-0 mr-5">
+                <div class="nav-item dropdown my-2 my-lg-0 mr-5" >
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						{{ app.user.username }}
@@ -130,9 +128,18 @@
 
 {% endblock %}
 
-
-
-
-
+   {% block javascripts %}
+            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+                    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+                    crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+                    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+                    crossorigin="anonymous"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+                    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+                    crossorigin="anonymous"></script>
+            <script src={{asset('assets/js/bootstrap.bundle.js')}}></script>
+	        <script src="https://kit.fontawesome.com/e4895b9a2a.js" crossorigin="anonymous"></script>
+        {% endblock %}
 </body>
 </html>
