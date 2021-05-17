@@ -85,16 +85,14 @@
 
           {{ form_row(formResa.pack) }}
         </div>
-        {% if is_granted('ROLE_ADMIN') %}
-          <button class="btn btn-danger m-2" type="submit">Modifier</button>
-        {% endif %}
+       
 
         <button class="btn btn-info m-2" type="submit">Valider</button>
 
         {{ form_end(formResa) }}
       {% endif %}
-      <a href="">
-        <button class="btn btn-info m-2" type="submit">Paiement</button>
+      <a href="{{path('paiement')}}">
+        <button class="btn btn-danger m-2" type="submit">Paiement</button>
       </a>
 
       {% if not app.user %}
