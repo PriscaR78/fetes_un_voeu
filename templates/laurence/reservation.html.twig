@@ -73,21 +73,38 @@
    <hr> 
  <div class="container mt-4">
   <h4 class="text-danger text-center mt-4">PENSEZ A VOUS CONNECTER POUR RESERVER VOTRE PACK !</h4>
+
+     {% if app.user %}
+
     <h2 class="mt-5">Votre réservation</h2>
     <div class="w-25 p-4">
         {{ form_start(formResa) }}
 
         {{ form_row(formResa.date) }}
-        {#            <label for="date">Quelle date :</label>#}
-        {#            <input type="date" name="date">#}
+
         {{ form_row(formResa.pack) }}
 </div>
+<<<<<<< HEAD
+=======
+     {% if is_granted('ROLE_ADMIN') %}
+         <button class="btn btn-danger m-2" type="submit">Modifier</button>
+     {% endif %}
+
+
+     <button class="btn btn-info m-2" type="submit">Valider</button>
+
+     {{ form_end(formResa) }}
+     {% endif %}
+        <a href="" > <button class="btn btn-info m-2" type="submit">Paiement</button></a>
+
+     {% if not app.user %}
+>>>>>>> 94b1f159198613f746a8577c00215ccc7600861f
         <a href="{{path('login')}}"> <button class="btn btn-info m-2" type="submit">Se connecter</button></a>
         <a href="{{path('inscription')}}"> <button class="btn btn-info m-2" type="submit">S'inscrire</button></a>
       
-        {#{% endif %}#}
+        {% endif %}
 
-        {{ form_end(formResa) }}
+
  
     </div>
 </div>

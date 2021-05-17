@@ -33,7 +33,7 @@
                 <td>{{ reservation.pack.prix }}€</td>
                 <td>{{ reservation.user.username }}</td>
                 <td>{{ reservation.date | date('d-m-Y')}}</td>
-                <td><a href=""><img src="{{ asset('images/pencil.png') }}" alt="modifier"></a></td>
+                <td><a href="{{ path('modif_reservation', {'id': reservation.id}) }}"><img src="{{ asset('images/pencil.png') }}" alt="modifier"></a></td>
                 <td><a href="{{ path('suppr_reservation', {'id': reservation.id}) }}"><img src="{{ asset('images/delete.png') }}" alt="supprimer"></a></td>
             </tr>
         {% endfor %}
