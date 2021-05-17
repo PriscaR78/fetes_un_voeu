@@ -81,8 +81,7 @@
         {{ form_start(formResa) }}
 
         {{ form_row(formResa.date) }}
-        {#            <label for="date">Quelle date :</label>#}
-        {#            <input type="date" name="date">#}
+
         {{ form_row(formResa.pack) }}
 </div>
      {% if is_granted('ROLE_ADMIN') %}
