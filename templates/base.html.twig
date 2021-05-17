@@ -43,41 +43,47 @@
 	<body>
 
 		<header>
-
-    <nav class="d-flex navbar-default navbar-expand-md fixed-top p-3 ">
+<div class="col">
+<div class=".col-md">
+  <nav class="d-flex navbar-default navbar-expand-md fixed-top p-3 ">
 				<div><a href="/"> <img src={{asset('images/imagesUpload/logo/logo_fetes_un_voeu.png')}} alt="Logo fête un voeu" width="125">
 					</img></a></div>
 				<div><a class="navbar-brand mt-4 ml-5" href="/">Fêtes un voeu<br>...au service de vos festivités
 				</a></div>
 				<hr>
-					<div class="collapse navbar-collapse container-fluid" id="navbarCollapse">
+
+				  <!-- Collapse button -->
+  <button class="navbar-toggler toggler-example purple darken-3" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1"
+    aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation"><span class="white-text"><i
+        class="fas fa-bars fa-1x"></i></span></button>
+					<div class="collapse navbar-collapse container-fluid" id="navbarSupportedContent1">
 						<ul class="navbar-nav w-100 justify-content-md-end" style="background-color:">
 							<li class="nav-item active">
-								<a class="nav-link mr-2" href="/">Accueil
+								<a class="nav-link mr-2" href="/">Accueil<span class="sr-only sm-only">(current)</span>
 								</a>
 							</li>
 						
 							<li class="nav-item active mr-2">
-								<a class="nav-link" href="#prestations">Nos prestations
+								<a class="nav-link" href="#prestations">Nos prestations<span class="sr-only">(current)</span>
 								</a>
 							</li>
 							<li class="nav-item active mr-2">
-								<a class="nav-link" href="#galerie">Galerie
+								<a class="nav-link" href="#galerie">Galerie<span class="sr-only">(current)</span>
 								</a>
 							</li>
 					
 						<li class="nav-item active mr-2">
-							<a class="nav-link" href="#avis">Avis
+							<a class="nav-link" href="#avis">Avis<span class="sr-only">(current)</span>
 							</a>
 						</li>
 					
 					<li class="nav-item active mr-2">
-						<a class="nav-link" href="#contact">Contact
+						<a class="nav-link" href="#contact">Contact<span class="sr-only">(current)</span>
 						</a>
 					</li>
 			
 				<li class="nav-item active mr-5">
-					<a class="nav-link" href="{{ path('verif_dispo')}}">Réservation
+					<a class="nav-link" href="{{ path('verif_dispo')}}">Réservation<span class="sr-only">(current)</span>
 					</a>
 				</li>
 
@@ -120,8 +126,8 @@
 			</ul>
 
 </div>
- </nav>
-
+ </nav></div>
+</div>
 </header>
 <main role="main">
 
@@ -131,11 +137,11 @@
 <li data-target="#myCarousel" data-slide-to="2"></li>
 <li data-target="#myCarousel" data-slide-to="3"></li></ol><div class="carousel-inner">
 <div class="carousel-item active">
-	<img class="bd-placeholder-img" width="100%" height="auto" src={{asset('/images/imagesUpload/ban-anniv-enfant.jpg')}} role="img"><rect width="100%" height="auto"></img>
+	<img class="bd-placeholder-img" width="auto" height="100%" src={{asset('/images/imagesUpload/ban-anniv-enfant.jpg')}} role="img"><rect width="auto" height="100%"></img>
 
 </div>
 <div class="carousel-item">
-	<img class="bd-placeholder-img" width="100%" height="auto" src={{asset('/images/imagesUpload/ban-anniv-adulte.jpg')}} role="img"><rect width="100%" height="auto"></img>
+	<img class="bd-placeholder-img" width="auto" height="100%" src={{asset('/images/imagesUpload/ban-anniv-adulte.jpg')}} role="img"><rect width="auto" height="100%"></img>
 
 </div>
 
