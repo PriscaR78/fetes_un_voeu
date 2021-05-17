@@ -487,9 +487,6 @@ class LaurenceController extends AbstractController
             'packs'=>$packs,
 
         ]);
-
-
-
 }
 
     // -------------------- A METTRE FRONTCONTROLLER --------------------//
