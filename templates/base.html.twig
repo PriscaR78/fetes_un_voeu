@@ -83,12 +83,12 @@
 
                 {% if app.user %}
                 <div class="nav-item dropdown my-2 my-lg-0 mr-5" >
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                    <a class="dropdown-toggle btn btn-info mt-2" href="#" id="navbarDropdown" role="button"
                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						{{ app.user.username }}
 
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <div class="dropdown-menu shadow m-4" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{ path('profil', {id:app.user.id}) }}">Profil</a>
                         {% if is_granted('ROLE_ADMIN') %}
                             <a class="dropdown-item" href="{{ path('backoffice') }}">Back-office</a>
