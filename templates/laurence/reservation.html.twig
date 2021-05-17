@@ -68,9 +68,7 @@
       </div>
     {% endfor %}
 
-    {#    {% if not app.user %}#}
-    {#        redirection page connexion #}
-    {#        {% else %}#}
+
     <hr>
     <div class="container mt-4">
       <h4 class="text-danger text-center mt-4">PENSEZ A VOUS CONNECTER POUR RESERVER VOTRE PACK !</h4>
@@ -89,11 +87,15 @@
 
         <button class="btn btn-info m-2" type="submit">Valider</button>
 
-        {{ form_end(formResa) }}
+
       {% endif %}
-      <a href="{{path('paiement')}}">
-        <button class="btn btn-danger m-2" type="submit">Paiement</button>
-      </a>
+{#      <a href="{{path("paiement/{id}", {'id': app.user.id} )}}">#}
+{#      <a href="{{path("paiement")}}">#}
+{#        <button class="btn btn-danger m-2" type="submit">Paiement</button>#}
+{#      </a>#}
+      {{ form_end(formResa) }}
+
+
 
       {% if not app.user %}
         <a href="{{path('login')}}">

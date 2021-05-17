@@ -298,28 +298,7 @@ class LaurenceController extends AbstractController
     }
 
 
-
-
-            // ----------------------- MODIF RESERVATION ------------------------//
-
-
-
-
-
-
-                // ----------------------- SUPPRESSION RESERVATION ------------------------//
-    /**
-     * @Route("/suppr_reservation/{id}", name="suppr_reservation")
-     */
-    public function suppr_reservation(Reservation $reservation, EntityManagerInterface $manager, $id)
-    {
-        $manager->remove($reservation);
-        $manager->flush();
-
-        $this->addFlash('success', "La réservation a bien été supprimée.");
-        return $this->redirectToRoute('gestion_reservations');
-    }
-
+//  ------------------------------------- RESERVATION ----------------------------------------------- //
 
             // --------------  VERIFICATION DISPONIBILITE + RESERVATION  ------------------//
 
@@ -362,12 +341,14 @@ class LaurenceController extends AbstractController
 //          $manager->persist(($pack));
             $manager->flush();
 
+            $resa=$reservationRepository->find($reservation->getId());
+
             $this->addFlash("success", "La réservation a bien été enregistrée");
-            return $this->redirectToRoute("/paiement");
+            return $this->render("pagePaiement.html.twig",['reservation'=>$resa]);
 
             else:
                 $this->addFlash("danger", "Ce pack n'est pas disponible à cette date.");
-            // provisoire à modifier avec vraie route
+
            return $this->redirectToRoute('verif_dispo');
 
              endif;
@@ -421,12 +402,10 @@ class LaurenceController extends AbstractController
                 'packs'=>$packs,
                 'resa_min'=>$resa_min,
                 'resa_max'=>$resa_max,
-
         ]);
 
         endif;
         $requete = false;
-
 
         return $this->render('laurence/reservation.html.twig',[
             'formResa'=>$form->createView(),
@@ -489,9 +468,21 @@ class LaurenceController extends AbstractController
 
         ]);
 
-
-
 }
+
+
+    // ----------------------- SUPPRESSION RESERVATION ------------------------//
+    /**
+     * @Route("/suppr_reservation/{id}", name="suppr_reservation")
+     */
+    public function suppr_reservation(Reservation $reservation, EntityManagerInterface $manager, $id)
+    {
+        $manager->remove($reservation);
+        $manager->flush();
+
+        $this->addFlash('success', "La réservation a bien été supprimée.");
+        return $this->redirectToRoute('gestion_reservations');
+    }
 
     // -------------------- A METTRE FRONTCONTROLLER --------------------//
             // une fois qu'il y aura une page qui montre tous les packs
@@ -505,14 +496,18 @@ class LaurenceController extends AbstractController
         ]);
     }
 
+    // -------------------------------------- PAIEMENT  -------------------------------------- //
+
     /**
      * @Route("/paiement", name="paiement")
      */
-    public function paiement(Reservation $reservation)
+    public function paiement()
     {
-        return $this->render('paiement.html.twig', [
-            'reservation'=>$reservation
+
+        return $this->render('pagePaiement.html.twig', [
+
         ]);
+
     }
 
 
