@@ -36,11 +36,11 @@ class FrontController extends AbstractController
        }
 
        /**
-        * @Route("/profil/{id}", name="profil")
+        * @Route("/profil", name="profil")
         */
-    public function profil(User $user, EntityManagerInterface $manager, ReservationRepository $reservationRepository, UserRepository $userRepository)
+    public function profil(ReservationRepository $reservationRepository, UserRepository $userRepository)
     {
-        $resa_client=$reservationRepository->findBy(array('user'=>$user));
+        $resa_client=$reservationRepository->findBy(array('user'=>$this->getUser()));
 
 
         return $this->render('front/profil.html.twig', [
