@@ -325,10 +325,13 @@ class LaurenceController extends AbstractController
 
     /**
      * @Route("/verif_dispo", name="verif_dispo")
+     * @Route("/modif_reservation/{id}", name="modif_reservation")
       */
-    public function verif_dispo(EntityManagerInterface $manager,Request $request, ReservationRepository $reservationRepository, PackRepository $packRepository, UserRepository $userRepository)
+    public function verif_dispo(EntityManagerInterface $manager,Request $request, ReservationRepository $reservationRepository, PackRepository $packRepository, UserRepository $userRepository, Reservation $reservation=null)
     {
+        if (!$reservation):
         $reservation = new Reservation();
+        endif;
         $form = $this->createForm(ReservationType::class, $reservation);
         $form->handleRequest($request);
         $reservation->setUser($this->getUser());
