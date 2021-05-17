@@ -320,7 +320,7 @@ class LaurenceController extends AbstractController
         $packs=$packRepository->findAll();
 
 
-        if ($form->isSubmitted() && $form->isValid()):  // formulaire post ajout_reservation
+        if ($form->isSubmitted() && $form->isValid()):  // formulaire post ajout_reservation !
 //            dd($form);
             $d=new \DateTime($request->request->get('reservation')['date']);
             $p=$request->request->get('reservation')['pack'];
@@ -335,7 +335,6 @@ class LaurenceController extends AbstractController
             $user=$this->getUser();
             $resa_eff=$user->getResaEff();
             $user->setResaEff($resa_eff+=1);
-
 
             $manager->persist($reservation);
 //          $manager->persist(($pack));
