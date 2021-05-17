@@ -406,6 +406,9 @@ class LaurenceController extends AbstractController
 
             $packs=$packRepository->findAll();
             $reservations= $reservationRepository->findByPackDate($request->query->get('pack'), $date_debut, $date_fin);
+            if (!$reservations):
+                $this->addFlash('info', "Ce pack est disponible aux dates sélectionnées");
+                endif;
 //          dd($reservations);
             $requete = true;
             return $this->render('laurence/reservation.html.twig', [

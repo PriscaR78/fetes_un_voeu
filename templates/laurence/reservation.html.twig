@@ -19,15 +19,26 @@
         <div class="col-md-6 bg-danger p-4 rounded mx-auto text-center text-white mb-3">
             {{ message }}
         </div>
-
     {% endfor %}
+
+     {% for message in app.flashes('info') %}
+         <div class="col-md-6 bg-info p-4 rounded mx-auto text-center text-white mb-3">
+             {{ message }}
+         </div>
+     {% endfor %}
+
     {% if requete == true %}
+        {% if reservations %}
         Ce pack n'est pas disponible aux dates suivantes :
         <ul>
             {% for reservation in reservations %}
                 <li>  {{ reservation.date | date('d-m-Y') }} </li>
             {% endfor %}
         </ul>
+            {% endif %}
+{#        {% if not reservations %}#}
+{#            <p>Ce pack est disponible aux dates indiquées</p>#}
+{#            {% endif %}#}
     {% endif %}
     <form action=" {{ path('verif_dispo')}} " method="get">
 
