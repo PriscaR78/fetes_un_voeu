@@ -448,9 +448,7 @@
             "config/packages/swiftmailer.yaml",
             "config/packages/test/swiftmailer.yaml"
 
-            "./config/packages/dev/swiftmailer.yaml",
-            "./config/packages/swiftmailer.yaml",
-            "./config/packages/test/swiftmailer.yaml"
+            
 
         ]
     },
