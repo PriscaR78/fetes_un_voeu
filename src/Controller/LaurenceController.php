@@ -345,7 +345,7 @@ class LaurenceController extends AbstractController
 
             $resa=$reservationRepository->find($reservation->getId());
 
-            $this->addFlash("success", "La réservation a bien été enregistrée");
+            $this->addFlash("success", "Votre réservation est en cours, merci de procéder au paiement pour la finaliser");
             return $this->render("pagePaiement.html.twig",[
                 'reservation'=>$resa]);
 

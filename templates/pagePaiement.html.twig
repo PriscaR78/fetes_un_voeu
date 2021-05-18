@@ -3,12 +3,11 @@
 
 
 
-            <h2 class="mt-5 text-center">Votre réservation</h2>
-
     <div class="container mt-4">
         <h1 class="text-center mt-5 mb-5 p-4" style="background-color: #EDDCF9">Paiement</h1>
+
         {% for message in app.flashes('success') %}
-            <div class="col-md-6 bg-secondary p-4 rounded mx-auto text-center text-white mb-3">
+            <div class="col-md-6 bg-info p-4 rounded mx-auto text-center text-white mb-3">
                 {{ message }}
             </div>
         {% endfor %}
@@ -27,7 +26,7 @@
                 <th scope="col">Adresse</th>
                 <th scope="col">Code Postal</th>
                 <th scope="col">Ville</th>
-                <th scope="col">Voir Réservations effectuées</th>
+                <th scope="col">Pack réservé</th>
                 <th scope="col">Date </th>
                 <th scope="col">Prix</th>
             </tr>
@@ -35,8 +34,6 @@
             <tbody class="text-center">
 
                 <tr>
-
-
                     <td>{{ reservation.user.nom }}</td>
                     <td>{{ reservation.user.prenom }}</td>
                     <td>{{ reservation.user.adresse}}</td>
@@ -45,7 +42,6 @@
                     <td>{{ reservation.pack.nom }}</td>
                     <td>{{ reservation.date | date('d-m-Y')}}</td>
                     <td>{{ reservation.pack.prix }}</td>
-
                 </tr>
             </tbody>
         </table>
