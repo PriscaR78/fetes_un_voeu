@@ -1,13 +1,10 @@
 {% extends 'modeleConnexion.html.twig' %}
 {% block body %}
-    <div class="container mt-4">
-        <h1 class="text-center p-4" style="background-color: #EDDCF9">Paiement</h1>
-        <hr>
-        <div class="container mt-4">
-            <h4 class="text-danger text-center mt-4">PAGE PAIEMENT</h4>
-            <h2 class="mt-5">Votre réservation</h2>
-        </div>
-    </div>
+
+
+
+            <h2 class="mt-5 text-center">Votre réservation</h2>
+
     <div class="container mt-4">
         <h1 class="text-center mt-5 mb-5 p-4" style="background-color: #EDDCF9">Paiement</h1>
         {% for message in app.flashes('success') %}
@@ -27,24 +24,51 @@
             <tr>
                 <th scope="col">Nom</th>
                 <th scope="col">Prénom</th>
+                <th scope="col">Adresse</th>
+                <th scope="col">Code Postal</th>
+                <th scope="col">Ville</th>
                 <th scope="col">Voir Réservations effectuées</th>
-                <th scope="col">Retourner à l'accueil</th>
+                <th scope="col">Date </th>
+                <th scope="col">Prix</th>
             </tr>
             </thead>
             <tbody class="text-center">
 
                 <tr>
 
-                    {#<td>{{ reservation.pack.nom }}</td>#}
-{#                    <td><a href="{{ path('resa_client', {'id': user.id }) }}"><img src="{{ asset('images/loupe.png') }}" alt="voir"></a></td>#}
-{#                    <td><a href="{{ path('/')}}"><img src="{{ asset('images/delete.png') }}" alt="accueil"></a></td>#}
+
+                    <td>{{ reservation.user.nom }}</td>
+                    <td>{{ reservation.user.prenom }}</td>
+                    <td>{{ reservation.user.adresse}}</td>
+                    <td>{{ reservation.user.cp}}</td>
+                    <td>{{ reservation.user.ville}}</td>
+                    <td>{{ reservation.pack.nom }}</td>
+                    <td>{{ reservation.date | date('d-m-Y')}}</td>
+                    <td>{{ reservation.pack.prix }}</td>
+
                 </tr>
-{#je déteste git#}
             </tbody>
         </table>
-        <button class="btn btn-info mt-4 mb-4" type="submit">Payer</button>
+        <div class="container w-25">
+        <form action="">
+        <label for="nom">Nom et Prenom </label>
+        <input  name="nom" type="text">
+        <label for="numero">Numero de carte </label>
+        <input name="numero" type="text">
+        <label for="date">Date de validite </label>
+        <input name="month" type="month">
+        <label for="crypto">Cryptogramme</label>
+        <input name="crypto" type="text">
+
+
+
+
+            <button class="btn btn-info mt-4 mb-4" type="submit">Payer</button>
+
+        </form>
+        </div>
     </div>
 
-    {{ reservation.id }}
+
         {% endblock %}
 
