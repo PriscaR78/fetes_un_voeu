@@ -560,8 +560,18 @@ class LaurenceController extends AbstractController
 }
 
 
+    /**
+     * @Route("/affiche_packs", name="affiche_packs")
+     */
+    public function affiche_packs(PackRepository $packRepository)
+    {
+        $annivEnf=$packRepository->findBy(array('id'=>19), null, null,null);
+//        dd($annivEnf);
 
-
+        return $this->render('laurence/index.html.twig', [
+            'enfant'=>$annivEnf
+        ]);
+    }
 
 
 }

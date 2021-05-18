@@ -9,22 +9,22 @@
         </div>
     {% endfor %}
 
-    <table class="table table-striped w-50">
-        <thead class="thead-light">
-        <tr>
 
-            <th scope="col">Pack</th>
 
-        </tr>
-        </thead>
-        <tbody class="text-center">
-        {% for top_pack in top_packs %}
-            <tr>
 
-                <td>{{ top_packs.id }}</td>
+<div class=" card text-center w-50 mx-auto m-3">
 
-            </tr>
-        {% endfor %}
+    <div class="card-img-top mt-3">
+{#        <img src="{{ asset('images/imagesUpload/') }}{{ enfant.image1 }}" height="200" width="200" alt="{{ enfant.nom }}" >#}
+    </div>
+    <div class="card-body">
+        <div><h4 class="card-title">{{ enfant.nom }}</h4></div>
+        <div>  {{ enfant.prix}}</div>
+        <div> {{ enfant.description1 }}</div>
+    </div>
+
+</div>
+
         </tbody>
     </table>
 
