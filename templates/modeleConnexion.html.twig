@@ -74,8 +74,9 @@
                 </div>
               {% else %}
 
-                <a class="nav-link " href="{{path('login')}}">Connexion</a>
-                <a class="nav-link mr-5" href="{{ path('inscription') }}">Inscription</a>
+               <a href="{{path('login')}}"><img class="nav-link" src="{{asset('/images/imagesUpload/icones/profil.png')}}"></a>
+                <a href="{{ path('inscription') }}"><img class="nav-link mr-5" src="{{asset('/images/imagesUpload/icones/inscription.png')}}"></a>
+             
               {% endif %}
 
               <a href="https://www.facebook.com/fetesvosvoeux" target="blank"><img src="{{asset('/images/imagesUpload/icones/facebook.svg')}}" width="40em" height="40em"></a>
