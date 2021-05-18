@@ -137,6 +137,13 @@
         </nav>
 
 </header>
+
+   {% for message in app.flashes('success') %}
+        <div class="col-md-6 bg-secondary p-4 rounded mx-auto text-center text-white mb-3">
+          {{ message }}
+        </div>
+      {% endfor %}
+
     <main role="main">
 
       <div id="myCarousel" class="carousel slide img-fluid mx-auto" data-ride="carousel">
@@ -199,55 +206,17 @@
         </div>
 
         <!-- Footer -->
-        <footer class="text-center bg-light text-muted ">
-          <!-- CONTACT -->
-          <div class="mb-5 p-3 shadow m-4 ">
-            <div class="align-content-center">
-              <div>
-                <h2 class="text-center bg-light" id="contact">Contactez-nous</h2>
-              </div>
-
-              <div class="container">
-                <div class="row g-2">
-                  <div class="col-md">
-                    <div class="form-floating">
-                      <input type="text" class="form-control" id="nom" value="" placeholder="Votre nom">
-
-                    </div>
-                  </div>
-                  <div class="col-md">
-                    <div class="form-floating">
-                      <input type="text" class="form-control" id="prenom" value="" placeholder="Votre prénom">
-
-                    </div>
-                  </div>
-                </div>
-
-                <fieldset>
-                  <div class="form-group">
-                    <label for="email">Entrez votre mail</label>
-                    <input type="email" class="form-control" id="email" placeholder="Votre e-mail">
-                  </div>
-
-                  <div class="form-group">
-                    <label for="text">Votre message</label>
-                    <textarea class="form-control" id="message" rows="3"></textarea>
-                  </div>
-
-                  <input class="mb-5" type="button" submit="Envoyer" value="Envoyer">
-                </fieldset>
-              </form>
-            </div>
-          </div>
+        <footer class="text-center bg-light text-muted mb-5 pb-2">
+         
           <hr>
 
           <!-- Section: Links -->
-          <section class="">
+          <section class="mb-3">
             <div class="container text-center text-md-start mt-5">
               <!-- Grid row -->
               <div class="row mt-3">
                 <!-- Grid column -->
-                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto ">
                   <!-- Content -->
                   <h6 class="text-uppercase fw-bold mb-4">
                     FETES UN VOEU
@@ -279,7 +248,7 @@
                   </p>
                 </div>
               </div>
-              <div style="background-color:red;" width="100%">
+              <div class="" style="background-color:red;" width="100%">
                 <img width="100%" src={{asset('/images/imagesUpload/carte_fuv_optimisee.jpg')}}></img>
               </div>
 
@@ -301,11 +270,7 @@
         </div>
       </footer>
 
-      {% for message in app.flashes('success') %}
-        <div class="col-md-6 bg-secondary p-4 rounded mx-auto text-center text-white mb-3">
-          {{ message }}
-        </div>
-      {% endfor %}
+   
       {% block body %}{% endblock %}
 
       {% block javascripts %}
