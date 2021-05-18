@@ -1,19 +1,70 @@
-{% extends 'base.html.twig' %}
+{% extends 'modeleConnexion.html.twig' %}
 
 {% block body %}
+<div class="container mt-4">
+    <h1 class="text-center p-4" style="background-color: #eddcf9">Formulaire de contact</h1>
+    <form id="contact-form" method="post" action="{{ path('mail') }}" role="form">
 
-<form action="{{ path ('mail') }}" method="post">
-<label for="email">Email</label>
-<input name="email" id="email" type="email" placeholder="Veuillez saisir votre email">
-<label for="message">Message</label>
-<textarea name="message" id="message" cols="30" rows="10">
+        <div class="messages"></div>
 
+        <div class="controls">
 
-
-
-</textarea>
-<button class="background-color: #ffba08" type="submit">Envoyer</button>
-</form>
-
-
+            <div class="row mt-5">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="form_name">Prénom *</label>
+                        <input id="form_name" type="text" name="name" class="form-control" placeholder="Veuillez saisir votre prénom *" required="required" data-error="Firstname is required.">
+                        <div class="help-block with-errors"></div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="form_lastname">Nom *</label>
+                        <input id="form_lastname" type="text" name="surname" class="form-control" placeholder="Veuillez saisir votre nom *" required="required" data-error="Lastname is required.">
+                        <div class="help-block with-errors"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="form_email">Email *</label>
+                        <input id="form_email" type="email" name="email" class="form-control" placeholder="Veuillez saisir votre email *" required="required" data-error="Valid email is required.">
+                        <div class="help-block with-errors"></div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="form_need">Spécifiez l'objet de votre mail *</label>
+                        <select id="form_need" name="need" class="form-control" required="required" data-error="Spécifiez l'objet de votre mail">
+                            <option value=""></option>
+                            <option value="Devis">Devis</option>
+                            <option value="Informations">Informations</option>
+                            <option value="Autre">Autre</option>
+                        </select>
+                        <div class="help-block with-errors"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="form_message">Message *</label>
+                        <textarea id="form_message" name="message" class="form-control" placeholder="Message *" rows="4" required="required" data-error="Please, leave us a message."></textarea>
+                        <div class="help-block with-errors"></div>
+                    </div>
+                </div>
+                <div class="col-md-12 mt-4">
+                    <input type="submit" class="btn btn-info btn-send" value="Envoyer">
+                </div>
+            </div>
+            <div class="row mt-2">
+                <div class="col-md-12">
+                    <p class="text-muted">
+                        <strong>*</strong> Ces champs sont requis
+                </div>
+            </div>
+        </div>
+     </div>
+    </form>
 {% endblock %}

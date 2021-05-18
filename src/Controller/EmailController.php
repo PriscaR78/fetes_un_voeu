@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use Swift_Mailer;
+use Swift_Image;
 use Swift_Message;
 use Swift_SmtpTransport;
 use Symfony\Component\HttpFoundation\Request;
@@ -10,52 +11,55 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class EmailController extends AbstractController{     
 
-        /**
-        * @Route("/mail", name="mail")
-        */
-        public function send_email(Request $request)
-        {
-        
-        if(!empty($request->request)):
-        $transporter = (new Swift_SmtpTransport('smtp.gmail.com', 587, 'tls'))
+       /**
+     * @Route("/mail", name="mail")
+     */
+    public function send_email(request $request)
+    {
+
+        if (!empty($request->request)):
+           // dd($request->request->get('email'));
+        $transporter = (new Swift_SmtpTransport('smtp.gmail.com', 465, 'ssl'))
             ->setUsername('priska.roberts@gmail.com')
             ->setPassword('@Elena2008');
 
         $mailer = new Swift_Mailer($transporter);
-
-        $mess=$request->request->get('message');
-        $nom=$request->request->get('surname');
-        $prenom=$request->reqiest->get('name');
-        $motif=$request->request->get('need');
-        $image='data:image/jpeg;base64,'.base64_encode(file_get_contents('fleche.png'));    
-
-
+$mess=$request->request->get('message');
+$nom=$request->request->get('surname');
+$prenom=$request->request->get('name');
+$motif=$request->request->get('need');
+   
         $message = (new Swift_Message("$motif"))
             ->setFrom($request->request->get('email'))
-            ->setTo(['priska.roberts@gmail.com'=> 'Priska']);
-       // $image=base64_encode(file_get_contents('fleche.png'));
-       $cid = $message->embed(Swift_Image::fromPatch('fleche.png'));
+            ->setTo(['priska.roberts@gmail.com'=> 'Prisca']);
+            $cid = $message->embed(Swift_Image::fromPath('images/imagesUpload/logo/logo_fetes_un_voeu.png'));
              $message->setBody(
-             $this->renderView('email/mail.html.twig',[
-              'message'=>$mess
-            ]),
-            'text/html'
-        );
+
+                $this->renderView('prisca/mailer.html.twig',[
+                    'message'=>$mess,
+                       'nom'=>$nom,
+                    'prenom'=>$prenom,
+                    'motif'=>$motif,
+                    'email'=>$request->request->get('email'),
+                    'cid'=>$cid
+                ]),
+                'text/html'
+            );
+
 
 // Send the message
         $result = $mailer->send($message);
 
-        $this->addFlash('success', 'Votre message est bien envoyé');
+
+        $this->addFlash('success', 'email envoyé');
         return $this->redirectToRoute('home');
         endif;
-
     }
-
     /**
      * @Route("/sendform", name="send_form")
      */
     public function form_email()
     {
-        return $this->render('Email/mail.html.twig');
+        return $this->render('email/mail.html.twig');
     }
 }

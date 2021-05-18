@@ -511,52 +511,17 @@ class LaurenceController extends AbstractController
         return $this->render('pagePaiement.html.twig', [
             'user'=>$user
         ]);
-
-    }
-
-
-    // ----------------------- EMAIL (possible faire controller à part)  ------------------------------------
-
-    /**
-     * @Route("/mail", name="mail")
-     */
-    public function send_email(Request $request)
-    {
-//        dd($request->request);
-        if(!empty($request->request)):
-
-        $transporter = (new Swift_SmtpTransport('smtp.gmail.com', 465, 'ssl'))
-            ->setUsername('laurence78.email@gmail.com')
-            ->setPassword('donzelle31');
-
-        $mailer = new Swift_Mailer($transporter);
-        $mess=$request->request->get('message');
-
-        $message = (new Swift_Message('Dreamful Subject'))
-            ->setFrom($request->request->get('ad_mail'))    // "envoyeur" de demande de contact
-            ->setTo(['laurence78.email@gmail.com'=> 'Lo']); // admin
-//        $image=base64_encode(file_get_contents('fleche.png'));
-        $message->setBody("$mess" );                               // corps du message avec image au besoin
-
-
-// Send the message
-        $result = $mailer->send($message);
-        $this->addflash ('success', "Votre email a bien été envoyé.");
-        return $this->redirectToRoute('home');
-        endif;
     }
 
     /**
-     * @Route("/envoiform", name="envoi_form")
+     * @Route("/remerciement", name="remerciement")
      */
-    public function form_mail()
+    public function merci()
     {
-        return $this->render('email/mailTest.html.twig');
-}
-
-
-
-
-
+        $merci="merci";
+        return $this->render('remerciement.html.twig', [
+            'merci'=>$merci
+        ]);
+    }
 
 }
