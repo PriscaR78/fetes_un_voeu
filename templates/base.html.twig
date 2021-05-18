@@ -22,77 +22,26 @@
 
       <!-- Custom styles for this template -->
       <link href={{asset('assets/css/carousel.css')}} rel="stylesheet">
-      <style>
-        .bd-placeholder-img {
-          font-size: 1.125rem;
-          text-anchor: middle;
-          -webkit-user-select: none;
-          -moz-user-select: none;
-          -ms-user-select: none;
-          user-select: none;
-        }
-
-        @media(min-width: 768px) {
-          .bd-placeholder-img-lg {
-            font-size: 3.5rem;
-          }
-        }
-      </style>
+   
 
     {% endblock %}
   </head>
   <body>
-
     <header>
-      <div class="container">
-        <nav class="d-flex navbar-default navbar-expand-md fixed-top p-3 ">
-          <div>
-            <a href="/">
+          <div class="header">
+          <div class="d-flex justify:space-around">
+            <a class="mt-4 ml-4" href="/">
               <img src={{asset('images/imagesUpload/logo/logo_fetes_un_voeu.png')}} alt="Logo fêtes un voeu" width="125">
             </a>
-          </div>
-          <div>
-            <a class="navbar-brand mt-4 ml-5" href="/">Fêtes un voeu<br>...au service de vos festivités
+         
+       
+            <a class="navbar-brand mt-5 ml-5" href="/">Fêtes un voeu<br>...au service de vos festivités
             </a>
           </div>
 
-          <button class="navbar-toggler bg-dark" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <hr>
+              <!-- Section: Social media -->
+          <div class="d-flex justify-content-end mr-2">
 
-          <!-- Collapse button -->
-
-          <div class="collapse navbar-collapse container-fluid" id="navbarSupportedContent1">
-            <ul class="navbar-nav w-100 justify-content-md-end" style="">
-              <li class="nav-item active">
-                <a class="nav-link mr-2" href="/">Accueil<span class="sr-only">(current)</span>
-                </a>
-              </li>
-
-              <li class="nav-item active mr-2">
-                <a class="nav-link" href="#prestations">Nos prestations<span class="sr-only">(current)</span>
-                </a>
-              </li>
-              <li class="nav-item active mr-2">
-                <a class="nav-link" href="#galerie">Galerie<span class="sr-only">(current)</span>
-                </a>
-              </li>
-
-              <li class="nav-item active mr-2">
-                <a class="nav-link" href="#avis">Avis<span class="sr-only">(current)</span>
-                </a>
-              </li>
-
-              <li class="nav-item active mr-2">
-                <a class="nav-link" href="#contact">Contact<span class="sr-only">(current)</span>
-                </a>
-              </li>
-
-              <li class="nav-item active mr-5">
-                <a class="nav-link" href="{{ path('verif_dispo')}}">Réservation<span class="sr-only">(current)</span>
-                </a>
-              </li>
 
               {% if app.user %}
                 <div class="nav-item dropdown my-2 my-lg-0 mr-5">
@@ -113,25 +62,80 @@
               {% else %}
 
                 <a class="nav-link " href="{{path('login')}}">Connexion</a>
-                <a class="nav-link " href="{{ path('inscription') }}">Inscription</a>
+                <a class="nav-link mr-5" href="{{ path('inscription') }}">Inscription</a>
               {% endif %}
 
-              <!-- Section: Social media -->
-
-              <a href="https://www.facebook.com/fetesvosvoeux" target="blank"><img src="{{asset('/images/imagesUpload/icones/facebook.svg')}}" width="40em" height="40em" class="mr-2"></a>
-              <a href="https://www.instagram.com/fetes_unvoeu/?hl=fr" target="blank"><img src="{{asset('/images/imagesUpload/icones/instagram-orange.svg')}}" width="40em" height="40em" class="mr-2"></a>
-              <a href="https://github.com/PriscaR78/fetes_un_voeu" target="blank"><img src="{{asset('/images/imagesUpload/icones/github-border-dark.svg')}}" width="45em" height="45em" class="mr-5"></a>
-
+              <a href="https://www.facebook.com/fetesvosvoeux" target="blank"><img src="{{asset('/images/imagesUpload/icones/facebook.svg')}}" width="40em" height="40em"></a>
+              <a href="https://www.instagram.com/fetes_unvoeu/?hl=fr" target="blank"><img src="{{asset('/images/imagesUpload/icones/instagram-orange.svg')}}" width="40em" height="40em"></a>
+              <a href="https://github.com/PriscaR78/fetes_un_voeu" target="blank"><img src="{{asset('/images/imagesUpload/icones/github-border-dark.svg')}}" width="43em" height="43em" class="mr-5"></a>
+</div>
               {# <li class="nav-item active mr-2">
 					<a href=""><img class="bd-placeholder-img rounded-circle" width="50" height="50" src={{asset('/images/imagesUpload/icones/fem.jpeg')}} role="img" aria-label="profil">
 					</a></img>
 				 #}
+          </div>
 
+          </div>
+
+          <hr>
+
+
+     
+        <nav class="navbar-expand-lg">
+
+
+<div class="collapse navbar-collapse navigation" id="navbarSupportedContent">
+
+
+          {# <div class="collapse navbar-collapse container-fluid" id="navbarSupportedContent1"> #}
+            {# <ul class="navbar-nav w-100 justify-content-md-end" style=""> #}
+                <ul class="nav nav-tabs" id="media">
+
+                <li class="nav-item ml-4 mr-2">
+                <a class="nav-link" href="/">Accueil<span class="sr-only">(current)</span>
+                </a>
+              </li>
+
+              <li class="nav-item mr-2">
+                <a class="nav-link" href="#prestations">Nos prestations<span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item mr-2">
+                <a class="nav-link" href="#galerie">Galerie<span class="sr-only">(current)</span>
+                </a>
+              </li>
+
+              <li class="nav-item mr-2">
+                <a class="nav-link" href="#avis">Avis<span class="sr-only">(current)</span>
+                </a>
+              </li>
+
+              <li class="nav-item mr-2">
+                <a class="nav-link" href="{{ path('send_form')}}">Contact<span class="sr-only">(current)</span>
+                </a>
+              </li>
+
+              <li class="nav-item mr-5">
+                <a class="nav-link" href="{{ path('verif_dispo')}}">Réservation<span class="sr-only">(current)</span>
+                </a>
+              </li>
+
+            
             </ul>
 
           </div>
+        
+
+  <!-- Collapse button -->
+         <div class="burger1">
+            <button class="burger navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
         </nav>
-      </div>
+   
     </header>
     <main role="main">
 
