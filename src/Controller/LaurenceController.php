@@ -504,13 +504,10 @@ class LaurenceController extends AbstractController
     /**
      * @Route("/paiement", name="paiement")
      */
-    public function paiement(ReservationRepository $reservationRepository, PackRepository $packRepository)
+    public function paiement()
     {
 
-        $user=$this->getUser();
-        return $this->render('pagePaiement.html.twig', [
-            'user'=>$user
-        ]);
+        return $this->render('pagePaiement.html.twig');
     }
 
     /**
@@ -518,10 +515,8 @@ class LaurenceController extends AbstractController
      */
     public function merci()
     {
-        $merci="merci";
-        return $this->render('remerciement.html.twig', [
-            'merci'=>$merci
-        ]);
+
+        return $this->render('remerciement.html.twig');
     }
 
 }
