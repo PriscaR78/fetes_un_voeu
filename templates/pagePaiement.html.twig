@@ -28,23 +28,27 @@
                 <th scope="col">Nom</th>
                 <th scope="col">Prénom</th>
                 <th scope="col">Voir Réservations effectuées</th>
+                <th scope="col">Date de l'anniversaire</th>
                 <th scope="col">Retourner à l'accueil</th>
             </tr>
             </thead>
             <tbody class="text-center">
 
-                <tr>
+            <tr>
 
-                    {#<td>{{ reservation.pack.nom }}</td>#}
-{#                    <td><a href="{{ path('resa_client', {'id': user.id }) }}"><img src="{{ asset('images/loupe.png') }}" alt="voir"></a></td>#}
-{#                    <td><a href="{{ path('/')}}"><img src="{{ asset('images/delete.png') }}" alt="accueil"></a></td>#}
-                </tr>
-{#je déteste git#}
+                {{ reservation.id }}
+                <td>{{ reservation.user.nom }}</td>
+                <td>{{ reservation.user.prenom }}</td>
+                <td>{{ reservation.pack.nom }}</td>
+                {#                    <td><a href="{{ path('resa_client', {'id': user.id }) }}"><img src="{{ asset('images/loupe.png') }}" alt="voir"></a></td>#}
+                {#                    <td><a href="{{ path('/')}}"><img src="{{ asset('images/delete.png') }}" alt="accueil"></a></td>#}
+            </tr>
+
             </tbody>
         </table>
         <button class="btn btn-info mt-4 mb-4" type="submit">Payer</button>
     </div>
 
-    {{ reservation.id }}
-        {% endblock %}
+
+{% endblock %}
 
