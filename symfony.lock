@@ -443,15 +443,11 @@
             "ref": "ae4d22af30bbd484506bc1817c5a3ef72c855b93"
         },
         "files": [
-<<<<<<< HEAD
+
             "config/packages/dev/swiftmailer.yaml",
             "config/packages/swiftmailer.yaml",
             "config/packages/test/swiftmailer.yaml"
-=======
-            "./config/packages/dev/swiftmailer.yaml",
-            "./config/packages/swiftmailer.yaml",
-            "./config/packages/test/swiftmailer.yaml"
->>>>>>> edb08683325f7d8e9f8b21a045f79a68866926a6
+
         ]
     },
     "symfony/test-pack": {
