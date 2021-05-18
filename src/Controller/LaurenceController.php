@@ -511,7 +511,17 @@ class LaurenceController extends AbstractController
         return $this->render('pagePaiement.html.twig', [
             'user'=>$user
         ]);
+    }
 
+    /**
+     * @Route("/remerciement", name="remerciement")
+     */
+    public function merci()
+    {
+        $merci="merci";
+        return $this->render('remerciement.html.twig', [
+            'merci'=>$merci
+        ]);
     }
 
 
