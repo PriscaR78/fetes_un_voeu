@@ -24,12 +24,17 @@ class EmailController extends AbstractController{
         $mailer = new Swift_Mailer($transporter);
 
         $mess=$request->request->get('message');
+        $nom=$request->request->get('surname');
+        $prenom=$request->reqiest->get('name');
+        $motif=$request->request->get('need');
+        $image='data:image/jpeg;base64,'.base64_encode(file_get_contents('fleche.png'));    
 
 
-        $message = (new Swift_Message('Subject'))
+        $message = (new Swift_Message("$motif"))
             ->setFrom($request->request->get('email'))
             ->setTo(['priska.roberts@gmail.com'=> 'Priska']);
        // $image=base64_encode(file_get_contents('fleche.png'));
+       $cid = $message->embed(Swift_Image::fromPatch('fleche.png'));
              $message->setBody(
              $this->renderView('email/mail.html.twig',[
               'message'=>$mess

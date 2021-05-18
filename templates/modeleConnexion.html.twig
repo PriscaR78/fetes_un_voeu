@@ -40,87 +40,114 @@
            {% endblock %}
 	</head>
 <body>
+ <header>
+          <div class="header">
+          <div class="d-flex justify:space-around">
+            <a class="mt-4 ml-4" href="/">
+              <img src={{asset('images/imagesUpload/logo/logo_fetes_un_voeu.png')}} alt="Logo fêtes un voeu" width="125">
+            </a>
+         
+       
+            <a class="navbar-brand mt-5 ml-5" href="/">Fêtes un voeu<br>...au service de vos festivités
+            </a>
+          </div>
 
-<header>
- <nav class="d-flex navbar-default navbar-expand-md fixed-top p-3 ">
-				<div><a href="/"> <img src={{asset('images/imagesUpload/logo/logo_fetes_un_voeu.png')}} alt="Logo fête un voeu" width="125">
-					</img></a></div>
-				<div><a class="navbar-brand mt-4 ml-5" href="/">Fêtes un voeu<br>...au service de vos festivités
-				</a></div>
-				<hr>
-					<div class="collapse navbar-collapse container-fluid" id="navbarCollapse">
-						<ul class="navbar-nav w-100 justify-content-md-end" style="background-color:">
-							<li class="nav-item active">
-								<a class="nav-link mr-2" href="/">Accueil
-								</a>
-							</li>
-						
-							<li class="nav-item active mr-2">
-								<a class="nav-link" href="/#prestations">Nos prestations
-								</a>
-							</li>
-							<li class="nav-item active mr-2">
-								<a class="nav-link" href="/#galerie">Galerie
-								</a>
-							</li>
-					
-						<li class="nav-item active mr-2">
-							<a class="nav-link" href="/#avis">Avis
-							</a>
-						</li>
-					
-					<li class="nav-item active mr-2">
-						<a class="nav-link" href="/#contact">Contact
-						</a>
-					</li>
-			
-				<li class="nav-item active mr-5">
-					<a class="nav-link" href="{{ path('verif_dispo')}}">Réservation
-					</a>
-				</li>
+              <!-- Section: Social media -->
+          <div class="d-flex justify-content-end mr-2">
 
-                {% if app.user %}
-                <div class="nav-item dropdown my-2 my-lg-0 mr-5" >
-                    <a class="dropdown-toggle btn btn-info mt-2" href="#" id="navbarDropdown" role="button"
-                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						{{ app.user.username }}
 
-                    </a>
-                    <div class="dropdown-menu shadow m-4" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ path('profil', {id:app.user.id}) }}">Profil</a>
-                        {% if is_granted('ROLE_ADMIN') %}
-                            <a class="dropdown-item" href="{{ path('backoffice') }}">Back-office</a>
-                        {% endif %}
+              {% if app.user %}
+                <div class="nav-item dropdown my-2 my-lg-0 mr-5">
+                  <a class="dropdown-toggle btn btn-info mt-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{ app.user.username }}
 
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="{{ path('logout') }}">Déconnexion</a>
-                    </div>
+                  </a>
+                  <div class="dropdown-menu shadow m-4" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="{{ path('profil', {id:app.user.id}) }}">Profil</a>
+                    {% if is_granted('ROLE_ADMIN') %}
+                      <a class="dropdown-item" href="{{ path('backoffice') }}">Back-office</a>
+                    {% endif %}
+
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{{ path('logout') }}">Déconnexion</a>
+                  </div>
                 </div>
-            {% else %}
+              {% else %}
 
                 <a class="nav-link " href="{{path('login')}}">Connexion</a>
-                <a class="nav-link " href="{{ path('inscription') }}">Inscription</a>
-            {% endif %}
-              
+                <a class="nav-link mr-5" href="{{ path('inscription') }}">Inscription</a>
+              {% endif %}
 
-              
-
-				<!-- Section: Social media -->
-
-				<a href="https://www.facebook.com/fetesvosvoeux" target="blank"><img src="{{asset('/images/imagesUpload/icones/facebook.svg')}}" width="40em" height="40em" class="mr-2"></a>
-				<a href="https://www.instagram.com/fetes_unvoeu/?hl=fr" target="blank"><img src="{{asset('/images/imagesUpload/icones/instagram-orange.svg')}}" width="40em" height="40em" class="mr-2" ></a>
-				<a href="https://github.com/PriscaR78/fetes_un_voeu" target="blank"><img src="{{asset('/images/imagesUpload/icones/github-border-dark.svg')}}" width="45em" height="45em" class="mr-5"></a>
-
-
-					{# <li class="nav-item active mr-2">
+              <a href="https://www.facebook.com/fetesvosvoeux" target="blank"><img src="{{asset('/images/imagesUpload/icones/facebook.svg')}}" width="40em" height="40em"></a>
+              <a href="https://www.instagram.com/fetes_unvoeu/?hl=fr" target="blank"><img src="{{asset('/images/imagesUpload/icones/instagram-orange.svg')}}" width="40em" height="40em"></a>
+              <a href="https://github.com/PriscaR78/fetes_un_voeu" target="blank"><img src="{{asset('/images/imagesUpload/icones/github-border-dark.svg')}}" width="43em" height="43em" class="mr-5"></a>
+</div>
+              {# <li class="nav-item active mr-2">
 					<a href=""><img class="bd-placeholder-img rounded-circle" width="50" height="50" src={{asset('/images/imagesUpload/icones/fem.jpeg')}} role="img" aria-label="profil">
 					</a></img>
 				 #}
-			
-			</ul>
+          </div>
 
-</div>
- </nav>
+          </div>
+
+          <hr>
+
+
+     
+        <nav class="navbar-expand-lg">
+
+
+<div class="collapse navbar-collapse navigation" id="navbarSupportedContent">
+
+
+          {# <div class="collapse navbar-collapse container-fluid" id="navbarSupportedContent1"> #}
+            {# <ul class="navbar-nav w-100 justify-content-md-end" style=""> #}
+                <ul class="nav nav-tabs" id="media">
+
+                <li class="nav-item ml-4 mr-2">
+                <a class="nav-link" href="/">Accueil<span class="sr-only">(current)</span>
+                </a>
+              </li>
+
+              <li class="nav-item mr-2">
+                <a class="nav-link" href="#prestations">Nos prestations<span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item mr-2">
+                <a class="nav-link" href="#galerie">Galerie<span class="sr-only">(current)</span>
+                </a>
+              </li>
+
+              <li class="nav-item mr-2">
+                <a class="nav-link" href="#avis">Avis<span class="sr-only">(current)</span>
+                </a>
+              </li>
+
+              <li class="nav-item mr-2">
+                <a class="nav-link" href="{{ path('send_form')}}">Contact<span class="sr-only">(current)</span>
+                </a>
+              </li>
+
+              <li class="nav-item mr-5">
+                <a class="nav-link" href="{{ path('verif_dispo')}}">Réservation<span class="sr-only">(current)</span>
+                </a>
+              </li>
+
+            
+            </ul>
+
+          </div>
+        
+
+  <!-- Collapse button -->
+         <div class="burger1">
+            <button class="burger navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        </nav>
 
 </header>
 
