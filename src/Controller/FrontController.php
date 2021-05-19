@@ -56,6 +56,7 @@ class FrontController extends AbstractController
         $reservation->setUser($this->getUser());
         $resa_min= date('Y-m-d', time());
         $resa_max = date('Y-m-d',time() + (365 * 24 * 60 * 60 ))   ;
+
         $requete = false;
         $packs=$packRepository->findAll();
 
@@ -101,7 +102,7 @@ class FrontController extends AbstractController
         // ------------ CONTROLE FORMULAIRE ------------ //
 
         $resa_min= date('Y-m-d', time());
-        $resa_max = date('Y-m-d',time() + (365 * 24 * 60 * 60 ))   ;
+        $resa_max = date('Y-m-d',time() + (365 * 24 * 60 * 60 ));
 
 
         // ------------ CONTROLES RECEPTION FORMULAIRE ------------ //
