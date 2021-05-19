@@ -24,43 +24,6 @@ use Symfony\Component\Routing\Annotation\Route;
 class BackController extends AbstractController
 {
 
-    // /**
-    //  * @Route("/", name="backoffice")
-    //  */
-    // public function backoffice()
-    // {
-    //     return $this->render('back/backoffice.html.twig');
-    // }
-
-
-    // /**
-    //  * @Route("/utilisateur", name="utilisateurs")
-    //  */
-    // public function utilisateurs(UserRepository $repository)
-    // {
-    //     $utilisateurs=$repository->findAll();
-
-    //     return $this->render('back/utilisateurs.html.twig', [
-    //         'utilisateurs'=>$utilisateurs
-    //     ]);
-    // }
-
-
-    // /**
-    //  * @Route("/deleteuser/{id}", name="deleteuser")
-    //  */
-    // public function delete_user(User $user, EntityManagerInterface $manager)
-    // {
-    //     //on appelle l'entité User pour ne pas avoir du user repository
-
-    //     $manager->remove($user);
-    //     $manager->flush();
-
-    //     $this->addFlash('success', "L'utilisateur a bien été supprimé");
-    //     return $this->redirectToRoute('utilisateurs');
-    // }
-
-
     // -------------------------------------- BACK-OFFICE -------------------------------------- //
 
 
