@@ -2,17 +2,14 @@
 
 {% block body %}
     <div class="container-fluid">
-
- <h1 class="text-center mt-5 mb-5 p-4 text-white" style="background-color: #4b1348">PAGE 404</h1>
-
-     <div id="" class="img-fluid mx-auto">
-      
-          <div class="carousel-item active justify-content-center">
-            <img class="" width="auto" height="100%" src={{asset('/images/imagesUpload/404-sans-btn.png')}} role="page 404">
-            </img>
-            <a href="/"><button class="btn text-white rounded my-2" style="background-color: #ffba08" type="submit">ACCUEIL</button></a>
+ {# <a href="/"><button class="btn text-white rounded my-4" style="background-color: #ffba08" type="submit">ACCUEIL</button></a> #}
   
-          </div>
+     <div id="" class="d-flex img-fluid mx-auto" style="width:1400px; padding-top:2%;" >
+      
+        <div class="carousel-item active">
+            <img class="" max-width="100px" height="" src={{asset('/images/imagesUpload/404-sans-btn.png')}} role="page 404">
+            </img>
+        </div>
     </div>
       
 </div>
