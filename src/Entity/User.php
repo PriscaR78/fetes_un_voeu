@@ -36,6 +36,7 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="veuillez renseigner votre mot de passe")
      * @Assert\EqualTo(propertyPath="confirm_password", message="Les mots de passe ne correspondent pas")
+     * @Assert\Length(max=15, maxMessage="Votre mot de passe est trop long.")
      */
     private $password;
 
@@ -87,6 +88,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Assert\Length(max=5, maxMessage="Le code postal doit comporter 5 caractères")
      */
     private $cp;
 
@@ -102,6 +104,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Assert\Length(max=12, maxMessage="Vous avez entré trop de caractères." )
      */
     private $telephone;
 
