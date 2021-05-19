@@ -38,9 +38,7 @@
           {% endfor %}
         </ul>
       {% endif %}
-      {#        {% if not reservations %}#}
-      {#            <p>Ce pack est disponible aux dates indiquées</p>#}
-      {#            {% endif %}#}
+
     {% endif %}
     <form action=" {{ path('verif_dispo')}} " method="get">
 
@@ -61,12 +59,6 @@
       <button class="btn btn-info mt-4 mb-4" type="submit">Vérifier</button>
 
     </form>
-
-    {% for message in app.flashes('success') %}
-      <div class="col-md-6 bg-secondary p-4 rounded mx-auto text-center text-white mb-3">
-        {{ message }}
-      </div>
-    {% endfor %}
 
 
     <hr>
@@ -89,12 +81,6 @@
 
         {{ form_end(formResa) }}
       {% endif %}
-      {#      <a href="{{path("paiement/{id}", {'id': app.user.id} )}}">#}
-      {#      <a href="{{path("paiement")}}">#}
-      {#        <button class="btn btn-danger m-2" type="submit">Paiement</button>#}
-      {#      </a>#}
-
-
 
 
       {% if not app.user %}
@@ -109,6 +95,6 @@
 
     </div>
   </div>
-  </div>
+
 
 {% endblock %}
