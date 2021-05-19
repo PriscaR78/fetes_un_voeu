@@ -99,19 +99,4 @@ class SecurityController extends AbstractController
         return $this->redirectToRoute('gestion_clients');
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
