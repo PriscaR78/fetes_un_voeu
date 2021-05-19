@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% block stylesheets %}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    {% endblock %}
+   
+</head>
+<body>
+<div class="row">
+<div style=" height: 100vh" class="col-md-2 vertical-nav pl-3" id="sidebar">
+      <nav class="ml-3" style="background-color: #4b1348">
+           <h3 class="text-center p-5 mt-2" style="color:#ffff">Back-Office</h3>
+        <ul class="nav flex-column pt-3 pb-5">
+         <li class="nav-item btn btn-light m-3"><a class="nav-link text-dark" href="{{ path('backoffice') }}">Accueil</a></li>
+            <li class="nav-item btn btn-light m-3"><a class="nav-link text-dark" href="{{ path('gestion_clients') }}">Clients</a></li>
+            <li class="nav-item btn btn-light m-3"><a class="nav-link text-dark"  href="{{ path('gestion_reservations') }}">Réservations</a></li>
+            <li class="nav-item btn btn-light m-3"><a class="nav-link text-dark" href="{{ path('gestion_packs') }}">Packs</a></li>
+          
+            <li class="nav-item btn btn-light m-3"><a class="nav-link text-dark " href="{{ path('send_form') }}">Contact</a></li>
+            <li class="nav-item btn btn-light m-3">
+                <a class="nav-link text-dark" href="{{ path('home')}} ">Fêtes un voeu</a>
+            </li>
+        </ul>
+    </nav>
+
+ <div class="container-fluid p-5">
+            <a href="/">
+              <img src={{asset('images/imagesUpload/logo/logo_fetes_un_voeu.png')}} alt="Logo fêtes un voeu" width="125">
+            </a>
+          </div>
+          <div>
+            <a class="navbar-brand ml-5" style="color:#4b1348" href="/">Fêtes un voeu<br>...au service de vos festivités
+            </a>
+          </div>
+</div>
+
+ 
+
+<div class="col">
+
+
+{% block body %}
+{% endblock %}
+
+</div>
+</div>
+
+
+{% block javascripts %}
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+{% endblock %}
+</body>
+</html>

@@ -32,10 +32,10 @@ $motif=$request->request->get('need');
         $message = (new Swift_Message("$motif"))
             ->setFrom($request->request->get('email'))
             ->setTo(['priska.roberts@gmail.com'=> 'Prisca']);
-            $cid = $message->embed(Swift_Image::fromPath('images/imagesUpload/logo/logo_fetes_un_voeu.png'));
+            $cid = $message->embed(Swift_Image::fromPath('images/imagesUpload/logo/logo_contact.png'));
              $message->setBody(
 
-                $this->renderView('prisca/mailer.html.twig',[
+                $this->renderView('email/mailer.html.twig',[
                     'message'=>$mess,
                        'nom'=>$nom,
                     'prenom'=>$prenom,

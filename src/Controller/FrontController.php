@@ -2,13 +2,11 @@
 
 namespace App\Controller;
 
-use App\Entity\User;
-use App\Repository\ReservationRepository;
+use App\Entity\Pack;
 use App\Repository\UserRepository;
-use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Response;
+use App\Repository\ReservationRepository;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class FrontController extends AbstractController
 {
@@ -19,19 +17,7 @@ class FrontController extends AbstractController
      */
     public function home()
     {
-        $informations=[
-            'fonction'=>'doudou',
-            'faiblesse'=>'cookies',
-            'today'=>date('Y-m-d')
-        ];
-
-
-
-        return $this->render('front/home.html.twig', [
-            'prenom'=>'Marcel',
-            'age'=>125,
-            'informations'=>$informations
-        ]);
+        return $this->render('front/home.html.twig');
 
        }
 
@@ -49,4 +35,41 @@ class FrontController extends AbstractController
     }
 
 
+    // -------------------------------------- PAIEMENT  -------------------------------------- //
+
+    /**
+     * @Route("/paiement", name="paiement")
+     */
+    public function paiement()
+    {
+
+        return $this->render('front/pagePaiement.html.twig');
+    }
+
+    /**
+     * @Route("/remerciement", name="remerciement")
+     */
+    public function merci()
+    {
+
+        return $this->render('front/remerciement.html.twig');
+    }
+
+
+    // -------------------- A METTRE FRONTCONTROLLER --------------------//
+            // une fois qu'il y aura une page qui montre tous les packs
+    /**
+     * @Route("/detail_pack/{id}", name="detail_pack")
+     */
+    public function detail_pack(Pack $pack, $id)
+    {
+        return $this->render('back/detail_pack.html.twig', [
+            'pack'=>$pack
+        ]);
+    }
+
+
+
 }
+
+
