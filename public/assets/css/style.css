@@ -1,3 +1,9 @@
+*{
+scroll-behavior: smooth;
+
+}
+
+
 .navbar-default {
 
     background-color: #eddcf9;
@@ -18,6 +24,17 @@
     margin-top: 2vh;
     margin-bottom: 2vh;
    
+}
+
+.btn-info {
+    background-color: #ffba08;
+    color:white;
+    border-color: #ffba08;
+}
+.btn-info:hover {
+    color: #fff;
+    background-color: #ffba08;
+    border-color: #ffba08;
 }
 
 #btn-back-to-top {

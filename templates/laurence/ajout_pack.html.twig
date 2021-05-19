@@ -1,12 +1,7 @@
 {% extends 'backoffice.html.twig' %}
 
 {% block body %}
-
-  <!-- Bootstrap core CSS -->
-      <link href={{asset('assets/css/bootstrap.min.css')}} rel="stylesheet">
-      <link href={{asset('assets/css/style.css')}} rel="stylesheet">
-      <link href={{asset('assets/css/bootstrap.bundle.js')}} rel="stylesheet">
-      
+     
 <div class="container-fluid">
 
 
@@ -30,8 +25,8 @@
     {{ form_row(formPack.image2) }}
     {{ form_row(formPack.image3) }}
 
-
-    <button class="btn btn-info mb-5" type="submit">Ajouter</button>
+   
+    <button class="btn text-white my-2" style="background-color: #ffba08" type="submit">Ajouter</button>
 
     {{ form_end(formPack) }}
     </div>

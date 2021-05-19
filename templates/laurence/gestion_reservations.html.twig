@@ -2,10 +2,8 @@
 
 {% block body %}
 
-  <!-- Bootstrap core CSS -->
-      <link href={{asset('assets/css/bootstrap.min.css')}} rel="stylesheet">
-      <link href={{asset('assets/css/style.css')}} rel="stylesheet">
-      <link href={{asset('assets/css/bootstrap.bundle.js')}} rel="stylesheet">
+
+  
       
 <div class="container-fluid">
     <h1 class="text-center mt-2 mb-2 p-4 text-white" style="background-color: #4b1348">Gestion des réservations</h1>
@@ -15,11 +13,11 @@
         </div>
     {% endfor %}
     <div class="row justify-content-start">
-        <div class="col-md-3">
-            <a class="btn btn-info my-3 mr-2" href="{{ path('verif_dispo') }}">Ajouter une nouvelle réservation</a>
+        <div class="col-md-2 ml-3 rounded" style="background-color: #ffba08">
+            <a class="btn text-white ml-1 my-2 " href="{{ path('verif_dispo') }}">Ajouter une nouvelle réservation</a>
         </div>
     </div>
-    <table class="table table-striped">
+    <table class="table table-striped m-2">
         <thead class="thead-light">
         <tr>
             <th scope="col">#</th>

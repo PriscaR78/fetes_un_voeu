@@ -1,10 +1,9 @@
 {% extends 'backoffice.html.twig' %}
 
 {% block body %}
-    <div class="container">
 
-
-        <h1 class="text-center mb-5 p-4" style="background-color: #eddcf9">Modification Pack</h1>
+    <div class="container-fluid">
+        <h1 class="text-center mt-2 mb-5 p-4 text-white" style="background-color: #4b1348">Modification Pack</h1>
 
 
         {% for message in app.flashes('success') %}
@@ -26,7 +25,7 @@
         {{ form_row(formModifPack.image3File) }}
 
 
-        <button class="btn btn-outline-primary mb-5" type="submit">Modifier</button>
+        <button class="btn text-white my-3" style="background-color: #ffba08" type="submit">Modifier</button>
 
 
 
