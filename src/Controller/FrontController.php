@@ -193,6 +193,13 @@ class FrontController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/rgpd", name="rgpd")
+     */
+    public function rgpd()
+    {
+        return  $this->render('front/rgpd.html.twig');
+    }
 
 
 }
