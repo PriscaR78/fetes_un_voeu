@@ -34,11 +34,10 @@
             <a class="mt-4 ml-4" href="/">
               <img src={{asset('images/imagesUpload/logo/logo_fetes_un_voeu.png')}} alt="Logo fêtes un voeu" width="125">
             </a>
-         <div class="container-fluid">
-       
-            <a class="mt-5 ml-5" href="/">Fêtes un voeu<br>...au service de vos festivités
-            </a>
-            </div>
+         <div class="container-fluid" >
+         <div class="d-flex my-auto ml-5" style="font-family:Original Surfer; padding-top:4%; font-size:1.4em; color:#4B1348;">
+               Fêtes un voeu <br> ...au service de vos festivités
+            </div></div>
           </div>
 
               <!-- Section: Social media -->
@@ -46,12 +45,12 @@
 
 
               {% if app.user %}
-                <div class="nav-item dropdown my-2 my-lg-0 mr-5">
+                <div class="nav-item dropdown mt-2 my-lg-0 mr-5">
                   <a class="dropdown-toggle btn btn-info mt-2" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     {{ app.user.username }}
 
                   </a>
-                  <div class="dropdown-menu shadow m-4" aria-labelledby="navbarDropdown">
+                  <div class="dropdown-menu shadow m-2" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="{{ path('profil', {id:app.user.id}) }}">Profil</a>
                     {% if is_granted('ROLE_ADMIN') %}
                       <a class="dropdown-item" href="{{ path('backoffice') }}">Back-office</a>
