@@ -152,9 +152,23 @@
 
 </header>
 
+
+
 {% block body %}
 
+
+
 {% endblock %}
+
+  <!-- Back to top button -->
+          <button type="button" class="btn-floating btn-lg" id="btn-back-to-top">
+            <i class="fas fa-arrow-up"></i>
+          </button>
+  <!-- Copyright et RGPD -->
+
+        <div class="text-center m-5 p-3" style="background-color: #eddcf9">© 2021 Fêtes un voeu -<a href="{{ path('rgpd')}}">
+                Protection des données</a>
+        </div>
 
    {% block javascripts %}
             <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
