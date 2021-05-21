@@ -18,7 +18,6 @@ class ModifPackType extends AbstractType
         $builder
             ->add('nom', TextType::class, [
                 'required' => false,
-//                'label'=>false,
                 'attr' => [
                     'placeholder' => "Saisir le nom du pack",
                     'class' => 'inputNamePack']
@@ -26,14 +25,12 @@ class ModifPackType extends AbstractType
 
             ->add('description1', TextType::class, [
                 'required' => false,
-//                'label'=>false,
                 'attr' => [
                     'placeholder' => "Saisir la description du pack",
                 ]
             ])
             ->add('description2', TextType::class, [
                 'required' => false,
-//                'label'=>false,
                 'attr' => [
                     'placeholder' => "Compléter la description du pack",
                 ]
@@ -52,7 +49,6 @@ class ModifPackType extends AbstractType
                     ])
                 ]
             ])
-
 
             ->add('image2File', FileType::class, [
                 "required" => false,

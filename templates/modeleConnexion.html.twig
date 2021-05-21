@@ -1,24 +1,24 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr_FR">
   <head>
         <meta charset="UTF-8">
         <title>{% block title %}FETES UN VOEU !{% endblock %}</title>
-        {# Run `composer require symfony/webpack-encore-bundle`
-           and uncomment the following Encore helpers to start using Symfony UX #}
+        
         {% block stylesheets %}
-            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-	        <meta charset="utf-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	      <meta charset="utf-8">
 	    	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	    	<meta name="description" content="Le meilleur du service évènementiel familial">
 	    	<meta name="author" content="Fêtes un voeu, au service de vos festivités">
-	    	<title>FETES UN VOEU</title>
+        <link rel="icon" href="/images/favicon/favicon.ico" />
+      	<title>FETES UN VOEU</title>
      
 
-		<!-- Bootstrap core CSS -->
+		<!-- Bootstrap & CSS -->
 		<link href={{asset('assets/css/bootstrap.min.css')}} rel="stylesheet">
 		<link href={{asset('assets/css/style.css')}} rel="stylesheet">
 		
-		<!-- Custom styles for this template -->
+		<!-- Custom styles for this carousel -->
 		<link href={{asset('assets/css/carousel.css')}} rel="stylesheet">
 		<style>
 			.bd-placeholder-img {
@@ -74,35 +74,25 @@
                 </div>
               {% else %}
 
-               <a href="{{path('login')}}"><img class="nav-link" src="{{asset('/images/imagesUpload/icones/profil.png')}}"></a>
-                <a href="{{ path('inscription') }}"><img class="nav-link mr-5" src="{{asset('/images/imagesUpload/icones/inscription.png')}}"></a>
+           <a href="{{path('login')}}" title="Se connecter"><img class="nav-link" src="{{asset('/images/imagesUpload/icones/profil.png')}}" alt="se connecter"></a>
+                <a href="{{ path('inscription') }}" title="S'inscrire"><img class="nav-link mr-5" src="{{asset('/images/imagesUpload/icones/inscription.png')}}" alt="s'inscrire"></a>
              
               {% endif %}
 
-              <a href="https://www.facebook.com/fetesvosvoeux" target="blank"><img src="{{asset('/images/imagesUpload/icones/facebook.svg')}}" width="40em" height="40em"></a>
-              <a href="https://www.instagram.com/fetes_unvoeu/?hl=fr" target="blank"><img src="{{asset('/images/imagesUpload/icones/instagram-orange.svg')}}" width="40em" height="40em"></a>
-              <a href="https://github.com/PriscaR78/fetes_un_voeu" target="blank"><img src="{{asset('/images/imagesUpload/icones/github-border-dark.svg')}}" width="43em" height="43em" class="mr-5"></a>
-</div>
-              {# <li class="nav-item active mr-2">
-					<a href=""><img class="bd-placeholder-img rounded-circle" width="50" height="50" src={{asset('/images/imagesUpload/icones/fem.jpeg')}} role="img" aria-label="profil">
-					</a></img>
-				 #}
+              <a href="https://www.facebook.com/fetesvosvoeux" target="blank"><img src="{{asset('/images/imagesUpload/icones/facebook.svg')}}" width="40em" height="40em" alt="facebook"></a>
+              <a href="https://www.instagram.com/fetes_unvoeu/?hl=fr" target="blank"><img src="{{asset('/images/imagesUpload/icones/instagram-orange.svg')}}" width="40em" height="40em" alt="instagram"></a>
+              <a href="https://github.com/PriscaR78/fetes_un_voeu" target="blank"><img src="{{asset('/images/imagesUpload/icones/github-border-dark.svg')}}" width="43em" height="43em" class="mr-5" alt="github"></a>
           </div>
-
           </div>
-
+      </div>
           <hr>
 
+         <!-- barre de navigation --> 
 
-     
         <nav class="navbar-expand-lg">
-
 
 <div class="collapse navbar-collapse navigation" id="navbarSupportedContent">
 
-
-          {# <div class="collapse navbar-collapse container-fluid" id="navbarSupportedContent1"> #}
-            {# <ul class="navbar-nav w-100 justify-content-md-end" style=""> #}
                 <ul class="nav nav-tabs" id="media">
 
                 <li class="nav-item ml-4 mr-2">
@@ -162,7 +152,7 @@
 
   <!-- Back to top button -->
           <button type="button" class="btn-floating btn-lg" id="btn-back-to-top">
-            <i class="fas fa-arrow-up"></i>
+            <i class="fas fa-arrow-up" aria-label="fleche back to top"></i>
           </button>
   <!-- Copyright et RGPD -->
 

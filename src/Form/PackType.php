@@ -16,25 +16,21 @@ class PackType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
 
-
            $builder
                ->add('nom', TextType::class, [
                    'required' => false,
-//                'label'=>false,
                    'attr' => [
                        'placeholder' => "Saisir le nom du pack",
                        'class' => 'inputNamePack']
                ])
                ->add('description1', TextType::class, [
                    'required' => false,
-//                'label'=>false,
                    'attr' => [
                        'placeholder' => "Saisir la description du pack",
                    ]
                ])
                ->add('description2', TextType::class, [
                    'required' => false,
-//                'label'=>false,
                    'attr' => [
                        'placeholder' => "Compléter la description du pack",
                    ]

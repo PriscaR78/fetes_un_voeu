@@ -35,7 +35,7 @@ class BackController extends AbstractController
         $reservations=$repository->findBy(array(), array('date'=>'ASC'), 5, null);
 
         $top_clients=$userRepository->findBy(array(), array('resa_eff'=>'DESC'), 3, null);
-//dd($top_clients);
+        //dd($top_clients);
         $top_packs=$packRepository->findBy(array(), array('nbResa'=>'DESC'), 3, null);
         return $this->render("/back/backoffice.html.twig", [
             'reservations'=>$reservations,
@@ -79,7 +79,7 @@ class BackController extends AbstractController
             'reservations'=>$reservations
         ]);
     }
-// -----        permet l'affichage des réservations effectuées par client dans back-office        ----- //
+    // -----        permet l'affichage des réservations effectuées par client dans back-office        ----- //
     /**
      * @Route("/resa_client/{id}", name="resa_client")
      */
@@ -87,7 +87,6 @@ class BackController extends AbstractController
     {
         $resa_client=$reservationRepository->findResaUser($id);
         return $this->render('back/resa_clients.html.twig', [
-//            'pack'=>$pack,
             'reservations'=>$resa_client
         ]);
     }
@@ -167,21 +166,12 @@ class BackController extends AbstractController
         $manager->flush();
         $this->addFlash("success", "Le pack a bien été ajouté.");
 
-
-//        A DECOMMENTER QUAND ROUTE EXISTERA
         return $this->redirectToRoute("gestion_packs");
     endif;
 
-
-//    VERSION PROVISOIRE
         return $this->render('back/ajout_pack.html.twig', [
             'formPack'=>$form->createView()
         ]);
-
-//        VERSION DEFINITIVE
-//    return $this->render('back/pack/ajout_pack', [
-//        'formPack'=>$form->createView()
-//    ]);
 
     }
 
@@ -294,7 +284,6 @@ class BackController extends AbstractController
 //  ------------------------------------- RESERVATION ----------------------------------------------- //
 
 
-
     // ----------------------- MODIFICATION RESERVATION ------------------------//
     /**
     * @Route("/modif_reservation/{id}", name="modif_reservation")
@@ -324,7 +313,6 @@ class BackController extends AbstractController
 
 
                 $manager->persist($reservation);
-//          $manager->persist(($pack));
                 $manager->flush();
 
                 $this->addFlash("success", "Votre réservation a bien été modifiée");

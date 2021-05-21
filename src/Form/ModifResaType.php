@@ -20,8 +20,7 @@ class ModifResaType extends AbstractType
             ->add('pack', EntityType::class, [
                 "class"=>Pack::class,
                 "choice_label"=>"nom"
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver)

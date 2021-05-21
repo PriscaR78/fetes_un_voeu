@@ -41,8 +41,6 @@
                 <td>{{ user.email }}</td>
                 <td>{{ user.birthday | date('d-m-Y') }}</td>
 
-{#               <td>{{ reservation.pack.nom }}</td>#}
-
                 <td><a href="{{ path('resa_client', {'id': user.id }) }}"><img src="{{ asset('images/loupe.png') }}" alt="voir"></a></td>
 
                     <td><a href="{{ path('supp_user', {'id': user.id }) }}"><img src="{{ asset('images/delete.png') }}" alt="supprimer"></a></td>

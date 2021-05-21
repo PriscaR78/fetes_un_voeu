@@ -9,6 +9,8 @@
 
     <h2 class="mt-5">Vérifiez les disponibilités</h2>
 
+  <!-- ADD FLASH -->
+
     {% for message in app.flashes('success') %}
       <div class="col-md-6 bg-primary p-4 rounded mx-auto text-center text-white mb-3">
         {{ message }}
@@ -27,6 +29,8 @@
       </div>
     {% endfor %}
 
+  <!-- Vérification de la disponibilité du pack à une date indiquée -->
+
     {% if requete == true %}
       {% if reservations %}
         Ce pack n'est pas disponible aux dates suivantes :
@@ -40,6 +44,9 @@
       {% endif %}
 
     {% endif %}
+
+      <!-- Formulaire choix du pack -->
+
     <form action=" {{ path('verif_dispo')}} " method="get">
 
       <label class="my-3" for="pack">Quel pack avez-vous choisi ?</label>
@@ -62,6 +69,9 @@
 
 
     <hr>
+
+  <!-- Réservation du pack -->
+
     <div class="container mt-4">
       <h4 class="text-danger text-center mt-4">PENSEZ A VOUS CONNECTER POUR RESERVER VOTRE PACK !</h4>
 
@@ -75,13 +85,13 @@
 
           {{ form_row(formResa.pack) }}
         </div>
-        {#    prob git   #}
-
+        
         <button class="btn btn-info m-2" type="submit">Valider</button>
 
         {{ form_end(formResa) }}
       {% endif %}
 
+  <!-- Boutons se connecter et s'inscrire -->
 
       {% if not app.user %}
         <a href="{{path('login')}}">

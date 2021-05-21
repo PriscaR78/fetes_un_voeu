@@ -1,11 +1,10 @@
 {% extends 'modeleConnexion.html.twig' %}
 {% block body %}
 
-
-
     <div class="container mt-4">
         <h1 class="text-center mt-5 mb-5 p-4" style="background-color: #EDDCF9">Paiement</h1>
 
+ <!-- ADD FLASH  -->
         {% for message in app.flashes('success') %}
             <div class="bg-info p-3 rounded mx-auto text-center text-white m-4">
                 {{ message }}
@@ -16,6 +15,9 @@
                 {{ message }}
             </div>
         {% endfor %}
+
+ <!-- Tableau infos -->
+
         <div class="row justify-content-end">
         </div>
         <table class="table table-striped">
@@ -45,6 +47,9 @@
                 </tr>
             </tbody>
         </table>
+
+ <!-- Formulaire de paiement -->
+
         <div class="container w-25">
         <form action="">
         <label for="nom">Nom et Prenom </label>

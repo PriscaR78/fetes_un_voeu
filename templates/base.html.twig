@@ -1,13 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr_FR">
   <head>
     <meta charset="UTF-8">
     <title>
       {% block title %}FETES UN VOEU !{% endblock %}
     </title>
-    {# Run `composer require symfony/webpack-encore-bundle`
-           and uncomment the following Encore helpers to start using Symfony UX #}
-    {% block stylesheets %}
+        {% block stylesheets %}
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -16,15 +14,14 @@
       <link rel="icon" href="/images/favicon/favicon.ico" />
       <title>FETES UN VOEU</title>
 
-      <!-- Bootstrap core CSS -->
+      <!-- Bootstrap & CSS -->
       <link href={{asset('assets/css/bootstrap.min.css')}} rel="stylesheet">
       <link href={{asset('assets/css/style.css')}} rel="stylesheet">
       <link href={{asset('assets/css/bootstrap.bundle.js')}} rel="stylesheet">
 
-      <!-- Custom styles for this template -->
+      <!-- Custom styles for carousel -->
       <link href={{asset('assets/css/carousel.css')}} rel="stylesheet">
    
-
     {% endblock %}
   </head>
   <body>
@@ -37,12 +34,12 @@
          <div class="container-fluid" >
          <div class="d-flex my-auto ml-5" style="font-family:Original Surfer; padding-top:4%; font-size:1.4em; color:#4B1348;">
                Fêtes un voeu <br> ...au service de vos festivités
-            </div></div>
+            </div>
           </div>
+         </div>
 
               <!-- Section: Social media -->
           <div class="d-flex justify-content-end mr-2">
-
 
               {% if app.user %}
                 <div class="nav-item dropdown mt-2 my-lg-0 mr-5">
@@ -62,37 +59,27 @@
                 </div>
               {% else %}
 
-                <a href="{{path('login')}}"><img class="nav-link" src="{{asset('/images/imagesUpload/icones/profil.png')}}"></a>
-                <a href="{{ path('inscription') }}"><img class="nav-link mr-5" src="{{asset('/images/imagesUpload/icones/inscription.png')}}"></a>
+                <a href="{{path('login')}}" title="Se connecter"><img class="nav-link" src="{{asset('/images/imagesUpload/icones/profil.png')}}" alt="se connecter"></a>
+                <a href="{{ path('inscription') }}" title="S'inscrire"><img class="nav-link mr-5" src="{{asset('/images/imagesUpload/icones/inscription.png')}}" alt="s'inscrire"></a>
               {% endif %}
 
-              <a href="https://www.facebook.com/fetesvosvoeux" target="blank"><img src="{{asset('/images/imagesUpload/icones/facebook.svg')}}" width="40em" height="40em"></a>
-              <a href="https://www.instagram.com/fetes_unvoeu/?hl=fr" target="blank"><img src="{{asset('/images/imagesUpload/icones/instagram-orange.svg')}}" width="40em" height="40em"></a>
-              <a href="https://github.com/PriscaR78/fetes_un_voeu" target="blank"><img src="{{asset('/images/imagesUpload/icones/github-border-dark.svg')}}" width="43em" height="43em" class="mr-5"></a>
-</div>
-              {# <li class="nav-item active mr-2">
-					<a href=""><img class="bd-placeholder-img rounded-circle" width="50" height="50" src={{asset('/images/imagesUpload/icones/fem.jpeg')}} role="img" aria-label="profil">
-					</a></img>
-				 #}
-          </div>
+              <a href="https://www.facebook.com/fetesvosvoeux" target="blank"><img src="{{asset('/images/imagesUpload/icones/facebook.svg')}}" width="40em" height="40em" alt="facebook"></a>
+              <a href="https://www.instagram.com/fetes_unvoeu/?hl=fr" target="blank"><img src="{{asset('/images/imagesUpload/icones/instagram-orange.svg')}}" width="40em" height="40em" alt="instagram"></a>
+              <a href="https://github.com/PriscaR78/fetes_un_voeu" target="blank"><img src="{{asset('/images/imagesUpload/icones/github-border-dark.svg')}}" width="43em" height="43em" class="mr-5" alt="github"></a>
+        </div>
+        </div>
+        </div>
+        <hr>
+    
+     <!-- barre de navigation -->
 
-          </div>
-
-          <hr>
-
-
-     
         <nav class="navbar-expand-lg">
-
 
 <div class="collapse navbar-collapse navigation" id="navbarSupportedContent">
 
+            <ul class="nav nav-tabs" id="media">
 
-          {# <div class="collapse navbar-collapse container-fluid" id="navbarSupportedContent1"> #}
-            {# <ul class="navbar-nav w-100 justify-content-md-end" style=""> #}
-                <ul class="nav nav-tabs" id="media">
-
-                <li class="nav-item ml-4 mr-2">
+              <li class="nav-item ml-4 mr-2">
                 <a class="nav-link" href="/">Accueil<span class="sr-only">(current)</span>
                 </a>
               </li>
@@ -120,11 +107,9 @@
                 <a class="nav-link" href="{{ path('verif_dispo')}}">Réservation<span class="sr-only">(current)</span>
                 </a>
               </li>
-
-            
+           
             </ul>
-
-          </div>
+</div>
         
 
   <!-- Collapse button -->
@@ -139,6 +124,8 @@
 
 </header>
 
+ <!-- ADD FLASH -->
+
    {% for message in app.flashes('success') %}
         <div class="col-md-3 bg-info p-4 rounded mx-auto text-center text-white mt-3 mb-3">
           {{ message }}
@@ -146,6 +133,8 @@
       {% endfor %}
 
     <main role="main">
+
+    <!-- Carroussel -->
 
       <div id="myCarousel" class="carousel slide img-fluid mx-auto" data-ride="carousel">
         <ol class="carousel-indicators">
@@ -156,24 +145,24 @@
         </ol>
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img class="bd-placeholder-img" width="auto" height="100%" src={{asset('/images/imagesUpload/ban-anniv-enfant.jpg')}} role="img">
-            <rect width="auto" height="100%"></img>
+            <img class="bd-placeholder-img" width="auto" height="100%" src={{asset('/images/imagesUpload/ban-anniv-enfant.jpg')}} role="img" alt="card anniv enfant">
+           </img>
 
           </div>
           <div class="carousel-item">
-            <img class="bd-placeholder-img" width="auto" height="100%" src={{asset('/images/imagesUpload/ban-anniv-adulte.jpg')}} role="img">
-            <rect width="auto" height="100%"></img>
+            <img class="bd-placeholder-img" width="auto" height="100%" src={{asset('/images/imagesUpload/ban-anniv-adulte.jpg')}} role="img" alt="card anniv adulte">
+            </img>
 
           </div>
 
           <div class="carousel-item">
-            <img class="bd-placeholder-img" width="100%" height="auto" src={{asset('/images/imagesUpload/ban-karaoke.jpg')}} role="img">
-            <rect width="100%" height="auto"></img>
+            <img class="bd-placeholder-img" width="100%" height="auto" src={{asset('/images/imagesUpload/ban-karaoke.jpg')}} role="img" alt="card karaoké">
+           </img>
 
           </div>
           <div class="carousel-item">
-            <img class="bd-placeholder-img" width="100%" height="auto" src={{asset('/images/imagesUpload/ban-soiree.jpg')}} role="img">
-            <rect width="100%" height="auto"></img>
+            <img class="bd-placeholder-img" width="100%" height="auto" src={{asset('/images/imagesUpload/ban-soiree.jpg')}} role="img" alt="card soiree">
+            </img>
 
           </div>
 
@@ -198,8 +187,8 @@
       </div><br>
 
       <div class="container">
-        <!-- Marketing messaging and featurettes ================================================== -->
-        <!-- Wrap the rest of the page in another container to center all the content. -->
+        <!-- Marketing messaging ================================================== -->
+       
         <div class="container marketing">
 
           {% block content %}{% endblock %}
@@ -214,9 +203,9 @@
           <!-- Section: Links -->
           <section class="mb-3">
             <div class="container text-center text-md-start mt-5">
-              <!-- Grid row -->
+             
               <div class="row mt-3">
-                <!-- Grid column -->
+                
                 <div class="col-md-3 col-lg-4 col-xl-3 mx-auto ">
                   <!-- Content -->
                   <h6 class="text-uppercase fw-bold mb-4">
@@ -250,7 +239,7 @@
                 </div>
               </div>
               <div class="" style="background-color:red;" width="100%">
-                <img width="100%" src={{asset('/images/imagesUpload/carte_fuv_optimisee.jpg')}}></img>
+                <img width="100%" src={{asset('/images/imagesUpload/carte_fuv_optimisee.jpg')}} alt="plan de ville"></img>
               </div>
 
             </div>
@@ -264,7 +253,7 @@
 
         </main>
 
-        <!-- Copyright et RGPD -->
+        <!-- Copyright & RGPD -->
 
         <div class="text-center p-4" style="background-color: #eddcf9">© 2021 Fêtes un voeu -<a href="{{ path('rgpd')}}">
                 Protection des données</a>

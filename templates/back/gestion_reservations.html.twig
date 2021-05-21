@@ -1,22 +1,27 @@
 {% extends 'modelBackoffice.html.twig' %}
 
 {% block body %}
-
-
-  
       
 <div class="container-fluid">
+
     <h1 class="text-center mt-2 mb-2 p-4 text-white" style="background-color: #4b1348">Gestion des réservations</h1>
+
+   <!-- ADD FLASH -->
+
     {% for message in app.flashes('success') %}
         <div class="col-md-6 bg-secondary p-4 rounded mx-auto text-center text-white mb-3">
             {{ message }}
         </div>
     {% endfor %}
+
     <div class="row justify-content-start">
         <div class="text-center m-3 rounded" style="background-color: #ffba08">
             <a class="btn text-white my-2 " href="{{ path('verif_dispo') }}">Ajouter une réservation</a>
         </div>
     </div>
+
+   <!-- Tableau d'affichage -->
+
     <table class="table table-striped m-2">
         <thead class="thead-light">
         <tr>

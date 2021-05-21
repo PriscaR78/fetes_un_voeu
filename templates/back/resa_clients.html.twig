@@ -8,8 +8,7 @@
     {% endfor %}
     <div class="container-fluid">
       <h1 class="text-center mt-2 mb-2 p-4 text-white" style="background-color: #4b1348">Détail des réservations</h1>
-  
-{#<h1>Réservations effectuées par {{ user.prenom }} {{ user.nom }}</h1>#}
+ 
     <table class="table table-striped text-center w-50 mt-4">
         <thead class="thead-light">
         <tr>
@@ -26,21 +25,10 @@
                 <td>{{ reservation.pack.nom }}</td>
                 <td>{{ reservation.date | date('d-m-Y')  }}</td>
 
-
-
-                {#               <td>{{ reservation.pack.nom }}</td>#}
-
-
-                {#    <td><a href="{{ path('detail_pack', {'id': pack.id }) }}">Voir</a></td>#}
-
-                {#    <td><a href=""><img src="{{ asset('images/delete.png') }}" alt="supprimer"></a></td>#}
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-
-
 
 {% endblock %}
 

@@ -11,7 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class EmailController extends AbstractController{     
 
-       /**
+    /**
      * @Route("/mail", name="mail")
      */
     public function send_email(request $request)
@@ -23,11 +23,11 @@ class EmailController extends AbstractController{
             ->setUsername('priska.roberts@gmail.com')
             ->setPassword('@Elena2008');
 
-        $mailer = new Swift_Mailer($transporter);
-$mess=$request->request->get('message');
-$nom=$request->request->get('surname');
-$prenom=$request->request->get('name');
-$motif=$request->request->get('need');
+        $mailer = new Swift_Mailer($transporter);   
+        $mess=$request->request->get('message');
+        $nom=$request->request->get('surname');
+        $prenom=$request->request->get('name');
+        $motif=$request->request->get('need');
    
         $message = (new Swift_Message("$motif"))
             ->setFrom($request->request->get('email'))
@@ -46,10 +46,8 @@ $motif=$request->request->get('need');
                 'text/html'
             );
 
-
 // Send the message
         $result = $mailer->send($message);
-
 
         $this->addFlash('success', 'email envoyé');
         return $this->redirectToRoute('home');

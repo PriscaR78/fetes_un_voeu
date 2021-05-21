@@ -2,7 +2,11 @@
 
 {% block body %}
 <div class="container mt-4">
+
     <h1 class="text-center p-4" style="background-color: #eddcf9">Mon profil</h1>
+
+   <!-- Tableau d'affichage -->
+
     <div class="card w-100">
         <div class="card-header font-weight-bold text-center">
             Mes informations
@@ -14,8 +18,7 @@
             <p class="card-text">Votre adresse : {{ app.user.adresse}} </p>
             <p class="card-text">Votre code postal : {{ app.user.cp}} </p>
             <p class="card-text">Votre ville : {{ app.user.ville}} </p>
-            {# <p class="card-text">Votre N° de téléphone : {{ app.user.tel}} </p> #}
-
+            <p class="card-text">Votre N° de téléphone : {{ app.user.telephone}} </p>
 
             <p class="card-text">Votre date de naissance : {{ app.user.birthday | date('d/m/Y')}} </p>
             <p class="card-text">Votre email : {{ app.user.email}} </p>
@@ -25,6 +28,8 @@
 
 </div>
 <hr>
+   <!-- Tableau d'affichage -->
+
 <div class="container mt-4">
     <h2 class="text-center p-4" style="background-color: #eddcf9">Historique de vos réservations</h2>
     <table class="table table-striped w-100 text-center">
@@ -49,9 +54,5 @@
 
 
 </div>
-
-
-
-
 
 {% endblock %}

@@ -44,7 +44,6 @@ class FrontController extends AbstractController
 
     /**
      * @Route("/verif_dispo", name="verif_dispo")
-
      */
     public function verif_dispo(EntityManagerInterface $manager,Request $request, ReservationRepository $reservationRepository, PackRepository $packRepository, UserRepository $userRepository, Reservation $reservation=null)
     {
@@ -78,7 +77,6 @@ class FrontController extends AbstractController
                 $user->setResaEff($resa_eff+=1);
 
                 $manager->persist($reservation);
-//          $manager->persist(($pack));
                 $manager->flush();
 
                 $resa=$reservationRepository->find($reservation->getId());
@@ -180,10 +178,7 @@ class FrontController extends AbstractController
         return $this->render('front/remerciement.html.twig');
     }
 
-
-    // -------------------- A METTRE FRONTCONTROLLER --------------------//
-            // une fois qu'il y aura une page qui montre tous les packs
-    /**
+     /**
      * @Route("/detail_pack/{id}", name="detail_pack")
      */
     public function detail_pack(Pack $pack, $id)
